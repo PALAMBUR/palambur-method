@@ -42,8 +42,13 @@ palambur-method/
 │       ├── SKILL.md               # quand se déclencher + le déroulé (Étapes 0→3)
 │       ├── methode-palambur.md    # cadre : 5 blocs, champs DONNÉES, ton, anti-hallucination
 │       └── protection-donnees.md  # anonymisation, marqueurs, mentions nLPD, outils souverains
+├── adaptations/                   # versions prompt pour ChatGPT, Gemini, Mistral, Infomaniak
 └── README.md
 ```
+
+## Autres IA (ChatGPT, Gemini, Mistral, Infomaniak)
+
+Ces plateformes n'ont pas la divulgation progressive de Claude Code. Le dossier [`adaptations/`](adaptations/) fournit la méthode condensée en **un prompt système autonome** (deux tailles) et un **guide d'installation par plateforme** — GPT personnalisé, Gem, Agent Mistral, AI Tools / Euria d'Infomaniak.
 
 ## Licence
 
