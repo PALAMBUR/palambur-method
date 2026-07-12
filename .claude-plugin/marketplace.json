@@ -1,0 +1,18 @@
+{
+  "name": "palambur",
+  "description": "Marketplace des skills Palambur",
+  "owner": {
+    "name": "Palambur"
+  },
+  "plugins": [
+    {
+      "name": "palambur",
+      "description": "Méthode Palambur — clarification ciblée avant production d'un livrable métier (PME suisse romande).",
+      "version": "0.1.0",
+      "source": "./",
+      "author": {
+        "name": "Palambur"
+      }
+    }
+  ]
+}
