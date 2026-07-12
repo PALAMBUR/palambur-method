@@ -10,7 +10,7 @@ Au lieu de :
 
 > « fais une offre d'emploi pour un peintre à 80 % »
 
-…qui donnerait un texte générique, le skill pose **une question à la fois** (canton, missions, profil, avantages…) puis livre :
+…qui donnerait un texte générique, le skill pose ses questions en un **lot court et ciblé** (canton, missions, profil, avantages…), avec un défaut prudent par question, puis livre :
 
 1. le **prompt Méthode Palambur rempli** (prêt à copier-coller, réutilisable) ;
 2. le **livrable final** rédigé, avec les garde-fous suisses (LEg, nLPD, souveraineté).
@@ -24,7 +24,7 @@ Le skill s'active dès que le message contient **« palambur »**, **« méthode
 Ajouter ce dépôt comme marketplace, puis installer le plugin :
 
 ```
-/plugin marketplace add PALAMBUR/palambur
+/plugin marketplace add PALAMBUR/palambur-method
 /plugin install palambur
 ```
 
@@ -33,14 +33,15 @@ Ou cloner localement dans le dossier des plugins de votre installation Claude Co
 ## Structure
 
 ```
-palambur/
+palambur-method/
 ├── .claude-plugin/
 │   ├── plugin.json
 │   └── marketplace.json
 ├── skills/
 │   └── palambur-method/
-│       ├── SKILL.md              # quand se déclencher + le déroulé
-│       └── methode-palambur.md   # cadre : 5 blocs, champs DONNÉES, garde-fous
+│       ├── SKILL.md               # quand se déclencher + le déroulé (Étapes 0→3)
+│       ├── methode-palambur.md    # cadre : 5 blocs, champs DONNÉES, ton, anti-hallucination
+│       └── protection-donnees.md  # anonymisation, marqueurs, mentions nLPD, outils souverains
 └── README.md
 ```
 

@@ -5,13 +5,17 @@
   "author": {
     "name": "Palambur"
   },
-  "homepage": "https://github.com/PALAMBUR/palambur",
-  "repository": "https://github.com/PALAMBUR/palambur",
+  "homepage": "https://github.com/PALAMBUR/palambur-method",
+  "repository": "https://github.com/PALAMBUR/palambur-method",
   "license": "MIT",
   "keywords": [
     "palambur",
     "methode-palambur",
+    "claude-skill",
     "prompt-engineering",
+    "nlpd",
+    "rgpd",
+    "conformite",
     "rh",
     "adv",
     "suisse",
