@@ -1,4 +1,4 @@
-# Protection des données — playbook Palambur
+# Protection des données · playbook Palambur
 
 À lire dès qu'une demande **contient ou joint des données** (noms de clients, personnes, montants, contrats, dossiers). Objectif : que l'utilisateur puisse envoyer le livrable **en confiance**, sans exposer son entreprise.
 
@@ -7,7 +7,7 @@
 > « Anonymiser systématiquement : "client X" au lieu du nom réel, "montant A" au lieu du chiffre exact. »
 
 - **Comportement par défaut** : anonymiser + insérer une mention (voir plus bas).
-- **Poser une seule question binaire** avant de produire, uniquement s'il y a des données : conserver les vrais noms, ou anonymiser (recommandé). La décision s'applique **partout** — prompt réutilisable ET livrable final :
+- **Poser une seule question binaire** avant de produire, uniquement s'il y a des données : conserver les vrais noms, ou anonymiser (recommandé). La décision s'applique **partout**, prompt réutilisable ET livrable final :
   - **accepte / conserve** → vrais noms partout ;
   - **refuse ou silence** (défaut) → anonymisation partout + mention nLPD.
 - Jamais d'hybride : on ne mélange pas vrais noms et pseudonymes dans un même rendu.
@@ -20,10 +20,10 @@
 
 Quand une donnée manque, l'écrire visiblement plutôt que la combler :
 
-- `[À COMPLÉTER]` — champ que l'utilisateur doit remplir
-- `[INFO MANQUANTE]` — donnée absente des éléments fournis
-- `[À VÉRIFIER]` — affirmation (article de loi, CCT, chiffre) à confirmer
-- `[SOURCE NON IDENTIFIÉE]` — origine d'une donnée incertaine
+- `[À COMPLÉTER]` · champ que l'utilisateur doit remplir
+- `[INFO MANQUANTE]` · donnée absente des éléments fournis
+- `[À VÉRIFIER]` · affirmation (article de loi, CCT, chiffre) à confirmer
+- `[SOURCE NON IDENTIFIÉE]` · origine d'une donnée incertaine
 
 ## Mentions-types à insérer
 
@@ -51,4 +51,4 @@ Enjeux réglementaires à rappeler (marquer `[À VÉRIFIER]` si on cite une base
 
 ## Réglage conseillé
 
-Pour un livrable où l'exactitude prime (contrat, analyse juridique/financière), viser une **température basse (0.2–0.4)** ; défaut 0.7 pour de la rédaction courante.
+Pour un livrable où l'exactitude prime (contrat, analyse juridique/financière), viser une **température basse (0.2 à 0.4)** ; défaut 0.7 pour de la rédaction courante.
