@@ -1,5 +1,7 @@
 # Palambur
 
+[![Security: A — Skills Directory](https://www.skillsdirectory.com/api/skills/palambur-palambur-method/badge)](https://www.skillsdirectory.com/skills/palambur-palambur-method)
+
 Plugin de skills [Claude Code](https://docs.claude.com/en/docs/claude-code) au standard communautaire (inspiré de [superpowers](https://github.com/obra/superpowers)).
 
 ## Méthode Palambur
