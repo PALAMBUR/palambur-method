@@ -37,7 +37,7 @@ Quand une donnée manque, l'écrire visiblement plutôt que la combler :
 - Hébergement : **Infomaniak** (Genève/Zurich), **Exoscale** (Genève/Lugano)
 - Sauvegarde : **Swiss Backup**
 - Signature qualifiée : **SwissSign** (PAdES)
-- Modèle IA souverain cité pour les PME : **Mistral**
+- Modèle IA souverain cité pour les entreprises : **Mistral**
 - Règle absolue : **aucun sous-traitant hors CH** pour les données sensibles.
 
 ## Shadow AI (à expliquer si le livrable touche la gouvernance IA)

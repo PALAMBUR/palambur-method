@@ -6,7 +6,7 @@ Plugin de skills [Claude Code](https://docs.claude.com/en/docs/claude-code) au s
 
 ## Méthode Palambur
 
-Le skill `palambur-method` transforme une requête métier **sous-spécifiée** en **livrable de haute qualité**, en comblant le contexte manquant *avant* de produire. Pensé pour les PME de Suisse romande.
+Le skill `palambur-method` transforme une requête métier **sous-spécifiée** en **livrable de haute qualité**, en comblant le contexte manquant *avant* de produire. Pensé pour les entreprises de Suisse romande.
 
 **Deux noms, deux objets.** *La Méthode Palambur* est l'ensemble : la discipline de clarification, les garde-fous suisses, l'anti-hallucination. *Le Gabarit Palambur* en est l'outil : les **5 blocs** ordonnés d'un prompt, Instruction · Rôle et audience · Données · Contraintes · Format, plus 4 blocs d'extension pour les livrables à fort enjeu.
 

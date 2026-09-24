@@ -1,6 +1,6 @@
 {
   "name": "palambur",
-  "description": "Méthode Palambur — transforme une requête métier sous-spécifiée en livrable de haute qualité via un questionnement ciblé (contexte PME suisse romande).",
+  "description": "Méthode Palambur — transforme une requête métier sous-spécifiée en livrable de haute qualité via un questionnement ciblé (contexte entreprises de Suisse romande).",
   "version": "0.1.0",
   "author": {
     "name": "Palambur"
@@ -19,6 +19,6 @@
     "rh",
     "adv",
     "suisse",
-    "pme"
+    "entreprise"
   ]
 }

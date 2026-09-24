@@ -7,7 +7,7 @@
   "plugins": [
     {
       "name": "palambur",
-      "description": "Méthode Palambur — clarification ciblée avant production d'un livrable métier (PME suisse romande).",
+      "description": "Méthode Palambur — clarification ciblée avant production d'un livrable métier (entreprises de Suisse romande).",
       "version": "0.1.0",
       "source": "./",
       "author": {

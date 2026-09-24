@@ -11,7 +11,7 @@ Ce ne sont pas des grilles rigides à recopier. Ce sont des **repères** à adap
 Tout prompt Palambur s'ordonne en 5 blocs. Règle de contrôle : **un bloc manquant, un résultat approximatif.**
 
 1. **INSTRUCTION** · quoi faire, et pourquoi. Une phrase d'action nette. Le « pourquoi » n'est pas décoratif : il permet au modèle d'arbitrer les cas non prévus.
-2. **RÔLE ET AUDIENCE** · qui parle, et à qui. Le rôle change directement le comportement du modèle, ce n'est pas un ornement. **L'audience appartient à ce bloc** : un même contenu adressé à un directeur, à un opérateur d'atelier ou à un candidat n'a ni le même détail, ni le même vocabulaire. Ex. « Vous êtes chargé de recrutement en PME suisse romande, formé au CO, à la LEg et à la nLPD. Vous écrivez pour des candidats du bâtiment, pas pour des juristes. »
+2. **RÔLE ET AUDIENCE** · qui parle, et à qui. Le rôle change directement le comportement du modèle, ce n'est pas un ornement. **L'audience appartient à ce bloc** : un même contenu adressé à un directeur, à un opérateur d'atelier ou à un candidat n'a ni le même détail, ni le même vocabulaire. Ex. « Vous êtes chargé de recrutement dans une entreprise de Suisse romande, formé au CO, à la LEg et à la nLPD. Vous écrivez pour des candidats du bâtiment, pas pour des juristes. »
 3. **DONNÉES** · avec quels faits. **C'est ici que se joue la qualité** : les quatre autres blocs sont du cadrage, celui-ci est la matière. C'est le bloc que tes questions de clarification viennent remplir.
 4. **CONTRAINTES** · ce qui n'est pas négociable (légal, périmètre, ton, sécurité) et surtout l'interdiction d'inventer.
 5. **FORMAT** · la forme exacte attendue (sections, longueur, mentions obligatoires, support de destination).
@@ -113,4 +113,4 @@ Ce skill est **une** des trois portes. Elles partagent le même socle, le Gabari
 | **Exécuter** | Produire un livrable maintenant | Ce skill : il pose les questions, puis rend le prompt et le livrable |
 | **Copier** | Aller vite sur un cas déjà cadré | La bibliothèque de prompts métier Palambur, écrits au Gabarit |
 
-Palambur · formation et conseil IA industrielle pour PME suisses · `palambur.ch`
+Palambur · formation et conseil IA industrielle pour entreprises suisses · `palambur.ch`
