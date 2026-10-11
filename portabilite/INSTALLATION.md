@@ -49,7 +49,7 @@ En ligne de commande (si `claude` est sur votre `PATH`), l’équivalent est `cl
 /plugin
 ```
 
-puis l’onglet **Installed**, et Entrée sur `palambur` pour voir son état et ses composants. En ligne de commande (shell), les équivalents documentés sont `claude plugin list` et `claude plugin details palambur` (source `code.claude.com/docs/en/plugins/publish`, 11.10.2026). Puis la liste des skills visibles par Claude :
+puis l’onglet **Installed**, et Entrée sur `palambur` pour voir son état et ses composants. En ligne de commande (shell), les équivalents documentés sont `claude plugin list` et `claude plugin details palambur` (source `code.claude.com/docs/en/plugins/cli-reference`, sections « plugin list » et « plugin details », 11.10.2026 ; la page `plugins/publish` ne les cite pas, la source a été corrigée le 11.10.2026 au soir). Puis la liste des skills visibles par Claude :
 
 ```bash
 /skills
@@ -113,7 +113,9 @@ Si le skill n’apparaît pas :
 git -C ~/palambur-method pull
 ```
 
-**État relevé sur cette machine le 11.10.2026** : `~/.claude/skills/palambur-method` est déjà un **lien symbolique** vers `~/palambur/skills/palambur-method`, un second clone du même dépôt, **en retard de deux commits** sur GitHub (il porte encore le sigle corrigé le 24.09). La commande `git -C ~/palambur pull` le remettrait au niveau. Rien n’a été modifié.
+**Une vérité, le dépôt** : la seule source du skill est `skills/palambur-method/` dans le dépôt ; tout emplacement d’hôte est un lien ou une copie datée qui se met à jour depuis lui, jamais un fichier qu’on corrige sur place.
+
+**État relevé sur cette machine le 11.10.2026 au soir** : `~/.claude/skills/palambur-method` est un **lien symbolique**, repointé le 11.10.2026 vers le dépôt de travail de l’atelier (`05.02_Skill_Methode_Palambur/skills/palambur-method`). Dans la matinée, il visait encore `~/palambur/skills/palambur-method`, un **second clone** du même dépôt en retard de deux commits sur GitHub. Ce vieux clone `~/palambur` **existe toujours** ; le supprimer, le remettre à niveau ou le garder comme sauvegarde est une **décision de Victor**, rien n’y a été touché.
 
 ### 1c · Skill personnalisé sur claude.ai (sans Claude Code)
 
@@ -175,7 +177,7 @@ Les skills activés apparaissent aussi dans la liste des commandes `/` (source `
 
 **Limites connues** (page `build-skills`, 11.10.2026) : la liste des skills injectée au modèle est plafonnée à **2 % du contexte ou 8’000 caractères** ; `SKILL.md` **doit** contenir `name` et `description` ; un fichier optionnel `agents/openai.yaml` porte les métadonnées d’interface (invocation implicite autorisée ou non, outils requis). Pour désactiver un skill sans le supprimer : section `[[skills.config]]` avec `path` et `enabled = false` dans `~/.codex/config.toml`.
 
-**Épreuve sur cette machine** : `which codex` est vide, donc **le chargement n’a pas été éprouvé**. Un binaire Codex est pourtant embarqué dans l’application ChatGPT : `/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex --version` rend `codex-cli 0.162.0-alpha.17.2` (relevé 11.10.2026). Une épreuve reste possible le jour voulu, avec le compte ChatGPT de Victor. Installation officielle du CLI (source `https://learn.chatgpt.com/codex/cli`, 11.10.2026 ; la page donne la forme `curl … | sh`, découpée ici pour lire le script avant de l’exécuter). Téléchargez le script :
+**Épreuve sur cette machine** : `which codex` est vide, donc **le chargement n’a pas été éprouvé**. Un binaire Codex est pourtant embarqué dans l’application ChatGPT : `/Applications/ChatGPT.app/Contents/Resources/codex-cli/bin/codex --version` rend `codex-cli 0.162.0-alpha.17.2` (relevé 11.10.2026). Une épreuve reste possible le jour voulu, avec le compte ChatGPT du fondateur. Installation officielle du CLI (source `https://learn.chatgpt.com/codex/cli`, 11.10.2026 ; la page donne la forme `curl … | sh`, découpée ici pour lire le script avant de l’exécuter). Téléchargez le script :
 
 ```bash
 curl -fsSL https://chatgpt.com/codex/install.sh -o install.sh
@@ -202,7 +204,7 @@ L’article d’aide officiel **« Skills in ChatGPT »** (`https://help.openai.
 
 **Procédure** (application de bureau, d’après la page `build-skills`) : préparez le dossier `skills/palambur-method/` (ou le ZIP du § 1c), ouvrez **Skills** dans la barre latérale, ajoutez le dossier, puis dans une conversation tapez `@palambur-method`. **Non éprouvé** sur cette machine : le compte n’a pas été utilisé.
 
-**Chemin plugin pour le web** : OpenAI déclare que **« ChatGPT and Codex share one universal plugin directory »** (`https://learn.chatgpt.com/codex/skills-and-plugins`, 11.10.2026). La soumission d’un plugin « Skills only » est décrite dans `ANNUAIRES.md`, § OpenAI ; elle demande une **vérification d’identité** du compte, donc un geste de Victor.
+**Chemin plugin pour le web** : OpenAI déclare que **« ChatGPT and Codex share one universal plugin directory »** (`https://learn.chatgpt.com/codex/skills-and-plugins`, 11.10.2026). La soumission d’un plugin « Skills only » est décrite dans `ANNUAIRES.md`, § OpenAI ; elle demande une **vérification d’identité** du compte, donc un geste du fondateur.
 
 **À ne plus faire** : OpenAI retire les **GPT personnalisés** (`https://learn.chatgpt.com/codex/migrate-custom-gpts`, 11.10.2026 : « At retirement, custom GPTs stop running and leave the GPT directory », sans date publiée) et propose **« My GPTs › Migrate to plugin »**, qui transforme les instructions en skill. Le plan du 11.10 (point 17, GPT public) doit en tenir compte.
 
@@ -326,7 +328,7 @@ Les textes à coller sont **dans `adaptations/`** et ne sont pas recopiés ici (
 
 | Plateforme | Où coller | Source officielle (11.10.2026) | État |
 |---|---|---|---|
-| **GPT personnalisé** (ChatGPT) | Explorer les GPT › Créer › Configurer › Instructions, prompt complet | `https://learn.chatgpt.com/codex/migrate-custom-gpts` | **en retrait annoncé**, migration vers plugin proposée ; publier un GPT public demande un profil constructeur vérifié (Victor) |
+| **GPT personnalisé** (ChatGPT) | Explorer les GPT › Créer › Configurer › Instructions, prompt complet | `https://learn.chatgpt.com/codex/migrate-custom-gpts` | **en retrait annoncé**, migration vers plugin proposée ; publier un GPT public demande un profil constructeur vérifié (fondateur) |
 | **Projet Claude.ai** | Instructions du projet, prompt complet | `https://support.claude.com/en/articles/12512180-using-skills-in-claude` | fonctionne ; le skill natif (§ 1c) est préférable |
 | **Infomaniak Euria** (kSuite) | **Projets › Nouveau projet › Instructions**, documents en glisser-déposer | `https://www.infomaniak.com/fr/support/faq/2907` et `/faq/1369` | hébergement **exclusivement en Suisse** ; gratuit avec kSuite Free (2 projets, 5 conversations par projet) ; **aucune notion de skill ni d’agent** sur la page Euria ; pas de partage de projet lu |
 | **Infomaniak AI Tools / AI Services** (API) | system prompt de l’assistant, Manager › « Modifier l’assistant conversationnel actuel » › « Nouveau » (FAQ 2177) | `https://www.infomaniak.com/fr/support/faq/2177` (réglage) · `https://www.infomaniak.com/fr/hebergement/ai-services` (offre) | la page de l’offre écrit « API compatible OpenAI » et « nos data centers en Suisse » ; prompt complet |

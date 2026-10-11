@@ -19,7 +19,7 @@ Ne pas confondre avec :
 - C. mise en demeure, seule ou avec toute la séquence en escalier préparée à l’avance
 - D. Autre / je ne sais pas
 - Défaut prudent : A.
-- Pourquoi : le degré fixe le ton, le délai et le vocabulaire ; une mise en demeure envoyée en guise de premier rappel coûte le client et affaiblit le dossier.
+- Pourquoi · parce que le degré fixe le ton, le délai et le vocabulaire ; une mise en demeure en guise de premier rappel coûte le client et affaiblit le dossier.
 
 **Question 2 · Existe-t-il une contestation, même orale ?**
 - A. aucune, silence pur
@@ -27,7 +27,7 @@ Ne pas confondre avec :
 - C. une promesse de paiement a été faite et non tenue
 - D. Autre / je ne sais pas · défaut si vous ne précisez pas
 - Défaut prudent : D, traité comme « à vérifier avant d’envoyer » ; la relance porte une ligne d’ouverture (« si un élément de cette facture vous pose question, appelez-nous »).
-- Pourquoi : relancer une créance contestée fabrique le litige qu’on voulait éviter ; si B, la séquence s’arrête et le livrable change.
+- Pourquoi · parce que relancer une créance contestée fabrique le litige qu’on voulait éviter ; si B, la séquence s’arrête et le livrable change.
 
 **Question 3 · Quelle suite est réellement décidée ?**
 - A. aucune encore, on veut d’abord être payé et garder le client (un arrangement de paiement reste possible) · défaut si vous ne précisez pas
@@ -35,14 +35,14 @@ Ne pas confondre avec :
 - C. transmission au recouvrement ou poursuite, décidée par la direction
 - D. Autre / je ne sais pas
 - Défaut prudent : A ; aucune conséquence annoncée qui n’a pas été décidée.
-- Pourquoi : une menace non tenue rend inutiles toutes les relances suivantes ; la fermeté vient des dates, pas des adjectifs.
+- Pourquoi · parce qu’une menace non tenue rend inutiles toutes les relances suivantes ; la fermeté vient des dates, pas des adjectifs.
 
 **Question 4 · Vos conditions générales prévoient-elles des intérêts ou des frais de rappel ?**
 - A. aucune condition écrite, seul le principal est réclamé · défaut si vous ne précisez pas
 - B. oui, je colle la clause des conditions générales ou du contrat
 - C. Autre / je ne sais pas
 - Défaut prudent : A, aucun intérêt ni frais chiffré. Le délai accordé ne se demande pas : il prend un défaut (section 3).
-- Pourquoi : un taux d’intérêt ou des frais de rappel qui ne figurent ni au contrat ni dans une mise en demeure préalable ne se réclament pas.
+- Pourquoi · parce qu’un taux d’intérêt ou des frais de rappel absents du contrat et de toute mise en demeure préalable ne se réclament pas.
 
 ## 3 · Ce qui prend un défaut sans question
 

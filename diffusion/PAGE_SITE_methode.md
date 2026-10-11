@@ -66,7 +66,7 @@ Le texte actuel (« La Méthode est publiée, donc vérifiable », `p1`, `p2`, t
 
 **Sous-titre** : Installer, **gratuitement**
 
-**Paragraphe** : Le skill est publié sous licence MIT. Il est **gratuit**, il ne demande **aucun compte** Palambur, et il **n’envoie rien à Palambur** : aucune télémétrie, aucune donnée de vos demandes ne quitte votre outil pour venir chez nous. Ce que vous tapez reste entre vous et l’IA que vous avez choisie.
+**Paragraphe** : Le skill est publié sous licence MIT. Il est **gratuit et le restera**, il ne demande **aucun compte** Palambur, et il **n’envoie rien à Palambur** : aucune télémétrie, aucune donnée de vos demandes ne quitte votre outil pour venir chez nous. Ce que vous tapez reste entre vous et l’IA que vous avez choisie.
 
 **Dans Claude Code** (deux blocs de code, une commande par bloc, dans l’ordre) :
 

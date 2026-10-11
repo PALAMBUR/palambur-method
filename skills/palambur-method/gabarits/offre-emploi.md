@@ -19,7 +19,7 @@ Ne pas confondre avec :
 - C. télétravail partiel possible, part à préciser
 - D. Autre / je ne sais pas · défaut si vous ne précisez pas
 - Défaut prudent : `[À COMPLÉTER : lieu de travail et canton]` dans l’annonce, aucune mention de télétravail.
-- Pourquoi : le canton commande le bassin de candidats, la convention éventuelle et le trajet, la première chose qu’un candidat regarde.
+- Pourquoi · parce que le canton commande le bassin de candidats, la convention éventuelle et le trajet, la première chose qu’un candidat regarde.
 
 **Question 2 · Les missions principales (5 à 7)**
 - A. je les fournis (dictées, cahier des charges ou ancienne annonce à coller)
@@ -27,7 +27,7 @@ Ne pas confondre avec :
 - C. le poste est nouveau, les missions ne sont pas encore arrêtées
 - D. Autre / je ne sais pas
 - Défaut prudent : B, chaque mission marquée `[À VALIDER]`.
-- Pourquoi : les missions sont la seule partie que le candidat lit vraiment ; une liste générique n’attire que des candidatures génériques.
+- Pourquoi · parce que les missions sont la seule partie que le candidat lit vraiment ; une liste générique n’attire que des candidatures génériques.
 
 **Question 3 · Le profil, indispensable contre souhaitable**
 - A. un titre est exigé (CFC, brevet, maîtrise, HES, université)
@@ -35,7 +35,7 @@ Ne pas confondre avec :
 - C. aucun titre exigé, formation interne assurée
 - D. Autre / je ne sais pas
 - Défaut prudent : B, et une seule exigence « indispensable », le reste en « souhaité ».
-- Pourquoi : une liste où tout est requis fait fuir les bonnes candidatures et n’écarte aucune mauvaise.
+- Pourquoi · parce qu’une liste où tout est requis fait fuir les bonnes candidatures et n’écarte aucune mauvaise.
 
 **Question 4 · Ce que l’entreprise offre, et qui est déjà décidé**
 - A. rien au-delà du cadre contractuel et conventionnel · défaut si vous ne précisez pas
@@ -43,7 +43,7 @@ Ne pas confondre avec :
 - C. avantages à nommer et fourchette salariale brute publiée
 - D. Autre / je ne sais pas
 - Défaut prudent : A, avec `[À COMPLÉTER : avantages validés par la direction]` ; **jamais un salaire inventé**.
-- Pourquoi : un avantage nommé vaut dix adjectifs, et un avantage inventé est une promesse que l’entreprise devra tenir.
+- Pourquoi · parce qu’un avantage nommé vaut dix adjectifs, et qu’un avantage inventé est une promesse que l’entreprise devra tenir.
 
 ## 3 · Ce qui prend un défaut sans question
 
@@ -100,6 +100,7 @@ Consigne au modèle (sans marqueur) : si la fourchette salariale, le régime d�
 - Ton : professionnel, accessible, vouvoiement, sans vocabulaire d’agence.
 - Mention finale : « Vos données de candidature sont traitées par [À COMPLÉTER : entreprise et outil], hébergé [À COMPLÉTER : pays]. Elles sont conservées [À COMPLÉTER : durée] puis détruites. Vous pouvez demander à les consulter, les corriger ou les supprimer à [À COMPLÉTER : contact]. »
 - Encadré final hors annonce : les `[À COMPLÉTER]` et `[À VÉRIFIER]` à faire trancher avant publication.
+- **Ligne de contexte** avant le Gabarit (forme fixe de `SKILL.md`, Étape 3) · ex. « Contexte retenu · offre d’emploi · peintre en bâtiment à 80 % · canton de Vaud · ton professionnel · données : aucune · 4 réponses, 2 défauts, 5 marqueurs ».
 - **Validation humaine** : relecture RH obligatoire avant publication ; le skill le rappelle en une ligne.
 
 ## 7 · Le Gabarit Palambur pré-rempli

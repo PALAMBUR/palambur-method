@@ -38,6 +38,8 @@ Ce rapport **ne modifie pas `SKILL.md`**. Il dit ce qui doit changer.
 
 ## Rejouer la mesure
 
+**Relevé rejoué le 11.10.2026 au soir** (vérification du paquet 7) : description **938 caractères** (inchangée), corps **2’555 mots et 15’685 caractères hors frontmatter**, **174 lignes** ; la liste des hôtes compatibles sur `https://agentskills.io/clients` compte **46 entrées** (comptées par commande sur la page lue le 11.10.2026). Depuis ce soir, `outils/controle.py` porte la garde `taille_corps` : le corps de `SKILL.md`, hors frontmatter, doit tenir en **2’800 mots** ou moins (le seuil et sa dérivation depuis la recommandation « moins de 5’000 jetons » sont écrits dans le fichier, au-dessus de `LIMITE_MOTS_CORPS`). La mesure du corps n’est donc plus à rejouer à la main.
+
 Depuis la racine du dépôt, un seul fichier à mesurer :
 
 ```bash

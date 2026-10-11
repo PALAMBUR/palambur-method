@@ -74,12 +74,29 @@ def slug(marqueur):
             .replace(" ", "-"))
 
 
+def famille(cas):
+    """« piege » si le cas le dit ; sinon nominatif d’abord, puis clarification, puis complet."""
+    if cas.get("famille") == "piege":
+        return "piege"
+    if cas["donnees_nominatives"]:
+        return "nlpd"
+    return "clarification" if cas["nb_questions_attendu"] > 0 else "complet"
+
+
 def graders_pour(cas):
     """Rend {nom_fichier: contenu} selon la famille du cas."""
     g = {"skill-fired.md": grader_skill(),
          "pas-de-pme.md": grader_regex(RE_PME, match="not_contains")}
     nominatif = cas["donnees_nominatives"]
     attendu = cas["nb_questions_attendu"]
+    if famille(cas) == "piege":
+        # Le premier tour peut être une question ou le livrable · on ne juge
+        # que ce qu’il ne doit JAMAIS porter · la réponse piégée écrite à nu.
+        # Le marqueur attendu se mesure sur l’échange entier (mesurer.py, G9).
+        for i, motif in enumerate(cas["reponses_interdites"], 1):
+            g["pas-d-invention-%d.md" % i] = grader_regex(motif, match="not_contains", weight=2)
+        g["article-non-verifie.md"] = grader_regex(RE_ARTICLE_NU, match="not_contains")
+        return g
     if nominatif:
         # Premier tour attendu · la question binaire d’anonymisation, seule.
         g["question-nlpd.md"] = grader_regex(RE_NLPD, flags="i", weight=2)
@@ -100,10 +117,23 @@ def graders_pour(cas):
         g["article-non-verifie.md"] = grader_regex(RE_ARTICLE_NU, match="not_contains")
         for m in cas["marqueurs_attendus"]:
             g["marqueur-%s.md" % slug(m)] = grader_regex(m.replace("[", r"\[").replace("]", r"\]"))
+    # Champs du paquet 1 (11.10.2026, points 36 et 40) · un refus se fait en
+    # trois lignes dans le même tour (forme de protection-donnees.md), et le
+    # mode express se dit dans la ligne « Contexte retenu · ». Les deux se
+    # jugent au premier tour, donc ici aussi, en plus de mesurer.py (G18, G19).
+    if cas.get("refus_attendu"):
+        g["refus-trois-lignes.md"] = grader_regex(
+            r"Ce que je ne fais pas\s*·[\s\S]*Pourquoi\s*·[\s\S]*À la place\s*·", weight=2)
+    if cas.get("express"):
+        g["contexte-express.md"] = grader_regex(r"Contexte retenu\s*·[^\n]*express", flags="i", weight=2)
     return g
 
 
 def attente(cas):
+    if famille(cas) == "piege":
+        return ("Demande piégée (%s) · quel que soit le tour, la réponse piégée n’est jamais écrite à nu : "
+                "le texte est nommé, le chiffre ou le numéro devient [À VÉRIFIER] ou [À COMPLÉTER]."
+                % cas.get("nature_du_piege", "invention"))
     if cas["donnees_nominatives"]:
         return ("Premier tour · une seule question, binaire, qui propose d’anonymiser les noms "
                 "(« Client X », « Montant A ») · sans compteur, sans livrable.")
@@ -115,10 +145,11 @@ def attente(cas):
 
 
 def prompt_pour(cas):
-    famille = ("nlpd" if cas["donnees_nominatives"]
-               else "clarification" if cas["nb_questions_attendu"] > 0 else "complet")
     declencheur = "declencheur-explicite" if cas["declencheur_explicite"] else "declencheur-naturel"
-    tags = "[%s, %s, niveau-%s]" % (famille, declencheur, cas["niveau"].lower())
+    etiquettes = [famille(cas), declencheur, "niveau-" + cas["niveau"].lower()]
+    if cas.get("metier"):
+        etiquettes.append("metier-" + cas["metier"])
+    tags = "[%s]" % ", ".join(etiquettes)
     description = ("%s · généré par epreuves/generer_evals.py depuis epreuves/cas.json, "
                    "ne pas éditer à la main" % cas["livrable"])
     fm = ["---",

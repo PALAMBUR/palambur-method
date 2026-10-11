@@ -173,3 +173,29 @@ Description: A SKILL.md that clarifies an under-specified business request with 
 6. **Listes awesome** : karanb192 tout de suite (PR d’une ligne) ; travisvn à 10 étoiles, **PR manuelle de Victor sans assistance IA** (règle de la liste) ; ComposioHQ **seulement si** Victor accepte qu’une copie du skill vive dans un dépôt tiers (contraire à « une seule source », mais 76’900 étoiles de visibilité). **À décider.**
 
 Aucune de ces actions n’a été lancée le 11.10.2026.
+
+---
+
+## 10 · Rejouer la note de sécurité à chaque version
+
+Plan du 11.10.2026, point 90. Le README affiche le badge Skills Directory (image servie par leur API, elle change toute seule quand le scan change). Ce que l’image ne dit pas, c’est **quand** le dernier scan a eu lieu ni **quelle version** il a lue. La note vaut pour l’état scanné, pas pour le dépôt d’aujourd’hui · une version qui ajoute un script, un workflow ou un fichier d’agents peut la faire bouger.
+
+### La procédure, à chaque étiquette `vX.Y.Z`
+
+1. **Après la poussée de l’étiquette**, attendre le re-scan. La fiche lue le 11.10.2026 dit que le scan relit GitHub de lui-même ; la cadence et l’existence d’un déclenchement manuel ne sont pas connues `[À VÉRIFIER : fréquence du re-scan et bouton de re-scan sur la fiche]`.
+2. **Ouvrir la fiche** `https://www.skillsdirectory.com/skills/palambur-palambur-method` et lire trois choses · la note (lettre), le score (sur 100), la date du scan affichée.
+3. **Reporter une ligne** dans la table ci-dessous · version, date du scan, note et score, date de la lecture, fonction de la personne qui a lu.
+4. **Dater le badge dans le README** · à côté de l’image, en clair, « scan du jj.mm.aaaa » (le README est tenu par la session qui en a la charge ; cette section ne l’édite pas).
+5. **Si la note baisse**, la release ne se publie pas tant que la cause n’est pas nommée dans `CHANGELOG.md` (section « Modifié » ou « Corrigé » de la version). Une baisse non expliquée est un défaut, pas un détail d’annuaire.
+6. **Si la note ne bouge pas** mais que la date du scan est antérieure à l’étiquette, la ligne le dit (« scan antérieur à la version ») · un A lu sur l’ancienne version ne vaut rien pour la nouvelle.
+
+### Historique des scans
+
+| Version lue par le scan | Date du scan | Note · score | Lecture faite le | Par (fonction) |
+|---|---|---|---|---|
+| sans numéro (état du 24.09.2026, avant 1.0.0) | 06.09.2026 (date d’ajout et de scan affichée sur la fiche) | A · 100/100 | 11.10.2026 | agent de la session Évaluation et qualité |
+| 1.0.0 | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` | `[À COMPLÉTER]` |
+
+Les autres annuaires qui notent (mdskills.ai relit chaque fiche à la main, SkillsMP indexe sans noter au 11.10.2026) entrent dans cette table le jour où le skill y est listé.
+
+Marqueurs ouverts de cette section · `[À VÉRIFIER]` (cadence et déclenchement du re-scan) · `[À COMPLÉTER]` (la ligne 1.0.0, après la première étiquette poussée).

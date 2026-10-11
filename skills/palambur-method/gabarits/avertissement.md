@@ -20,7 +20,7 @@ Ne pas confondre avec :
 - C. un constat issu d’un dispositif de surveillance (badge, caméra, GPS, journal informatique)
 - D. Autre / je ne sais pas
 - Défaut prudent : seul A entre dans le courrier ; B est écarté ou marqué `[À VÉRIFIER : fait non établi]` ; C fait signaler la question de la licéité du dispositif `[À VÉRIFIER : base légale]`.
-- Pourquoi : un seul fait non établi disqualifie toute la lettre devant un juge qui la lira des années plus tard sans connaître le contexte.
+- Pourquoi · parce qu’un seul fait non établi disqualifie toute la lettre devant un juge qui la lira des années plus tard, sans le contexte.
 
 **Question 2 · Quelle règle, connue de la personne, a été enfreinte ?**
 - A. le contrat ou le cahier des charges
@@ -28,7 +28,7 @@ Ne pas confondre avec :
 - C. une consigne orale seulement, ou aucune règle écrite · défaut si vous ne précisez pas
 - D. Autre / je ne sais pas
 - Défaut prudent : C · le courrier rappelle la règle et la pose par écrit pour l’avenir, sans sanctionner rétroactivement.
-- Pourquoi : un manquement à une règle jamais énoncée n’est pas un manquement.
+- Pourquoi · parce qu’un manquement à une règle jamais énoncée n’est pas un manquement.
 
 **Question 3 · Quels antécédents ?**
 - A. aucun, c’est le premier échange formel · défaut si vous ne précisez pas
@@ -36,7 +36,7 @@ Ne pas confondre avec :
 - C. un ou plusieurs avertissements écrits, datés
 - D. Autre / je ne sais pas
 - Défaut prudent : A · le courrier est un premier avertissement, il offre un entretien, et la conséquence annoncée reste le renvoi au règlement.
-- Pourquoi : la gradation se lit ; un avertissement qui tombe sans antécédent se lit comme une décision prise d’avance.
+- Pourquoi · parce que la gradation se lit ; un avertissement sans antécédent se lit comme une décision prise d’avance.
 
 **Question 4 · Quelles attentes, et quel délai d’observation ?**
 - A. comportement observable que je formule, délai d’un mois
@@ -44,7 +44,7 @@ Ne pas confondre avec :
 - C. attentes à déduire des faits, que je validerai · défaut si vous ne précisez pas
 - D. Autre / je ne sais pas
 - Défaut prudent : C · attentes déduites des faits, marquées `[À VALIDER]`, délai `[À ARBITRER]`, point de mi-parcours daté.
-- Pourquoi : sans attente observable et datée (« les rapports sont déposés le vendredi avant 16 h dès le [date] »), l’avertissement ne corrigera rien.
+- Pourquoi · parce que sans attente observable et datée (« les rapports sont déposés le vendredi avant 16 h dès le [date] »), l’avertissement ne corrigera rien.
 
 ## 3 · Ce qui prend un défaut sans question
 

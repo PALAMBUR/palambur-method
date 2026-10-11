@@ -20,7 +20,7 @@ Ne pas confondre avec :
 - C. les prix ne sont pas encore fixés · défaut si vous ne précisez pas
 - D. Autre / je ne sais pas
 - Défaut prudent : C · chaque prix porte `[À COMPLÉTER]`, le devis est un cadre à chiffrer.
-- Pourquoi : le prix est une décision humaine ; un poste hors grille attend une personne nommée, jamais une estimation du modèle.
+- Pourquoi · parce que le prix est une décision humaine ; un poste hors grille attend une personne nommée, jamais une estimation du modèle.
 
 **Question 2 · Qui est le client ?**
 - A. un particulier
@@ -28,7 +28,7 @@ Ne pas confondre avec :
 - C. un client établi hors de Suisse
 - D. Autre / je ne sais pas · défaut si vous ne précisez pas
 - Défaut prudent : `[À COMPLÉTER : type de client]` ; le statut TVA de l’entreprise ne se demande pas, il prend un défaut (section 3).
-- Pourquoi : un particulier lit un total toutes taxes comprises, une entreprise un prix hors TVA, un client hors de Suisse change le lieu de la prestation ; se tromper se voit sur chaque ligne.
+- Pourquoi · parce qu’un particulier lit un total toutes taxes comprises, une entreprise un prix hors TVA, et qu’un client hors de Suisse change le lieu de la prestation.
 
 **Question 3 · Périmètre : ce qui est compris, ce qui ne l’est pas**
 - A. prestation ferme et complète, tout ce qui est compris est listé · défaut si vous ne précisez pas
@@ -36,7 +36,7 @@ Ne pas confondre avec :
 - C. une partie en régie (heures au réel), ou estimation révisable après visite technique
 - D. Autre / je ne sais pas
 - Défaut prudent : A, avec une liste d’exclusions obligatoire `[À COMPLÉTER : non compris]`.
-- Pourquoi : ce qui n’est pas écrit n’est pas dû, mais ce qui n’est pas exclu sera réclamé ; mélanger prix ferme et régie dans un même total est la première cause de désaccord en fin de chantier.
+- Pourquoi · parce que ce qui n’est pas écrit n’est pas dû, et que ce qui n’est pas exclu sera réclamé ; prix ferme et régie mélangés font le désaccord de fin de chantier.
 
 **Question 4 · Conditions : validité, acompte, délais**
 - A. conditions standard maison (validité 30 jours, acompte à préciser, paiement 30 jours net), aussi quand rien n’est écrit · défaut si vous ne précisez pas
@@ -44,7 +44,7 @@ Ne pas confondre avec :
 - C. conditions particulières, que je dicte
 - D. Autre / je ne sais pas
 - Défaut prudent : validité 30 jours, paiement 30 jours net, acompte `[À ARBITRER]`, délai d’exécution rattaché à un événement daté.
-- Pourquoi : la validité borne l’engagement, l’acompte protège la trésorerie, et un délai sans point de départ ne s’oppose à personne.
+- Pourquoi · parce que la validité borne l’engagement, l’acompte protège la trésorerie, et qu’un délai sans point de départ ne s’oppose à personne.
 - Question sautée si la demande joint déjà les conditions générales ou dicte les conditions : le défaut s’applique et le compteur descend à trois.
 
 ## 3 · Ce qui prend un défaut sans question

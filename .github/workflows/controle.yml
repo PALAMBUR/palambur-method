@@ -1,0 +1,50 @@
+# Contrôle du dépôt à chaque poussée et à chaque pull request (plan du 11.10.2026, point 83).
+# Sans secret, sans appel de modèle · tout ce qui tourne ici est du Python local.
+# Rouge = pas de fusion. Les trois gestes du plan · controle.py, mesurer.py --epreuve, le mot interdit.
+name: Contrôle
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  controle:
+    name: Chaîne de contrôle, épreuves, mot interdit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          # la version de la machine de l’atelier · les scripts ne demandent rien de plus récent
+          python-version: "3.9"
+
+      - name: Chaîne de contrôle du dépôt
+        run: python3 outils/controle.py
+
+      - name: La règle typographique embarquée sait dire oui et non
+        run: python3 outils/regle_typo.py --epreuve
+
+      - name: La grille des épreuves sait dire oui et non
+        run: python3 epreuves/mesurer.py --epreuve
+
+      - name: Les evals sont celles que cas.json fabrique aujourd’hui
+        run: |
+          python3 epreuves/generer_evals.py
+          git diff --exit-code --stat -- evals
+
+      - name: Le mot interdit, écrit à nu, hors des instruments qui le traquent
+        # Le motif est écrit P[M]E pour que ce fichier ne porte pas le mot lui-même.
+        # Les .py sont exclus (ce sont les instruments, controle.py les juge) ;
+        # la citation de la règle (« … » ou entre accents graves) est tue.
+        run: |
+          if grep -rnwE --exclude-dir=.git --exclude='*.py' 'P[M]E' . | grep -vE '« P[M]E »|`P[M]E`' ; then
+            echo 'Le mot interdit est écrit à nu · on dit « entreprises »'
+            exit 1
+          fi
+          echo 'Aucun mot interdit hors citations'

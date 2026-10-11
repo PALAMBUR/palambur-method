@@ -20,7 +20,7 @@ Ne pas confondre avec :
 - C. certificat intermédiaire, le contrat continue
 - D. Autre / je ne sais pas
 - Défaut prudent : A · le certificat complet est dû ; le simple ne se délivre que sur demande expresse, notée au dossier.
-- Pourquoi : le complet exige une appréciation étayée, le simple n’en porte aucune ; se tromper de type expose l’employeur dans les deux sens.
+- Pourquoi · parce que le complet exige une appréciation étayée et le simple n’en porte aucune ; se tromper de type expose l’employeur dans les deux sens.
 
 **Question 2 · Comment la qualité du travail est-elle appréciée, sur la durée ?**
 - A. excellente ou très bonne, avec des réalisations factuelles à citer
@@ -28,7 +28,7 @@ Ne pas confondre avec :
 - C. insuffisante, avec des faits établis au dossier (évaluations, entretiens)
 - D. Autre / je ne sais pas · défaut si vous ne précisez pas
 - Défaut prudent : aucune appréciation de mémoire · le paragraphe porte `[À COMPLÉTER : appréciation étayée par les évaluations]` et le certificat reste un projet.
-- Pourquoi : sur-éloger engage la responsabilité de l’employeur envers le futur employeur ; sous-éloger ouvre le contentieux. Le calibrage est le cœur du livrable, il ne se devine pas.
+- Pourquoi · parce que sur-éloger engage l’employeur envers le futur employeur et sous-éloger ouvre le contentieux ; le calibrage ne se devine pas.
 
 **Question 3 · Le comportement envers supérieurs, collègues et clients**
 - A. exemplaire
@@ -36,7 +36,7 @@ Ne pas confondre avec :
 - C. difficultés établies, décrites en faits
 - D. Autre / je ne sais pas · défaut si vous ne précisez pas
 - Défaut prudent : D → `[À COMPLÉTER]`.
-- Pourquoi : élément obligatoire d’un certificat complet ; un adjectif choisi au hasard devient un code que la jurisprudence sait lire.
+- Pourquoi · parce que c’est un élément obligatoire du certificat complet, et qu’un adjectif pris au hasard devient un code que la jurisprudence sait lire.
 
 Trois questions suffisent : la mention des circonstances de la fin ne se demande pas, elle prend un défaut (section 3), parce que l’employeur ne la décide pas seul.
 

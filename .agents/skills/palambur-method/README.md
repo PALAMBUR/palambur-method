@@ -36,4 +36,8 @@ cp -R skills/palambur-method/. .agents/skills/palambur-method/
 
 Au 11.10.2026, **Codex n’est pas installé sur cette machine** (`which codex` vide ; un binaire est embarqué dans l’application ChatGPT, non essayé). **Le chargement par Codex n’a donc pas été éprouvé.** Le lien n’est pas commité tant que Victor n’a pas tranché : un lien symbolique dans Git fonctionne sous macOS et Linux mais pas toujours sous Windows, et la liste de contrôle d’Anthropic refuse les liens symboliques commités pour les entrées chargées par un plugin (source : `https://claude.com/docs/plugins/pre-submission-checklist`, 11.10.2026 ; ce dossier n’est pas chargé par le plugin Claude, mais la règle mérite d’être lue avant de commiter).
 
+## Métadonnées propres à Codex · `agents/openai.yaml`
+
+La page officielle `https://learn.chatgpt.com/docs/build-skills` (lue le 11.10.2026) décrit un fichier **facultatif** `agents/openai.yaml` dans le dossier du skill, annoté « Optional: appearance and dependencies. » : nom affiché, description courte, invite par défaut, et la règle `allow_implicit_invocation` (« When `false`, Codex won't implicitly invoke the skill based on user prompt. »). C’est le **seul** fichier de métadonnées à part documenté par l’un des quatre hôtes relevés (Codex, Cursor, Gemini CLI, Copilot) ; les trois autres lisent le frontmatter de `SKILL.md` et des fichiers joints libres. Le relevé complet, avec les extraits de chaque page et le contenu proposé pour ce fichier, est dans `portabilite/METADONNEES_HOTES.md`. **Au 11.10.2026, le fichier n’est pas posé** : il vit dans `skills/palambur-method/agents/`, avec la source, jamais ici.
+
 Guide complet par hôte : `portabilite/INSTALLATION.md`.

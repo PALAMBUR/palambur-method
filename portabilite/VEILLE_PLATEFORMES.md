@@ -2,6 +2,17 @@
 
 État au **11.10.2026**. Socle du point 94 (suivi mensuel). Chaque ligne porte sa source ; **« officiel »** = page de l’éditeur lue ce jour ; **« source secondaire »** = blog ou presse, à ne pas citer comme fait ; **« non confirmé »** = aucune page officielle lue.
 
+Le fichier a **trois parties** : le **journal mensuel** (une ligne par mois, ce qui a bougé), la **table d’état** (ce qui existe chez chaque plateforme, réécrite à chaque relevé), et la **procédure** (les pages à relire, la commande de relevé, ce qui reste non confirmé). Le journal ne se réécrit jamais : on ajoute une ligne. La table, elle, dit toujours l’état du dernier relevé.
+
+## Journal mensuel · une ligne par mois
+
+Relevé le **11 de chaque mois** (ou le premier jour ouvré qui suit). La ligne dit ce qui a changé depuis le relevé précédent, pour **les plateformes et pour le dépôt**, et renvoie à la table ou au fichier modifié. Une ligne sans changement s’écrit « rien n’a bougé », datée : c’est aussi une mesure.
+
+| Relevé du | Ce qui a bougé | Conséquence pour le dépôt | Qui a relevé |
+|---|---|---|---|
+| **11.10.2026** | Premier relevé : 13 lignes de la table posées depuis les pages officielles ; Gemini retire les Gems (novembre 2026), Mistral remplace les Agents par des Skills, OpenAI annonce le retrait des GPT personnalisés sans date ; standard Agent Skills à 46 hôtes ; Infomaniak Euria sans notion de skill. Dépôt : 2 étoiles, 1 fork (`mesures/releves.csv`). | `adaptations/README.md` réécrit (trois fiches périmées retirées) ; `INSTALLATION.md` hôte par hôte ; `ANNUAIRES.md` ; point 17 du plan réorienté vers le plugin OpenAI ; projet Claude.ai et Euria restent les deux hôtes à prompt collé (`diffusion/partenaires/`). | session Skills et Prompt Ingénierie |
+| 11.11.2026 | `[À RELEVER]` | | |
+
 ## Table
 
 | Plateforme | Ce qui existe au 11.10.2026 | Emplacement ou geste | Forfaits | Source | Nature |
@@ -40,12 +51,59 @@
 | Présence du skill sur SkillsMP | page de recherche rendue côté client, illisible à nos outils ; sujet GitHub requis absent |
 | Chargement réel par Codex, Cursor, Gemini, Copilot, Vibe | aucun de ces hôtes n’est installé sur la machine (binaire Codex embarqué dans ChatGPT.app, non essayé) |
 
-## À revoir le 11.11.2026
+## La procédure mensuelle · ce qu’on relit, dans l’ordre
 
-1. Relire les six pages officielles de la table (OpenAI, Google, Mistral, Cursor, GitHub, Anthropic) et noter ce qui a bougé.
-2. Rouvrir `https://help.openai.com/en/articles/20001066-skills-in-chatgpt` (403 le 11.10) ; si toujours fermée, lire l’article depuis le compte ChatGPT de Victor.
-3. Vérifier si Google a ouvert le **partage** des skills Gemini (point 19 du plan dépend de cela).
-4. Vérifier si Mistral Vibe offre un **lien public** de skill (idem point 19).
-5. Vérifier sur `skillsmp.com` et `mdskills.ai` la présence du skill après les gestes d’`ANNUAIRES.md`.
-6. Relever les étoiles GitHub : le seuil de 10 ouvre la liste travisvn.
-7. Rejouer `curl -sI` sur chaque URL de ce fichier et remplacer celles qui ne répondent plus.
+Chaque relevé suit ces étapes, puis ajoute **une ligne** au journal. Une page qui ne répond plus se remplace par la page officielle qui la remplace, jamais par un blog.
+
+### 1 · Les pages à relire (une par ligne de la table)
+
+| Plateforme | Pages (lues le 11.10.2026) | Ce qu’on cherche |
+|---|---|---|
+| Standard Agent Skills | `https://agentskills.io/specification` · `https://agentskills.io/clients` | champs du frontmatter ; nombre d’hôtes (46 au 11.10.2026) |
+| Anthropic · Claude Code | `https://code.claude.com/docs/en/skills` · `https://code.claude.com/docs/en/plugins/publish` | emplacements, limites (500 lignes, 1'536 caractères), règle de version |
+| Anthropic · claude.ai, Cowork, annuaire | `https://support.claude.com/en/articles/12512180-using-skills-in-claude` · `https://claude.com/docs/directory/publish` | téléversement ZIP, forfaits, soumission à l’annuaire ; **et le partage d’un Projet** (`diffusion/partenaires/PROJET_CLAUDE_AI.md`) |
+| OpenAI · Codex | `https://developers.openai.com/codex/skills` · `https://learn.chatgpt.com/codex/cli` · `https://developers.openai.com/plugins/build/plugins` | emplacements, `agents/openai.yaml`, marketplace de plugins |
+| OpenAI · ChatGPT | `https://learn.chatgpt.com/docs/build-skills` · `https://learn.chatgpt.com/codex/skills-and-plugins` · `https://help.openai.com/en/articles/20001066-skills-in-chatgpt` (403 le 11.10.2026 ; si toujours fermée, lire depuis le compte ChatGPT de Victor) | surfaces, forfaits Free, Plus, Pro |
+| OpenAI · GPT personnalisés | `https://learn.chatgpt.com/codex/migrate-custom-gpts` | la date de retrait, toujours absente le 11.10.2026 |
+| Google · Gemini CLI et Antigravity | `https://geminicli.com/docs/cli/skills/` · `https://antigravity.google/docs/skills` | emplacements, commandes `/skills` |
+| Google · Gemini (app) | `https://support.google.com/gemini/answer/17094296` · `https://support.google.com/gemini/answer/18560919` (404 en HEAD, 200 en GET : lire au navigateur) | **partage des skills** ouvert ? disponibilité pour le compte Palambur |
+| Mistral · Vibe | `https://docs.mistral.ai/vibe/overview` · `https://docs.mistral.ai/getting-started/quickstarts/vibe-work/create-first-skill` · `https://github.com/mistralai/mistral-vibe` | **lien public** de skill ? forfaits |
+| Cursor | `https://cursor.com/docs/context/skills` | emplacements, import GitHub |
+| GitHub Copilot | `https://docs.github.com/en/copilot/concepts/agents/about-agent-skills` · `https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills` | emplacements, `gh skill` |
+| Infomaniak · Euria et AI Services | `https://www.infomaniak.com/fr/euria` · `https://www.infomaniak.com/fr/support/faq/1369` · `https://www.infomaniak.com/fr/support/faq/2907` · `https://www.infomaniak.com/fr/hebergement/ai-services` · `https://www.infomaniak.com/fr/support/faq/2177` | apparition d’une notion de skill ou de partage de projet ; suite de `diffusion/partenaires/INFOMANIAK_demande.md` |
+| Annuaires | `https://skillsmp.com` · `https://mdskills.ai` · la liste travisvn (seuil de 10 étoiles) · `https://www.skillsdirectory.com/skills/palambur-palambur-method` | présence du skill après les gestes d’`ANNUAIRES.md` ; note de sécurité à rejouer |
+| Communautés | règles de `https://community.openai.com/guidelines`, du serveur Discord « Claude », des subreddits visés (illisibles pour nos outils le 11.10.2026) | changement des règles d’auto-promotion avant tout post (`diffusion/partenaires/COMMUNAUTES_annonces_EN.md`) |
+
+### 2 · La commande de relevé des pages
+
+Depuis la racine du dépôt, une seule commande : elle lit chaque URL de ce fichier et imprime le code HTTP. Un code autre que 200 ou 30x se note dans le journal et la ligne de la table se revérifie au navigateur (les deux pages Google répondent 404 en HEAD par construction).
+
+```bash
+grep -oE 'https://[^` )|]+' portabilite/VEILLE_PLATEFORMES.md | sort -u | while read u; do printf '%s  %s\n' "$(curl -sIL --max-time 20 -o /dev/null -w '%{http_code}' "$u")" "$u"; done
+```
+
+### 3 · La commande de relevé du dépôt
+
+Étoiles, forks, vues, clones du jour, une ligne dans `mesures/releves.csv` (lecture seule sur GitHub) :
+
+```bash
+python3 outils/mesure.py
+```
+
+### 4 · Ce qu’on fait de ce qui a bougé
+
+1. Mettre à jour la ligne concernée de la **table d’état** (colonne « Ce qui existe au … », date du relevé).
+2. Si un hôte à prompt collé change : relire la table des hôtes d’`adaptations/README.md`, puis `python3 outils/generer_adaptations.py --ecrire`.
+3. Si un emplacement ou une commande change : corriger `INSTALLATION.md`, section de l’hôte.
+4. Si un annuaire s’ouvre ou un seuil est atteint : `ANNUAIRES.md`, et un geste de Victor.
+5. Si le Projet Claude.ai partagé existe : vérifier que ses instructions sont celles du prompt régénéré.
+6. Ajouter **la ligne du mois** au journal, puis `python3 outils/controle.py`.
+
+### 5 · Ce qu’il reste à vérifier au prochain relevé (11.11.2026)
+
+1. Rouvrir l’article d’aide ChatGPT (403 le 11.10) ; sinon le lire depuis le compte de Victor.
+2. Google : le **partage** des skills Gemini est-il ouvert (point 19 du plan) ?
+3. Mistral Vibe : un **lien public** de skill existe-t-il (idem point 19) ?
+4. SkillsMP et mdskills : le skill y est-il, après les gestes d’`ANNUAIRES.md` ?
+5. Étoiles GitHub : le seuil de 10 ouvre la liste travisvn.
+6. Reddit : les règles des subreddits visés, lues connecté (`COMMUNAUTES_annonces_EN.md`).

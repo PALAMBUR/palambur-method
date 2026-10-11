@@ -32,11 +32,17 @@ Les tickets marqués **« bonne première contribution »** sont réservés aux 
 
 **Jamais un numéro d’article de loi sans `[À VÉRIFIER]`.** On nomme le texte (CO, LTr, LEg, nLPD, LCD), on ne cite pas un numéro d’article que personne n’a vérifié à la date de la contribution. Une convention collective n’est jamais citée sans sa source. Si vous êtes certain d’un article, écrivez-le quand même avec le marqueur : la vérification appartient à la personne qui relit, pas à la personne qui écrit.
 
+### La règle du locuteur natif, en une ligne
+
+**Aucune langue n’entre dans le skill sans la relecture d’un locuteur natif de cette langue qui exerce l’un des métiers visés.** Une traduction automatique est un brouillon, pas une contribution. La pull request nomme la **fonction** du relecteur (jamais son nom), la date de sa relecture et les fichiers relus ; le modèle de ticket « Nouvelle langue » porte cette case, et une pull request qui ne la coche pas attend. La règle vaut pour l’anglais aussi, même si le README est déjà bilingue · l’anglais du skill est relu comme les autres.
+
 ### Ce que nous ne prenons pas
 
 - Des gabarits qui inventent des valeurs par défaut là où la Méthode exige un marqueur.
 - Des références à des outils d’IA qui envoient des données hors de Suisse présentées comme « souverains ».
 - Des contributions qui ajoutent de la publicité pour Palambur dans les livrables : le skill est gratuit et il le reste, sans message commercial dans ce qu’il produit.
+
+**Code de conduite et traductions** · le [code de conduite](CODE_OF_CONDUCT.md) s’applique à tout échange dans ce dépôt ; toute traduction (`README`, adaptations, gabarits) est relue par un locuteur natif de la langue cible avant d’être fusionnée, et porte en tête la mention « relecture native à faire » tant qu’elle ne l’a pas été.
 
 ### Licence
 
@@ -72,11 +78,17 @@ Issues labelled **"good first contribution"** are reserved for templates: someon
 
 **Never a numbered article of law without `[À VÉRIFIER]`** (to be checked). Name the text (CO, LTr, LEg, nLPD, LCD), never quote an article number nobody has verified at the date of the contribution. A collective agreement is never cited without its source. If you are sure of an article, write it anyway with the marker: verification belongs to the reviewer, not to the writer.
 
+### The native speaker rule, in one line
+
+**No language enters the skill without a review by a native speaker of that language who works in one of the target professions.** A machine translation is a draft, not a contribution. The pull request names the reviewer’s **role** (never their name), the date of the review and the files reviewed; the "New language" issue template carries this checkbox, and a pull request that leaves it unticked waits. The rule applies to English too, even though the README is already bilingual · the skill’s English is reviewed like any other language.
+
 ### What we do not accept
 
 - Templates that invent default values where the Method requires a marker.
 - References to AI tools that send data outside Switzerland presented as "sovereign".
 - Contributions that add advertising for Palambur inside deliverables: the skill is free and stays free, with no commercial message in what it produces.
+
+**Code of conduct and translations** · the [code of conduct](CODE_OF_CONDUCT.md) applies to every exchange in this repository; every translation (`README`, adaptations, templates) is proofread by a native speaker of the target language before it is merged, and carries the note “relecture native à faire” at the top until that is done.
 
 ### Licence
 

@@ -21,11 +21,11 @@ Les dix fichiers portent **les mêmes huit sections, dans le même ordre**, num�
 | N° | Section | Ce qu’elle contient |
 |---|---|---|
 | 1 | Reconnaître | Les mots de la demande qui désignent ce livrable · et ce avec quoi on le confond |
-| 2 | Questions déterminantes | Au plus 4, ordonnées du plus structurant au plus accessoire · choix lettrés à la forme de `SKILL.md` (deux ou trois choix réels, puis « Autre / je ne sais pas » en dernière lettre, quatre lettres au plus) · défaut prudent · pourquoi en une demi-ligne |
+| 2 | Questions déterminantes | Au plus 4, ordonnées du plus structurant au plus accessoire · choix lettrés à la forme de `SKILL.md` (deux ou trois choix réels, puis « Autre / je ne sais pas » en dernière lettre, quatre lettres au plus) · défaut prudent · le pourquoi en une demi-ligne, à la forme « Pourquoi · parce que … » |
 | 3 | Ce qui prend un défaut sans question | Liste « Libellé : défaut » · jamais une question de confort |
 | 4 | Champs DONNÉES | Une ligne par exigence, à la forme « Libellé : [À COMPLÉTER] » · les consignes au modèle restent sans marqueur |
 | 5 | Contraintes propres au livrable | Lois suisses **nommées** (CO, LTr, LEg, nLPD, LP, LCD, LTVA…), jamais un numéro d’article sans `[À VÉRIFIER]` · aucune CCT nommée sans source · anti-invention |
-| 6 | Format attendu | Structure, longueur, ton · mention nLPD si le livrable sort de l’entreprise · validation humaine si RH ou juridique |
+| 6 | Format attendu | Structure, longueur, ton · mention nLPD si le livrable sort de l’entreprise · validation humaine si RH ou juridique · la ligne « Contexte retenu » qui précède le Gabarit (forme dans `SKILL.md`, exemple dans `offre-emploi.md`) |
 | 7 | Le Gabarit Palambur pré-rempli | Les 5 blocs (INSTRUCTION · RÔLE ET AUDIENCE · DONNÉES · CONTRAINTES · FORMAT) avec les marqueurs · les blocs d’extension pour L et XL |
 | 8 | Pièges | Ce qu’un modèle invente d’habitude pour ce livrable |
 
@@ -70,7 +70,7 @@ Toutes les commandes se lancent **depuis la racine du dépôt** (`05.02_Skill_Me
 python3 outils/controle.py
 ```
 
-Les trois contrôles propres aux gabarits, un par bloc :
+Les quatre contrôles propres aux gabarits, un par bloc :
 
 ```bash
 python3 outils/regle_typo.py skills/palambur-method/gabarits/*.md
@@ -84,4 +84,8 @@ grep -rnE "art\. ?[0-9]+" skills/palambur-method/gabarits/ | grep -vF "\`"
 grep -c "^- autre" skills/palambur-method/gabarits/*.md
 ```
 
-Le premier doit rendre « CONFORME », le deuxième « propre » sur chaque fichier, le troisième rien (les contre-exemples entre accents graves sont écartés par le second filtre ; une ligne restante doit porter `[À VÉRIFIER]`), le quatrième 0 pour chaque fichier (l’échappatoire est une lettre, jamais une ligne à part).
+```bash
+grep -c "^- Pourquoi · parce qu" skills/palambur-method/gabarits/*.md
+```
+
+Le premier doit rendre « CONFORME », le deuxième « propre » sur chaque fichier, le troisième rien (les contre-exemples entre accents graves sont écartés par le second filtre ; une ligne restante doit porter `[À VÉRIFIER]`), le quatrième 0 pour chaque fichier (l’échappatoire est une lettre, jamais une ligne à part), le cinquième, pour chaque fiche, autant de lignes que de questions (35 en tout au 11.10.2026 · chaque question porte son pourquoi).

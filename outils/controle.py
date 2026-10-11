@@ -14,7 +14,7 @@ cadratin dans la description du plugin, le mot « PME » dans trois fichiers
 jusqu’au 24.09, des adaptations de trois mois en retard sur le skill, une
 licence annoncée dans le README et absente du dépôt.
 
-LES NEUF CONTRÔLES · chacun porte un nom, et chacun dit COMBIEN il fait taire
+LES DIX CONTRÔLES · chacun porte un nom, et chacun dit COMBIEN il fait taire
 (CLAUDE.md § 4 · sinon « rien à signaler » et « je ne regarde plus » s’écrivent
 pareil) ·
 
@@ -39,6 +39,10 @@ pareil) ·
     frontmatter   SKILL.md ouvre sur un frontmatter avec `name` (= le dossier)
                   et `description` non vides
     taille_skill  SKILL.md tient en 500 lignes ou moins
+    taille_corps  le CORPS de SKILL.md (hors frontmatter) tient en 2'800 mots
+                  ou moins · la spécification recommande moins de 5'000 jetons
+                  pour ce qui est chargé à l’activation · seuil dérivé au-dessus
+                  de LIMITE_MOTS_CORPS · né le 11.10.2026 (plan, point 88)
     liens         aucun lien relatif cassé dans les .md · fait taire les liens
                   externes (http, mailto, ancres) et dit combien
 
@@ -93,6 +97,26 @@ MOT_INTERDIT = re.compile(r'\bP' + r'ME\b')
 CITATION = re.compile(r'« P' + r'ME »|`P' + r'ME`')
 
 LIMITE_LIGNES_SKILL = 500
+
+#: le corps de SKILL.md, hors frontmatter, en MOTS. La spécification Agent
+#: Skills (`https://agentskills.io/specification`, lue le 11.10.2026) écrit,
+#: dans « Progressive disclosure » · « Instructions (< 5000 tokens
+#: recommended): The full SKILL.md body is loaded when the skill is activated ».
+#: Un jeton ne se compte pas sans le découpeur du modèle, qu’un clone public
+#: n’a pas · on convertit, et on dit comment. Le glossaire d’Anthropic
+#: (`https://platform.claude.com/docs/en/about-claude/glossary`, lu le
+#: 11.10.2026) · sur les modèles d’avant Claude 4.7, « a token represents
+#: approximately 3.5 English characters » · 5'000 jetons font 17'500
+#: caractères. Le corps mesuré le 11.10.2026 pesait 15'685 caractères pour
+#: 2'555 mots (`str.split`, espaces et balises comprises), soit 6,1 caractères
+#: par mot · 17'500 ÷ 6,1 = 2'850 mots, arrondis EN DESSOUS à 2'800. La même
+#: page avertit que les découpeurs de Claude 4.7 et suivants rendent
+#: « approximately 30 percent more tokens for the same text » · à ce compte le
+#: seuil tomberait vers 2'200 mots et le corps du 11.10 serait déjà au-delà.
+#: Le seuil retenu est donc la lecture la plus indulgente des deux, et il le
+#: dit · le jour où un comptage exact de jetons est fait (API de comptage,
+#: avec le modèle visé), c’est lui qui remplace cette dérivation.
+LIMITE_MOTS_CORPS = 2800
 SEMVER = re.compile(r'^\d+\.\d+\.\d+$')
 
 
@@ -343,6 +367,34 @@ def ctrl_taille_skill(racine):
     return constats, 0, note
 
 
+FRONTMATTER = re.compile(r'---\n(.*?)\n---\n', re.S)
+
+
+def mots_corps(texte):
+    """Le nombre de mots du corps d’un SKILL.md, frontmatter retiré.
+
+    Sans frontmatter reconnaissable, tout le texte est le corps · c’est au
+    contrôle `frontmatter` de dire qu’il manque, pas à celui-ci de se taire.
+    """
+    m = FRONTMATTER.match(texte)
+    corps = texte[m.end():] if m else texte
+    return len(corps.split())
+
+
+def ctrl_taille_corps(racine):
+    """Le corps de SKILL.md tient en LIMITE_MOTS_CORPS mots · au-delà, ce qui est
+    chargé à chaque activation dépasse la recommandation de la spécification."""
+    constats, note = [], ''
+    for chemin in fichiers(os.path.join(racine, 'skills'), ('SKILL.md',)) \
+            if os.path.isdir(os.path.join(racine, 'skills')) else []:
+        n = mots_corps(io.open(chemin, encoding='utf-8').read())
+        note = '%d mot(s) hors frontmatter, limite %d' % (n, LIMITE_MOTS_CORPS)
+        if n > LIMITE_MOTS_CORPS:
+            constats.append('taille_corps · %s · %d mots hors frontmatter, limite %d'
+                            % (relatif(racine, chemin), n, LIMITE_MOTS_CORPS))
+    return constats, 0, note
+
+
 LIEN = re.compile(r'!?\[[^\]]*\]\(([^)\s]+)(?:\s+"[^"]*")?\)')
 EXTERNE = ('http://', 'https://', 'mailto:', '#')
 
@@ -379,6 +431,7 @@ CONTROLES = [
     ('adaptations', ctrl_adaptations),
     ('frontmatter', ctrl_frontmatter),
     ('taille_skill', ctrl_taille_skill),
+    ('taille_corps', ctrl_taille_corps),
     ('liens', ctrl_liens),
 ]
 
@@ -617,6 +670,18 @@ def epreuve():
         modifier(d, 'skills/palambur-method/SKILL.md',
                  lambda t: t + '\n' * (LIMITE_LIGNES_SKILL + 1 - t.count('\n')))
         rougit('SKILL.md de 501 lignes', 'taille_skill', d, 'limite')
+
+        # taille du corps en mots · le témoin ajoute ses mots sur UNE ligne,
+        # pour ne pas réveiller le voisin `taille_skill`
+        d = depot('corps_long')
+        modifier(d, 'skills/palambur-method/SKILL.md',
+                 lambda t: t + '\n' + ' '.join(['mot'] * (LIMITE_MOTS_CORPS + 1 - mots_corps(t))) + '\n')
+        rougit('un corps de %d mots' % (LIMITE_MOTS_CORPS + 1), 'taille_corps', d, 'mots')
+        d = depot('corps_frontmatter_gras')
+        modifier(d, 'skills/palambur-method/SKILL.md',
+                 lambda t: t.replace('---\n', '---\nbourre: ' + ' '.join(['mot'] * LIMITE_MOTS_CORPS) + '\n', 1))
+        se_tait('%d mots dans le frontmatter ne comptent pas dans le corps' % LIMITE_MOTS_CORPS,
+                'taille_corps', d)
 
         # liens
         d = depot('lien_casse')

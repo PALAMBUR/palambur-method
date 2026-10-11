@@ -1,6 +1,6 @@
 # Méthode Palambur · skill `palambur-method`
 
-[![Security: A · Skills Directory](https://www.skillsdirectory.com/api/skills/palambur-palambur-method/badge)](https://www.skillsdirectory.com/skills/palambur-palambur-method)
+[![Security: A · Skills Directory](https://www.skillsdirectory.com/api/skills/palambur-palambur-method/badge)](https://www.skillsdirectory.com/skills/palambur-palambur-method) · scan du 06.09.2026, rejoué à chaque version (`portabilite/ANNUAIRES.md` § 10)
 
 **Un skill qui pose les bonnes questions avant d’écrire.** Vous demandez un document de travail à une IA (offre d’emploi, devis, relance, contrat, note interne). Au lieu de deviner ce qui manque et d’inventer le reste, le skill vous pose quatre questions courtes, puis rend un document que vous pouvez envoyer. Pensé pour les entreprises de Suisse romande, utilisable partout. Gratuit, licence MIT.
 
@@ -128,6 +128,8 @@ Puis installer le plugin :
 
 Ou copier le dossier `skills/palambur-method/` dans `~/.claude/skills/`. Le script `outils/installer_local.sh` le fait pour vous (à blanc par défaut, `--ecrire` pour poser).
 
+**Une vérité, le dépôt.** Le skill n’a qu’une source : `skills/palambur-method/` dans ce dépôt. Ce que les hôtes lisent (`~/.claude/skills/`, `~/.agents/skills/`, un plugin installé) est **un lien ou une copie datée**, qui se met à jour par `git pull` ou par une nouvelle version du plugin, **jamais en éditant les fichiers sur place** : une correction faite dans une copie est perdue à la mise à jour suivante, et personne ne la relit.
+
 ### Codex, Cursor, Copilot, Gemini, Mistral, ChatGPT, Infomaniak
 
 Le format `SKILL.md` est un **standard ouvert**. Un seul lien symbolique du dossier `skills/palambur-method/` dans `~/.agents/skills/` suffit à cinq hôtes : **Codex** (OpenAI, qui suit les liens symboliques et lit aussi `.agents/skills/` dans un projet), **Cursor**, **GitHub Copilot**, **Gemini CLI** et **Mistral Vibe CLI** (documentation officielle de chaque éditeur, relevée le 11.10.2026). Gemini (application) et Mistral Vibe Work acceptent le skill par téléversement ; ChatGPT déploie des skills natifs selon l’abonnement. Pour les hôtes qui n’offrent qu’une boîte d’instructions (Projet Claude.ai, Euria d’Infomaniak), le dossier [`adaptations/`](adaptations/) fournit la méthode condensée en **un prompt système autonome**, en deux tailles, généré depuis le skill lui-même.
@@ -166,6 +168,8 @@ palambur-method/
 
 Les dossiers `gabarits/`, `metiers/`, `portabilite/` et `diffusion/` se remplissent au fil des versions ; le [journal des versions](CHANGELOG.md) dit ce qui est posé et ce qui est en préparation.
 
+Hors du skill aussi : dix [exemples complets](exemples/) (une demande par gabarit, données fictives), les [supports pédagogiques](pedagogie/) (manifeste, FAQ, glossaire, fiche imprimable, cours en vingt minutes), le [code de conduite](CODE_OF_CONDUCT.md), et ce `README` en [allemand](README.de.md) et en [italien](README.it.md), en attente de relecture native. La gouvernance du dépôt (responsables, budget, critère de fin de la v1) est dans [GOUVERNANCE.md](GOUVERNANCE.md), les [dix commandements](DIX_COMMANDEMENTS.md) de la protection des données en une page, et la [veille juridique](VEILLE_JURIDIQUE.md) qui alimente la table des références.
+
 ### Vérifier avant de publier
 
 La chaîne de contrôle (règle typographique à jour, typographie, zéro « PME », JSON, version, adaptations, frontmatter, taille, liens) :
@@ -189,6 +193,7 @@ Les **épreuves du skill** lui-même (est-il fluide, est-il sûr ?) sont dans [`
 ## Engagements
 
 - **Le skill de base est gratuit et le restera.** Licence MIT : vous pouvez l’utiliser, le copier, le modifier, y compris dans un cadre commercial.
+  **Le skill de base, c’est tout ce dépôt** : la méthode, les gabarits, les fiches métier, les épreuves, et chaque version qui suivra. Ce que Palambur vend par ailleurs (une version pré-réglée pour une entreprise, une installation accompagnée, voir [`diffusion/VERSION_ENTREPRISE_cadrage.md`](diffusion/VERSION_ENTREPRISE_cadrage.md)) **ajoute du service autour du skill ; rien de ce qui est ici ne devient payant.**
 - **Il n’envoie rien, nulle part.** Aucune télémétrie, aucun appel réseau, aucun compte. Vos demandes restent entre vous et l’IA que vous avez choisie.
 - **Pas de publicité dans le skill.** Les livrables ne portent aucune mention Palambur. Ce qui suit est la seule exception, et elle est ici, pas dans le skill.
 
@@ -330,6 +335,8 @@ Then install the plugin:
 
 Or copy the `skills/palambur-method/` folder into `~/.claude/skills/`. The script `outils/installer_local.sh` does it for you (dry run by default, `--ecrire` to write).
 
+**One truth, the repository.** The skill has a single source: `skills/palambur-method/` in this repository. What the hosts read (`~/.claude/skills/`, `~/.agents/skills/`, an installed plugin) is **a link or a dated copy**, updated with `git pull` or a new plugin version, **never by editing the files in place**: a fix made in a copy is lost at the next update, and nobody reviews it.
+
 ### Codex, Cursor, Copilot, Gemini, Mistral, ChatGPT, Infomaniak
 
 The `SKILL.md` format is an **open standard**. A single symbolic link from `skills/palambur-method/` into `~/.agents/skills/` serves five hosts: **Codex** (OpenAI, which follows symbolic links and also reads `.agents/skills/` inside a project), **Cursor**, **GitHub Copilot**, **Gemini CLI** and **Mistral Vibe CLI** (each vendor’s official documentation, read on 11.10.2026). The Gemini app and Mistral Vibe Work accept the skill by upload; ChatGPT is rolling out native skills depending on the subscription. For hosts that only offer an instructions box (a Claude.ai Project, Infomaniak’s Euria), the [`adaptations/`](adaptations/) folder provides the method condensed into **a standalone system prompt**, in two sizes, generated from the skill itself.
@@ -340,7 +347,7 @@ The step-by-step guide, host by host, with its sources, is in [`portabilite/INST
 
 ## Repository layout
 
-See the tree in the French section above. In short: `skills/palambur-method/` is the skill (with `gabarits/` for deliverable templates and `metiers/` for trades), `adaptations/` holds the generated prompts for other AIs, `portabilite/` the installation guides, `epreuves/` twenty test cases with their marking grid (and `evals/` the same cases in `claude plugin eval` format; as of 11.10.2026 none has been run yet, since that would spend model calls that were not authorised), `outils/` the adaptation generator, the control chain, the embedded typography rule and the local installer. `CHANGELOG.md` says what is in place and what is still in preparation.
+See the tree in the French section above. In short: `skills/palambur-method/` is the skill (with `gabarits/` for deliverable templates and `metiers/` for trades), `adaptations/` holds the generated prompts for other AIs, `portabilite/` the installation guides, `epreuves/` twenty test cases with their marking grid (and `evals/` the same cases in `claude plugin eval` format; as of 11.10.2026 none has been run yet, since that would spend model calls that were not authorised), `outils/` the adaptation generator, the control chain, the embedded typography rule and the local installer. `CHANGELOG.md` says what is in place and what is still in preparation. Outside the skill too: ten [complete examples](exemples/), the [teaching material](pedagogie/) (manifesto, FAQ, glossary, printable sheet, twenty-minute course), the [code of conduct](CODE_OF_CONDUCT.md), this `README` in [German](README.de.md) and [Italian](README.it.md) (awaiting native review), the repository [governance](GOUVERNANCE.md), the [ten commandments](DIX_COMMANDEMENTS.md) of data protection and the [legal watch](VEILLE_JURIDIQUE.md).
 
 ### Checking before publishing
 
@@ -363,6 +370,7 @@ python3 outils/controle.py --epreuve
 ## Commitments
 
 - **The base skill is free and will stay free.** MIT licence: you may use, copy and modify it, including commercially.
+  **The base skill is this whole repository**: the method, the templates, the trade files, the test cases, and every version to come. What Palambur sells besides (a version pre-configured for one company, an assisted installation, see [`diffusion/VERSION_ENTREPRISE_cadrage.md`](diffusion/VERSION_ENTREPRISE_cadrage.md), in French) **adds service around the skill; nothing that is here becomes paid.**
 - **It sends nothing, anywhere.** No telemetry, no network calls, no account. Your requests stay between you and the AI you chose.
 - **No advertising inside the skill.** Deliverables carry no Palambur mention. What follows is the only exception, and it lives here, not in the skill.
 

@@ -20,7 +20,7 @@ Ne pas confondre avec :
 - C. en deuxième position après l’engagement d’une autre personne, ou poste retiré ou repourvu en interne
 - D. Autre / je ne sais pas
 - Défaut prudent : A · bref, sans motif détaillé.
-- Pourquoi : un élément de retour utile n’est dû qu’après entretien ; sur dossier, le refus reste court, identique pour tous.
+- Pourquoi · parce qu’un retour utile n’est dû qu’après entretien ; sur dossier, le refus reste court et identique pour tous.
 
 La conservation du dossier et le motif ne se demandent pas : ils prennent un défaut prudent (section 3), que l’utilisateur change en le disant dans sa demande.
 

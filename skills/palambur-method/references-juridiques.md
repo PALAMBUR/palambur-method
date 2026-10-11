@@ -4,7 +4,7 @@
 
 ## La règle, en quatre lignes
 
-Arbitrée par Victor Semblanet le 10.08.2026 pour le corpus Palambur, reprise ici telle quelle.
+Arbitrée par le fondateur de Palambur le 10.08.2026 pour le corpus Palambur, reprise ici telle quelle.
 
 1. **Le numéro vient-il des DONNÉES de l’utilisateur ?** Alors on le recopie, on ne l’invente pas. On garde, toujours.
 2. **Sinon, se vérifie-t-il sans quitter le document ?** L’article 7 d’un contrat se compte : on garde. Un article de loi ne se compte pas : on **retire le numéro et on nomme le texte** · `Code des obligations [À VÉRIFIER : article]`.
@@ -48,6 +48,19 @@ Forme attendue dans un livrable · `conformément au Code des obligations (contr
 | **CNIL** | Commission nationale de l’informatique et des libertés (autorité française) | recommandations, listes de contrôle et questions-réponses sur le RGPD et l’IA | présenter une recommandation de la CNIL comme une obligation légale ; la citer pour le droit suisse | `06.15_Sources_Par_Juridiction/FR_France/00_INDEX.md` documents 2 (liste de vérification IA, copie locale) et 3 (questions-réponses IA générative) | 11.10.2026 · modèle · documents lus par relecteur le 31.08.2026 |
 | **Règlement européen sur l’IA** | Règlement (UE) 2024/1689 | obligations des fournisseurs et des utilisateurs professionnels de systèmes d’IA dans l’Union, pratiques interdites, haut risque (dont recrutement), maîtrise de l’IA | écrire qu’il s’applique à une entreprise suisse sans condition ; écrire qu’un texte rédigé avec une IA doit être signalé comme tel ; chiffrer une date d’application sans la source | `06.15_Sources_Par_Juridiction/FR_France/00_INDEX.md` document 1 (texte officiel, « Ne permet PAS d’affirmer » détaillé) | 11.10.2026 · modèle · texte référencé en ligne, lu par relecteur le 31.08.2026 |
 
+## Autres marchés · ce que le skill nomme pour la mention de protection des données
+
+Ces lignes existent pour une seule raison : `metiers/MARCHES.md` § 5 donne une mention-type par marché, et le skill doit pouvoir nommer ce que cette mention nomme. Aucune de ces lignes ne permet d’écrire une obligation, un délai ou une sanction.
+
+| Marché | Abréviation | Nom complet | Ce que le skill ne doit JAMAIS faire | Appui dans le dossier Palambur | Vérifié |
+|---|---|---|---|---|---|
+| BE | **RGPD**, **APD** | Règlement (UE) 2016/679 ; Autorité de protection des données (autorité belge) · la loi belge d’exécution n’est pas nommée `[À VÉRIFIER]` | transposer une règle française (CNIL) sur un livrable belge ; chiffrer quoi que ce soit | aucun · `06.15` n’a pas de dossier Belgique au 11.10.2026 | 11.10.2026 · modèle · **non appuyée** · adresse de l’autorité relevée (HTTP 200), pas lue |
+| DE | **DSGVO**, **BDSG**, **BfDI** | Datenschutz-Grundverordnung (le RGPD en allemand) ; Bundesdatenschutzgesetz `[À VÉRIFIER : état en vigueur]` ; Bundesbeauftragter für den Datenschutz und die Informationsfreiheit, et une autorité par Land | nommer l’autorité d’un Land sans savoir lequel ; chiffrer quoi que ce soit ; confondre DSG (Suisse) et DSGVO (UE) | aucun · `CORRESPONDANCE_DE-DE.md` du corpus nomme le RGPD, pas le BDSG | 11.10.2026 · modèle · **non appuyée** · adresse du BfDI relevée (HTTP 200), pas lue |
+| IT | **GDPR**, **Codice privacy**, **Garante** | Regolamento (UE) 2016/679 ; Codice in materia di protezione dei dati personali `[À VÉRIFIER : état en vigueur]` ; Garante per la protezione dei dati personali | chiffrer quoi que ce soit ; citer une délibération du Garante sans source | aucun · `CORRESPONDANCE_IT-IT.md` du corpus nomme le RGPD seulement | 11.10.2026 · modèle · **non appuyée** · adresse du Garante relevée (HTTP 200), pas lue |
+| ES | **RGPD**, **LOPDGDD**, **AEPD** | Reglamento (UE) 2016/679 ; Ley Orgánica de Protección de Datos Personales y garantía de los derechos digitales `[À VÉRIFIER : état en vigueur]` ; Agencia Española de Protección de Datos | chiffrer quoi que ce soit ; présenter une guía de l’AEPD comme une obligation | `06.15_Sources_Par_Juridiction/ES_Espagne/00_INDEX.md` (deux documents de l’AEPD, lus par relecteur le 31.08.2026, l’un marqué « EN REVISIÓN » par l’éditeur) | 11.10.2026 · modèle · documents AEPD lus par relecteur, la loi elle-même non |
+| UK | **UK GDPR**, **ICO** | le RGPD tel que repris dans le droit britannique après la sortie de l’Union `[À VÉRIFIER : nom exact et état]` ; Information Commissioner’s Office | écrire que le RGPD de l’Union s’applique tel quel ; chiffrer quoi que ce soit | `06.15_Sources_Par_Juridiction/UK_Royaume_Uni/00_INDEX.md` (guidance ICO sur l’IA, lue par relecteur le 31.08.2026, bandeau « under review » constaté) | 11.10.2026 · modèle · guidance lue par relecteur, la loi elle-même non |
+| US | aucune loi fédérale générale ; lois d’État (**CCPA**, Californie, et d’autres) | California Consumer Privacy Act `[À VÉRIFIER : État applicable et état en vigueur]` | écrire qu’une loi fédérale américaine protège les données personnelles en général ; nommer un État sans que l’utilisateur l’ait donné | `06.15_Sources_Par_Juridiction/US_Etats_Unis/00_INDEX.md` porte des cadres de sécurité IA (NIST), aucune loi sur les données | 11.10.2026 · modèle · **non appuyée** |
+
 ## Ce qui n’est pas une référence
 
 - « Selon la jurisprudence » sans numéro d’arrêt fourni par l’utilisateur → à retirer ou `[À VÉRIFIER]`.
@@ -60,4 +73,5 @@ Forme attendue dans un livrable · `conformément au Code des obligations (contr
 - Une ligne s’ajoute dès qu’un gabarit (`gabarits/`), une fiche métier (`metiers/`) ou une fiche du dossier `0600_RESSOURCES` **nomme** le texte : le skill doit pouvoir nommer ce que ses propres fichiers nomment. La colonne « Appui » dit où ; si aucune fiche maison ne le porte, la ligne est marquée **non appuyée** (OPDo, LEI) et le texte se nomme sans rien en tirer.
 - Textes nommés par les gabarits ou les fiches métier et **pas encore dans la table** au 11.10.2026 : LFPr, LBA, LPM, LCR, LCA, LSA, LIFD, LAFam, LPrD, LPTh, LHID, LACI, CPC. Tant qu’ils n’y sont pas, la règle des quatre lignes s’applique telle quelle : nommer, jamais chiffrer, jamais d’article.
 - La colonne « Vérifié » porte la date et **qui** a vérifié (modèle ou personne). Une relecture par un juriste remplace « modèle » par son nom et sa date.
-- Le marché belge (BE), puis les marchés DE, IT et EN, s’ajouteront comme sections distinctes quand leurs sources seront dans `06.15` (plan du 11.10.2026, point 13).
+- Les marchés BE, DE, IT, ES, UK et US ont une ligne dans « Autres marchés » depuis le 11.10.2026 (plan en 100 points, point 43), **pour nommer la mention de protection des données seulement**. Chacun recevra une table complète quand ses sources seront dans `06.15`.
+- La veille trimestrielle qui alimente cette table (sources officielles, date de dernière lecture, geste à refaire) est `VEILLE_JURIDIQUE.md` à la racine du dépôt.

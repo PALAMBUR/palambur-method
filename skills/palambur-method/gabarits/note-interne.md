@@ -20,7 +20,7 @@ Ne pas confondre avec :
 - C. un incident et les mesures prises, ou un mouvement de personnel (arrivée, départ, réorganisation d’une équipe)
 - D. Autre / je ne sais pas
 - Défaut prudent : B.
-- Pourquoi : la nature fixe le ton, la longueur et ce qui doit ou ne doit pas être dit ; un départ impose la prudence (aucun motif) et, si des postes sont supprimés, l’arrêt et le renvoi vers la communication sensible.
+- Pourquoi · parce que la nature fixe le ton, la longueur et ce qui doit être dit ; un départ impose la prudence (aucun motif), des postes supprimés imposent l’arrêt et le renvoi vers la communication sensible.
 
 **Question 2 · Qui lit, et sur quel support ?**
 - A. toute l’entreprise, par courriel · défaut si vous ne précisez pas
@@ -28,7 +28,7 @@ Ne pas confondre avec :
 - C. les cadres ou responsables seulement
 - D. Autre / je ne sais pas
 - Défaut prudent : A, courriel.
-- Pourquoi : le vocabulaire, la longueur et la forme dépendent du lecteur et du support ; une note affichée se lit debout en moins d’une minute.
+- Pourquoi · parce que le vocabulaire, la longueur et la forme dépendent du lecteur et du support ; une note affichée se lit debout en moins d’une minute.
 
 **Question 3 · Quelles instructions concrètes, à partir de quand, jusqu’à quand ?**
 - A. instructions que je dicte, date de début fixée, « jusqu’à nouvel ordre »
@@ -36,7 +36,7 @@ Ne pas confondre avec :
 - C. information seule, aucune instruction
 - D. Autre / je ne sais pas · défaut si vous ne précisez pas
 - Défaut prudent : date d’application `[À COMPLÉTER]`, « jusqu’à nouvel ordre » ; les instructions reformulées en gestes concrets, marquées `[À VALIDER]`.
-- Pourquoi : « faire attention » n’est pas une instruction ; une note sans date d’application ne s’applique pas.
+- Pourquoi · parce que « faire attention » n’est pas une instruction, et qu’une note sans date d’application ne s’applique pas.
 
 ## 3 · Ce qui prend un défaut sans question
 

@@ -20,14 +20,14 @@ Ne pas confondre avec :
 - C. apprentissage (arrêt : formulaire cantonal, autre régime)
 - D. Autre / je ne sais pas
 - Défaut prudent : A.
-- Pourquoi : la durée déterminée, l’apprentissage et le cadre au forfait changent le régime entier (temps de travail, résiliation, contrepartie), pas une clause.
+- Pourquoi · parce que la durée déterminée, l’apprentissage et le forfait changent le régime entier (temps de travail, résiliation, contrepartie), pas une clause.
 
 **Question 2 · Une convention collective ou un contrat type s’applique-t-il ?**
 - A. aucune connue
 - B. oui, une convention collective ou un contrat type cantonal, que je nomme ou que je colle
 - C. Autre / je ne sais pas · défaut si vous ne précisez pas
 - Défaut prudent : C · clause de renvoi générique et `[À VÉRIFIER : CCT applicable]` ; aucune valeur du contrat ne peut être moins favorable que la convention.
-- Pourquoi : une convention collective écrase le contrat individuel ; ce qui est écrit en dessous du minimum conventionnel ne s’applique pas, même signé des deux mains.
+- Pourquoi · parce qu’une convention collective écrase le contrat individuel ; ce qui est écrit sous le minimum conventionnel ne s’applique pas, même signé des deux mains.
 
 **Question 3 · La rémunération**
 - A. salaire mensuel brut, 12 ou 13 versements (à préciser)
@@ -35,7 +35,7 @@ Ne pas confondre avec :
 - C. salaire plus part variable (critères, plafond, caractère non acquis)
 - D. Autre / je ne sais pas · défaut si vous ne précisez pas
 - Défaut prudent : montant et nombre de versements `[À COMPLÉTER]`, aucune part variable.
-- Pourquoi : un bonus décrit sans plafond ni critères devient un droit acquis au bout de quelques versements ; le 13e salaire se dit tel qu’il est convenu, pas tel qu’on le suppose.
+- Pourquoi · parce qu’un bonus sans plafond ni critères devient un droit acquis au bout de quelques versements ; le 13e salaire se dit tel qu’il est convenu.
 
 **Question 4 · Quelles clauses sensibles, et pourquoi chacune ?**
 - A. aucune au-delà du socle (confidentialité, restitution des biens, protection des données) · défaut si vous ne précisez pas
@@ -43,7 +43,7 @@ Ne pas confondre avec :
 - C. télétravail durable (part, équipement, frais, accessibilité)
 - D. Autre / je ne sais pas
 - Défaut prudent : A.
-- Pourquoi : une clause qu’on ne sait pas justifier en une phrase tombe entière, et donne entre-temps à la direction le sentiment d’être protégée.
+- Pourquoi · parce qu’une clause qu’on ne sait pas justifier en une phrase tombe entière, en donnant entre-temps à la direction le sentiment d’être protégée.
 
 Un **deuxième lot** suit si la question 1 mentionne un cadre au forfait, ou si la question 4 a retenu B ou C : périmètre géographique et durée de la prohibition `[À VÉRIFIER : durée applicable]`, contrepartie du forfait, part de télétravail et prise en charge des frais.
 

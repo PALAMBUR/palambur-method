@@ -20,7 +20,7 @@ Ne pas confondre avec :
 - C. entretien individuel RH (annuel, recadrage, départ), à archiver
 - D. Autre / je ne sais pas
 - Défaut prudent : A.
-- Pourquoi : la portée externe change la valeur du document (il fait foi s’il n’est pas contesté) et impose un pied de contestation ; C impose la protection des données et exclut toute donnée de santé.
+- Pourquoi · parce que la portée externe change la valeur du document (il fait foi s’il n’est pas contesté) et impose un pied de contestation ; C exclut toute donnée de santé.
 
 **Question 2 · Quelle est la matière ?**
 - A. mes notes brutes (et le compte rendu précédent, s’il existe), que je colle · défaut si vous ne précisez pas
@@ -28,7 +28,7 @@ Ne pas confondre avec :
 - C. l’ordre du jour et mes souvenirs oraux
 - D. Autre / je ne sais pas
 - Défaut prudent : A ; sans notes, chaque point porte `[INFO MANQUANTE]`, le compte rendu ne s’invente pas. Enregistrement sans consentement écrit préalable : il ne s’utilise pas, les notes font foi `[À VÉRIFIER : base légale]`.
-- Pourquoi : un compte rendu qui comble les trous fabrique un accord qui n’existe pas.
+- Pourquoi · parce qu’un compte rendu qui comble les trous fabrique un accord qui n’existe pas.
 
 **Question 3 · Que doit-il contenir ?**
 - A. décisions et actions (qui, quoi, pour quand) seulement
@@ -36,14 +36,14 @@ Ne pas confondre avec :
 - C. résumé des échanges par point, ou fiche CRM (présents, signaux, objections, prochaines étapes)
 - D. Autre / je ne sais pas
 - Défaut prudent : B.
-- Pourquoi : les échanges rapportés prêtent des propos et créent des litiges ; les décisions et les actions se lisent en trente secondes et se contestent proprement.
+- Pourquoi · parce que les échanges rapportés prêtent des propos et créent des litiges ; les décisions se lisent en trente secondes et se contestent proprement.
 
 **Question 4 · À qui est-il diffusé, et avec quel délai de remarque ?**
 - A. aux participants et aux absents excusés, ou archivage seul · défaut si vous ne précisez pas
 - B. au client ou aux entreprises, avec un délai de remarque
 - C. Autre / je ne sais pas
 - Défaut prudent : A ; si B, délai `[À COMPLÉTER : jours]` et pied « sans remarque écrite d’ici au [date], le présent compte rendu est réputé accepté ».
-- Pourquoi : la liste de diffusion fixe ce qui peut y figurer (nLPD) et le pied de contestation donne au document sa force.
+- Pourquoi · parce que la liste de diffusion fixe ce qui peut y figurer (nLPD) et que le pied de contestation donne au document sa force.
 
 ## 3 · Ce qui prend un défaut sans question
 

@@ -103,6 +103,29 @@ Posture d’honnêteté (rassure l’utilisateur) : pas de promesse magique, gai
 - Toute donnée absente → marqueur visible (`[À COMPLÉTER]`, `[INFO MANQUANTE]`, `[À VÉRIFIER]`), jamais une invention. Détails dans `protection-donnees.md`.
 - Pour isoler proprement données et consignes dans un prompt, des balises XML simples (`<donnees>…</donnees>`, `<consignes>…</consignes>`) fiabilisent le résultat.
 
+## Pourquoi un lot anticipé, une question par message
+
+Quatre questions dans un même message donnent un bloc long, lent à afficher et coûteux à lire : l’utilisateur décroche avant d’avoir répondu. Mais une question à la fois **sans compteur** donne l’impression d’un interrogatoire sans fin. Anticiper le lot et annoncer le compteur (« Question 1 sur 4 ») donne les deux : un message léger, et une clarification visiblement finie. La forme exacte du message est dans `SKILL.md`, Étape 2 ; ce paragraphe est descendu ici le 11.10.2026 pour alléger le skill.
+
+## Trois parcours de référence
+
+**Requête** : « fais une offre d’emploi pour un peintre à 80 % » (déclenchée par la nature de la demande, sans le mot « palambur »)
+
+- Étape 0 : aucune donnée nominative → pas de question d’anonymisation, passe à l’Étape 1.
+- Étape 1 : livrable ✔ ; manquent canton, missions, profil, avantages, contrat, date → clarifier.
+- Étape 2 : lot anticipé de 4 (canton, missions, profil, avantages), posé **une question par message** avec le compteur « Question 1 sur 4 », choix lettrés A à D, défaut prudent et échappatoire.
+- Étape 3 : la ligne « Contexte retenu », le Gabarit rempli, puis l’offre en français suisse romand, neutre de genre, mention nLPD, journal de confiance.
+
+**Requête avec données** : « méthode palambur : rédige une relance pour la facture impayée de Menuiserie Exemple SA, 4'820 CHF, échue le 15.06.2026 »
+
+- Étape 0 : données nominatives détectées (nom du client, montant) → **avant tout le reste**, poser la question binaire anonymiser/conserver et s’arrêter. Cette question reste seule, sans compteur et en premier, jamais groupée avec les questions métier.
+- Puis Étape 2 : le gabarit `gabarits/relance-facture.md` donne le lot de 4, un seul lot (degré de la relance, contestation, suite décidée, puis les CGV seules · A. aucune, B. je les colle, C. Autre), posé une question par message (« Question 1 sur 4 ») ; une question déjà répondue par la demande ou couverte par un défaut prudent se saute, et le compteur annonce le nombre restant ; le délai de paiement n’est pas une question, c’est le défaut « 10 jours `[À ARBITRER]` » ; n° de facture et IBAN → marqueurs `[À COMPLÉTER]`, pas des questions.
+- Étape 3 : le taux d’intérêt moratoire et le délai légal ne sont pas inventés → « conformément au Code des obligations [À VÉRIFIER : article et taux] ».
+
+**Requête de relecture** : « relis cette lettre de licenciement avant que je l’envoie » + le texte
+
+- Étape 4 directement : aucune question, tableau des constats (délai de congé chiffré sans source → `[À VÉRIFIER]`, motif formulé de façon discriminatoire → reformulation LEg, date au format 3 novembre 2026 → 03.11.2026), puis la lettre corrigée.
+
 ## Les trois portes d’entrée de la Méthode
 
 Ce skill est **une** des trois portes. Elles partagent le même socle, le Gabarit en 5 blocs. Si l’utilisateur cherche autre chose que l’exécution, oriente-le :

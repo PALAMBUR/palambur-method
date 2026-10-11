@@ -4,6 +4,42 @@ Ce fichier suit le format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0
 
 Une version = une étiquette Git `vX.Y.Z`, une release GitHub et le même numéro dans `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json` et ce journal. La chaîne de contrôle `outils/controle.py` **refuse** si les trois numéros divergent.
 
+Chaque version porte une **Note de qualité** à forme fixe, cinq champs dans cet ordre · Cas joués · Verts · Rouges · Date · Instrument. « Non joué » est une valeur honnête ; un nombre sans date n’en est pas une. Les cas sont ceux d’`epreuves/cas.json`, l’instrument est `epreuves/mesurer.py` (ou `claude plugin eval`, nommé alors). La note ne recopie jamais un chiffre d’une version précédente.
+
+## [Non publié]
+
+Travaux posés en local le 11.10.2026 après la préparation de 1.0.0, non étiquetés. Ils entreront dans la version suivante.
+
+### Ajouté
+
+- `epreuves/cas.json` · passe de vingt-et-un à **149 cas en trois familles** (relevé du 11.10.2026, `python3 epreuves/mesurer.py --compter` fait foi) · `livrable` (25, dont `express_offre_emploi` et `refus_donnees_sensibles`), `metier` (104 · quatre tâches réelles par fiche de `skills/palambur-method/metiers/`, chacune vérifiée présente dans la fiche), `piege` (20 demandes qui poussent à inventer · loi inexistante, CCT fictive, montant à deviner, article précis).
+- `epreuves/mesurer.py` · garde `G13_REPONSE_INVENTEE` (la réponse piégée n’est jamais écrite à nu ; `[À` dans les 60 caractères la permet), trois témoins T25 à T27 ; option `--compter`.
+- `epreuves/mesurer.py` · garde `G12_DONNEE_SENSIBLE_RECOPIEE` et détecteur de formes sensibles (IBAN, AVS, courriel, téléphone, plaque), témoins T20 à T24.
+- `epreuves/mesurer.py` · gardes `G16_JARGON`, `G17_CONTEXTE_ABSENT`, `G18_EXPRESS_NON_DIT`, `G19_REFUS_*` (jargon, ligne « Contexte retenu · », mode express, refus en trois lignes), témoins T40 à T49 ; champs de cas `express` et `refus_attendu`, graders `contexte-express` et `refus-trois-lignes` dans `evals/`.
+- `epreuves/generer_evals.py` · famille `piege` (graders `pas-d-invention-N`, `not_contains`), étiquette `metier-NN` par cas métier.
+- `epreuves/PROTOCOLE_LECTURE_HUMAINE.md` · vingt cas, trois lecteurs romands, à l’aveugle, grille à six critères · **non joué**.
+- `epreuves/PROTOCOLE_TROIS_MODELES.md` · dix cas rejoués sur Claude, GPT et Mistral avec les adaptations · **non joué, budget non posé**.
+- `epreuves/BETA_LECTEURS.md` · grille de retour et message d’invitation pour cinq bêta-lecteurs romands · personnes non choisies.
+- `.github/workflows/controle.yml` · à chaque poussée et pull request, sans secret ni appel de modèle · `controle.py`, les deux `--epreuve`, les evals régénérées et comparées, le mot interdit cherché à nu.
+- `mesures/temps_gagne.csv` · la table vide (en-tête seul) du protocole de mesure du temps gagné.
+- `outils/controle.py` · garde `taille_corps` (2'800 mots hors frontmatter pour `SKILL.md`).
+- `.github/ISSUE_TEMPLATE/04_nouvelle_langue.md` · modèle de ticket « Nouvelle langue », avec la case du locuteur natif.
+- `CONTRIBUTING.md` · la règle du locuteur natif, en français et en anglais.
+- `portabilite/ANNUAIRES.md` · la procédure pour rejouer la note de sécurité Skills Directory à chaque version, et son historique daté.
+- `exemples/` · dix exemples complets, un par gabarit (demande brute, questions, Gabarit rempli, livrable) · n’est plus « en préparation ».
+- `pedagogie/` · le manifeste, la FAQ, le glossaire, la fiche imprimable, le cours de 20 minutes, l’atelier de 45 minutes et la première lettre trimestrielle.
+- `README.de.md` et `README.it.md` · le README en allemand et en italien, **relecture native à faire** (règle du locuteur natif, `CONTRIBUTING.md`).
+- `CODE_OF_CONDUCT.md` · le code de conduite du dépôt.
+- `DIX_COMMANDEMENTS.md` · la Méthode en dix règles courtes.
+- `VEILLE_JURIDIQUE.md` · comment les références de droit suisse du skill sont relues et datées.
+- `GOUVERNANCE.md` · qui décide quoi dans le dépôt, et comment une version sort.
+- `diffusion/partenaires/` · kits et textes pour fiduciaires, écoles, associations, presse, podcasts, communautés, ambassadeurs, Infomaniak et l’annuaire Claude.
+- `diffusion/produit/` · les cadrages produit · passerelle Chaptal, Jacquard, marques, mesure du temps gagné, parrainage, autorisation de témoignage.
+
+### Note de qualité
+
+Cas joués : 0 · Verts : 0 · Rouges : 0 · Date : non joué · Instrument : `epreuves/mesurer.py`.
+
 ## [1.0.0] · 2026-10-11
 
 Première version numérotée. Le skill existait depuis le 12 juillet 2026 sans numéro, sans licence affichée et en trois copies qui dérivaient (dépôt, skill installé localement, adaptations pour les autres IA). Cette version pose les **fondations** décrites dans le plan en 30 points du 11 octobre 2026.
@@ -22,12 +58,16 @@ Première version numérotée. Le skill existait depuis le 12 juillet 2026 sans 
 - `epreuves/` · vingt cas (`cas.json`), la grille de notation (`grille.md`) et `mesurer.py` qui note une réponse contre la grille. **Les 20 cas n’ont pas encore été joués : dépense modèle non autorisée.**
 - `evals/` · les mêmes vingt cas au format `claude plugin eval` (un dossier par cas, graders générés par `epreuves/generer_evals.py`). **Pas encore joués, pour la même raison** ; `evals/results/` est ignoré par git.
 - Les commandes `gh` et `git` prêtes à copier pour retirer le sujet `pme`, corriger la description du profil, commiter, pousser et créer la release sont dans une feuille de l’atelier Palambur, **hors du dépôt** (`COMMANDES_GITHUB_SKILL_A_VALIDER_2026-10-11.md`) : elle porte des chemins de machine et des décisions qui ne regardent pas un clone public. À exécuter par Victor Semblanet.
-- En préparation (autres sessions, même version) : `CONTRIBUTING.md`, `portabilite/` (installation sur Codex, ChatGPT, Gemini, Mistral, Infomaniak), `diffusion/`, `skills/palambur-method/gabarits/` (un fichier par livrable fréquent), `skills/palambur-method/metiers/` (un fichier par métier), `exemples/`.
+- En préparation (autres sessions, même version) : `CONTRIBUTING.md`, `portabilite/` (installation sur Codex, ChatGPT, Gemini, Mistral, Infomaniak), `diffusion/`, `skills/palambur-method/gabarits/` (un fichier par livrable fréquent), `skills/palambur-method/metiers/` (un fichier par métier).
 
 ### Modifié
 
 - `.claude-plugin/plugin.json` et `marketplace.json` · version `1.0.0`, description sans tiret de ponctuation, mots-clés élargis (`gabarit-palambur`, `agent-skill`, `skill-md`, `leg`, `protection-des-donnees`, `suisse-romande`).
 - `adaptations/methode-palambur-prompt.md` et `adaptations/methode-palambur-prompt-court.md` · désormais **générés** par `outils/generer_adaptations.py`, plus édités à la main. Le compteur « Question 1 sur 4 » et le lot de quatre au plus sont conservés ; la liste des hôtes du chapeau vient de la table d’`adaptations/README.md` (relevé du 11.10.2026), qui remplace celle du 12.07.
+
+### Note de qualité
+
+Cas joués : 0 · Verts : 0 · Rouges : 0 · Date : non joué · Instrument : `epreuves/mesurer.py`. La dépense de modèle n’était pas autorisée au 11.10.2026 ; les instruments, eux, ont été éprouvés sur témoins fabriqués (`--epreuve`) le même jour.
 
 ## [0.1.0] · 2026-07-12
 

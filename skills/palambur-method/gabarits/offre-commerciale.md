@@ -20,7 +20,7 @@ Ne pas confondre avec :
 - C. une offre spontanée, sans demande du client
 - D. Autre / je ne sais pas · défaut si vous ne précisez pas
 - Défaut prudent : aucun · la question se pose toujours ; sans réponse, la section « notre compréhension » porte `[À COMPLÉTER]`.
-- Pourquoi : une offre qui ne reformule pas le besoin est un tarif avec un logo ; c’est la compréhension du besoin qui départage huit dossiers comparés en une matinée.
+- Pourquoi · parce qu’une offre qui ne reformule pas le besoin est un tarif avec un logo ; la compréhension du besoin départage huit dossiers comparés en une matinée.
 
 **Question 2 · D’où vient le prix ?**
 - A. chiffrage interne validé (un prix, ou plusieurs paliers décidés), que je colle
@@ -28,7 +28,7 @@ Ne pas confondre avec :
 - C. pas encore fixé · défaut si vous ne précisez pas
 - D. Autre / je ne sais pas
 - Défaut prudent : C · `[À COMPLÉTER]`, l’IA met en forme, elle ne chiffre pas.
-- Pourquoi : un prix inventé par le modèle est le défaut le plus coûteux de ce livrable ; il engage l’entreprise.
+- Pourquoi · parce qu’un prix inventé par le modèle est le défaut le plus coûteux de ce livrable ; il engage l’entreprise.
 
 **Question 3 · Périmètre, et ce qui distingue l’offre de façon vérifiable**
 - A. périmètre défini plus deux ou trois preuves (références autorisées par écrit, certifications détenues, délais tenus, cadence)
@@ -36,7 +36,7 @@ Ne pas confondre avec :
 - C. références clients à citer, accord écrit à vérifier
 - D. Autre / je ne sais pas
 - Défaut prudent : B · aucune référence nommée sans accord écrit, aucune certification non détenue.
-- Pourquoi : la différenciation vérifiable décide ; une référence ou une certification inventée exclut, parfois des années plus tard.
+- Pourquoi · parce que la différenciation vérifiable décide ; une référence ou une certification inventée exclut, parfois des années plus tard.
 
 **Question 4 · Conditions et prochaine étape**
 - A. validité 30 jours, paiement 30 jours net, rendez-vous proposé à une date, aussi quand rien n’est défini · défaut si vous ne précisez pas
@@ -44,7 +44,7 @@ Ne pas confondre avec :
 - C. nos conditions générales, que je colle
 - D. Autre / je ne sais pas
 - Défaut prudent : validité 30 jours, conditions générales `[À COMPLÉTER]`, prochaine étape proposée avec date `[À COMPLÉTER]`.
-- Pourquoi : une offre sans prochaine étape attend ; une validité non bornée engage sans limite.
+- Pourquoi · parce qu’une offre sans prochaine étape attend, et qu’une validité non bornée engage sans limite.
 
 Un **deuxième lot** suit si la question 1 a apporté le cahier des charges d’une consultation formelle : critères d’évaluation annoncés, documents demandés, forme et date de remise, capacité disponible sur la période.
 

@@ -1,6 +1,10 @@
-# Version entreprise du skill · note de cadrage (point 29)
+# Version entreprise du skill · note de cadrage (points 29, 76 et 77)
 
-**Brouillon · 11.10.2026 · session Skills et Prompt Ingénierie.** Rien n’est vendu, rien n’est construit. Cette note situe l’offre, dit ce qu’elle contient, ce qu’elle exige de Palambur, et comment elle se livre. **Le prix n’est pas écrit ici** : il se décide dans la grille tarifaire, qui fait foi.
+**Brouillon · 11.10.2026 · session Skills et Prompt Ingénierie · complété le soir du même jour (points 76 et 77).** Rien n’est vendu, rien n’est construit. Cette note situe l’offre, dit ce qu’elle contient, ce qu’elle exige de Palambur, et comment elle se livre. **Le prix n’est pas écrit ici** : il se décide dans la grille tarifaire, qui fait foi.
+
+## Ce qui reste gratuit, quoi qu’il arrive
+
+**Tout ce que le dépôt public contient, dans chaque version** : la méthode, les gabarits de livrables, les fiches métier, le mode relecture, les références juridiques, les épreuves, les adaptations pour les autres IA. La promesse du `README.md` (« gratuit et le restera ») **porte sur le dépôt entier**, pas sur un sous-ensemble ; aucune fiche, aucun gabarit, aucune mise à jour de droit du dépôt public ne passe derrière un paiement. Ce que les deux offres ci-dessous vendent, c’est **du service autour du skill** : le pré-réglage pour une entreprise, le temps d’une personne qui installe et vérifie, la tenue à jour d’une version client.
 
 ## En une phrase
 
@@ -64,12 +68,57 @@ Elle **ne crée pas un quatrième axe** : c’est une prestation de l’axe 1, e
 
 Quand le prix est décidé, il s’écrit **dans la grille**, et cette note le cite par renvoi, jamais par recopie (règle § 1 et § 8 de `CLAUDE.md`). Le site ne l’affiche pas : « Prix sur demande. »
 
+## « Méthode Palambur Pro » · le nom de travail de la version entreprise (point 76)
+
+Le plan du 11.10.2026 nomme la version entreprise **« Méthode Palambur Pro »**. C’est un **nom de travail** : le nom commercial se pose dans `offres.ts` du site, qui fait foi pour les noms (`[À DÉCIDER par Victor]`). Ce que le nom recouvre, pour qu’on ne vende pas deux choses différentes sous le même mot :
+
+| | Gratuit (dépôt public) | « Pro » (version entreprise) |
+|---|---|---|
+| **La méthode, le Gabarit, les règles** | tout, à jour | identiques, jamais une copie divergente |
+| **Les gabarits de livrables** | les gabarits génériques de `gabarits/`, qui grandissent à chaque version | les cinq à dix livrables **du client**, pré-remplis de ses constantes (signatures, canton, conventions collectives, ton) |
+| **Les fiches métier** | les fiches de `metiers/`, qui résument chaque métier | la fiche du métier du client **au complet**, dérivée du corpus Chaptal, avec ses tâches et ses pièges |
+| **Les mises à jour de droit** | dans le dépôt, pour tous, à chaque version | **rejouées sur la version client** : quand une référence change dans le dépôt, la version client est contrôlée et mise à jour, et le client en est averti |
+| **L’installation** | par la personne elle-même (`portabilite/INSTALLATION.md`) | par Palambur, chez le client, sur son outil |
+| **Les épreuves** | les vingt cas publics | dix cas **du client**, anonymisés, rejoués avant chaque mise à jour |
+| **Le prix** | aucun | **`[À DÉCIDER]`**, dans la grille |
+
+Ce qui ne change pas d’une colonne à l’autre : le skill **n’envoie rien à Palambur**, dans les deux versions. « Pro » n’achète pas de la confidentialité en plus, elle est déjà totale ; il achète du **pré-réglage et de la tenue à jour**.
+
+**Rattachement à la grille** : voir la section « Où elle se situe dans la grille » ci-dessus ; « Pro » est une prestation de l’axe 1, pas un axe nouveau. Quand le prix est décidé, il s’écrit dans `03_GRILLE_TARIFAIRE_PALAMBUR.md` et cette note le cite par renvoi.
+
+## Installation accompagnée d’une heure (point 77)
+
+Une prestation **plus petite que la version entreprise**, pour une personne ou une petite équipe qui veut le skill public, bien installé, sur son outil, et une première réussite en séance. Elle ne pré-règle rien : elle installe le dépôt public tel quel.
+
+**Prérequis**, demandés avant de fixer l’heure :
+
+- un outil déjà en place et un compte qui fonctionne (Claude Code, Codex, Cursor, Gemini CLI, Copilot, ou une IA à boîte d’instructions comme Euria ou un Projet Claude.ai) ;
+- un ordinateur sur lequel la personne a le droit d’installer (pour les hôtes à fichiers) ;
+- **une vraie demande** de la personne, choisie par elle avant la séance (une offre d’emploi à publier, une relance à envoyer), sans donnée nominative, ou avec l’accord de l’anonymiser en séance.
+
+**Déroulé de l’heure** :
+
+| Minutes | Ce qui se passe |
+|---|---|
+| 0 à 10 | ce qu’est la Méthode, en trois phrases, et la démonstration du `README.md` sur l’écran de la personne |
+| 10 à 25 | installation sur **son** outil, en suivant `portabilite/INSTALLATION.md` hôte par hôte ; vérification que le skill est chargé (`/skills` ou équivalent) |
+| 25 à 45 | **sa** demande, jouée de bout en bout : les questions, le Gabarit rempli, le livrable ; la personne tient le clavier |
+| 45 à 55 | le mode relecture sur un texte qu’elle a déjà écrit ; comment déclencher (les trois portes) ; comment mettre à jour (`git pull` ou nouvelle version du plugin) |
+| 55 à 60 | ce qu’elle fait seule demain ; où trouver de l’aide (le dépôt, `CONTRIBUTING.md`) ; ce que la formation ajouterait |
+
+**Ce qui est remis** : rien à part le skill installé et son livrable ; un message après la séance avec les trois commandes utilisées et le lien du dépôt.
+
+**Lien avec la formation** : l’heure est **la plus petite marche** de l’ascenseur de l’axe 1 ; elle précède « Le Collaborateur, augmenté » (qui apprend la Méthode à une équipe) et peut en être déduite si la personne s’y inscrit ensuite `[À DÉCIDER par Victor]`. Elle n’est pas un format de la formation, c’est une installation.
+
+**Prix : [À DÉCIDER par Victor, dans la grille tarifaire]**. Aucun montant ici ni sur le site tant que la grille ne le porte pas.
+
 ## Ce qui exige Victor
 
 1. Le **prix** et sa structure (unique, récurrent, ou option de la formation).
 2. L’**hébergement** de la version client (dépôt privé ou dossier remis).
 3. Le **préalable formation** (obligatoire ou recommandé).
-4. Le **nom** de l’offre dans `offres.ts`, qui fait foi pour les noms : cette note dit « version entreprise », le nom commercial reste à poser.
+4. Le **nom** de l’offre dans `offres.ts`, qui fait foi pour les noms : cette note dit « version entreprise », le plan dit « Méthode Palambur Pro », le nom commercial reste à poser.
+5. Le **prix de l’installation accompagnée**, et si elle se déduit de la formation.
 
 ## Ce que cette note ne fait pas
 

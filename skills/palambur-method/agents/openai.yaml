@@ -1,0 +1,14 @@
+# Métadonnées Codex (OpenAI) · facultatives · clés relues le 11.10.2026 sur
+# https://learn.chatgpt.com/docs/build-skills (section « agents/openai.yaml »).
+# Seules les clés confirmées sur la page sont posées · ni icône, ni couleur
+# (la charte vit chez le site et sa Fabrique), ni `dependencies` (le skill
+# n’exige aucun outil, aucun serveur, aucun réseau). Relevé et raisons dans
+# portabilite/METADONNEES_HOTES.md.
+interface:
+  display_name: "Méthode Palambur"
+  short_description: "Pose les bonnes questions avant d’écrire un document de travail."
+  default_prompt: "méthode palambur : "
+policy:
+  # valeur par défaut, écrite pour dire que la porte 2 du skill est voulue ·
+  # déclenchement sur la nature de la demande, sans mot déclencheur
+  allow_implicit_invocation: true
