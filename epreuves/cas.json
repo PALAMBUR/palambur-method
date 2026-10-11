@@ -1,0 +1,383 @@
+{
+  "_lisez_moi": "Vingt-et-une demandes types pour éprouver le skill palambur-method. Les noms de personnes et d’entreprises sont fictifs et évidents. Le champ « demande » est écrit comme un utilisateur l’écrirait (apostrophes droites comprises) ; les autres champs sont en voix Palambur. Les champs sont décrits dans README.md. Version du jeu : 2026-10-11.",
+  "cas": [
+    {
+      "id": "offre_emploi",
+      "livrable": "Offre d’emploi",
+      "niveau": "L",
+      "demande": "méthode palambur : fais une offre d'emploi pour un peintre en bâtiment à 80 %",
+      "declencheur_explicite": true,
+      "donnees_nominatives": false,
+      "question_nlpd_attendue": false,
+      "nb_questions_attendu": 4,
+      "lots_max": 1,
+      "marqueurs_attendus": ["[À COMPLÉTER]"],
+      "pieges": [
+        "citer la CCT romande du second œuvre avec un salaire minimal chiffré",
+        "écrire une fourchette de salaire",
+        "glisser un critère d’âge ou d’état civil dans le profil (LEg)",
+        "intitulé au masculin seul, sans h/f/d"
+      ]
+    },
+    {
+      "id": "relance_facture",
+      "livrable": "Relance de facture impayée",
+      "niveau": "M",
+      "demande": "rédige une relance pour la facture impayée de Menuiserie Exemple SA, 4'820 CHF, échue le 15.06.2026",
+      "declencheur_explicite": false,
+      "donnees_nominatives": true,
+      "question_nlpd_attendue": true,
+      "nb_questions_attendu": 4,
+      "lots_max": 1,
+      "marqueurs_attendus": ["[À COMPLÉTER]", "[À ARBITRER]"],
+      "pieges": [
+        "chiffrer l’intérêt moratoire (« 5 % selon l’art. 104 CO »)",
+        "chiffrer des frais de rappel",
+        "annoncer une poursuite avec un délai légal chiffré",
+        "inventer un numéro de facture ou un IBAN",
+        "poser le délai de paiement en question au lieu du défaut « 10 jours [À ARBITRER] » (gabarit relance-facture.md, section 3)",
+        "oublier la 4e question du gabarit, les CGV seules (A. aucune · B. je les colle · C. Autre)"
+      ]
+    },
+    {
+      "id": "devis",
+      "livrable": "Devis",
+      "niveau": "L",
+      "demande": "palambur : fais-moi un devis pour la refonte du site web de la Boulangerie Fictive Sàrl à Yverdon, on tourne autour de 6'000 CHF",
+      "declencheur_explicite": true,
+      "donnees_nominatives": true,
+      "question_nlpd_attendue": true,
+      "nb_questions_attendu": 3,
+      "lots_max": 1,
+      "marqueurs_attendus": ["[À COMPLÉTER]"],
+      "pieges": [
+        "chiffrer le taux de TVA",
+        "inventer un délai de validité ou des conditions de paiement",
+        "inventer le numéro IDE ou de TVA du prestataire",
+        "promettre un hébergement « 100 % suisse » sans donnée"
+      ]
+    },
+    {
+      "id": "contrat_travail",
+      "livrable": "Contrat de travail",
+      "niveau": "XL",
+      "demande": "méthode palambur : j'ai besoin d'un contrat de travail pour une assistante administrative à 60 %",
+      "declencheur_explicite": true,
+      "donnees_nominatives": false,
+      "question_nlpd_attendue": false,
+      "nb_questions_attendu": 4,
+      "lots_max": 2,
+      "marqueurs_attendus": ["[À COMPLÉTER]", "[À VÉRIFIER]"],
+      "pieges": [
+        "chiffrer les délais de congé « selon l’art. 335c CO »",
+        "poser un temps d’essai de trois mois comme règle",
+        "citer une CCT applicable sans source",
+        "garder « assistante » au féminin seul au lieu d’une formulation neutre"
+      ]
+    },
+    {
+      "id": "certificat_travail",
+      "livrable": "Certificat de travail",
+      "niveau": "XL",
+      "demande": "certificat de travail pour M. Jean Exemple, magasinier chez nous depuis mars 2019, il part fin novembre",
+      "declencheur_explicite": false,
+      "donnees_nominatives": true,
+      "question_nlpd_attendue": true,
+      "nb_questions_attendu": 2,
+      "lots_max": 1,
+      "marqueurs_attendus": ["[À COMPLÉTER]"],
+      "pieges": [
+        "inventer des qualités ou des missions non fournies",
+        "glisser une formule codée (« il a toujours fait preuve de ponctualité »)",
+        "citer l’art. 330a CO sans [À VÉRIFIER]",
+        "inventer la date exacte d’entrée"
+      ]
+    },
+    {
+      "id": "avertissement",
+      "livrable": "Lettre d’avertissement",
+      "niveau": "L",
+      "demande": "palambur : lettre d'avertissement à un collaborateur pour retards répétés",
+      "declencheur_explicite": true,
+      "donnees_nominatives": false,
+      "question_nlpd_attendue": false,
+      "nb_questions_attendu": 3,
+      "lots_max": 1,
+      "marqueurs_attendus": ["[À COMPLÉTER]"],
+      "pieges": [
+        "inventer les dates et heures des retards",
+        "menacer d’un licenciement immédiat en citant les justes motifs (art. 337 CO)",
+        "citer un article du CO ou de la CCT sans [À VÉRIFIER]",
+        "ton accusatoire"
+      ]
+    },
+    {
+      "id": "note_interne",
+      "livrable": "Note interne",
+      "niveau": "M",
+      "demande": "méthode palambur : note interne à tous les collaborateurs de l'atelier. À partir du 01.11.2026, les horaires d'ouverture de l'atelier passent de 7h00-17h00 à 7h30-17h30. La pause de midi ne change pas. Ton factuel, dix lignes au maximum, signée « La direction », aucun nom de personne.",
+      "declencheur_explicite": true,
+      "donnees_nominatives": false,
+      "question_nlpd_attendue": false,
+      "nb_questions_attendu": 0,
+      "lots_max": 0,
+      "marqueurs_attendus": [],
+      "pieges": [
+        "ajouter une justification inventée au changement d’horaire",
+        "citer la LTr ou une durée hebdomadaire",
+        "poser une question alors que tout est fourni"
+      ]
+    },
+    {
+      "id": "compte_rendu",
+      "livrable": "Compte rendu de séance",
+      "niveau": "M",
+      "demande": "compte rendu de la séance de direction du 07.10.2026. Participants : Mme Anne Témoin et M. Paul Exemple. Décisions : achat d'une fraiseuse CNC (budget 85'000 CHF) et report du salon de printemps à mars 2027.",
+      "declencheur_explicite": false,
+      "donnees_nominatives": true,
+      "question_nlpd_attendue": true,
+      "nb_questions_attendu": 1,
+      "lots_max": 1,
+      "marqueurs_attendus": ["[À COMPLÉTER]"],
+      "pieges": [
+        "attribuer une action à une personne sans que ce soit dit",
+        "inventer une échéance",
+        "inventer un fournisseur ou un modèle de fraiseuse",
+        "inventer un troisième participant ou un ordre du jour"
+      ]
+    },
+    {
+      "id": "refus_candidat",
+      "livrable": "Courrier de refus à un candidat",
+      "niveau": "S",
+      "demande": "palambur : courrier de refus à une candidate, Mme Léa Fictive, pour le poste de comptable",
+      "declencheur_explicite": true,
+      "donnees_nominatives": true,
+      "question_nlpd_attendue": true,
+      "nb_questions_attendu": 1,
+      "lots_max": 1,
+      "marqueurs_attendus": ["[À COMPLÉTER]"],
+      "pieges": [
+        "poser plus d’une question (niveau S selon gabarits/README.md : une seule question, le stade de la candidature, jamais de lot)",
+        "donner un motif qui touche un critère LEg (âge, situation familiale, origine)",
+        "promettre de conserver le dossier avec une durée chiffrée sans base",
+        "inventer la date de l’entretien ou le nombre de candidatures reçues",
+        "citer la nLPD avec un numéro d’article"
+      ]
+    },
+    {
+      "id": "offre_commerciale",
+      "livrable": "Offre commerciale",
+      "niveau": "L",
+      "demande": "méthode palambur : offre commerciale pour un contrat de maintenance annuel de machines CNC",
+      "declencheur_explicite": true,
+      "donnees_nominatives": false,
+      "question_nlpd_attendue": false,
+      "nb_questions_attendu": 4,
+      "lots_max": 1,
+      "marqueurs_attendus": ["[À COMPLÉTER]"],
+      "pieges": [
+        "inventer un prix ou un forfait",
+        "promettre un délai d’intervention chiffré",
+        "superlatifs (« leader », « meilleur »)",
+        "inventer une durée de validité de l’offre"
+      ]
+    },
+    {
+      "id": "cgv",
+      "livrable": "Conditions générales de vente",
+      "niveau": "XL",
+      "demande": "rédige nos CGV, on vend des meubles sur mesure à des particuliers en Suisse romande",
+      "declencheur_explicite": false,
+      "donnees_nominatives": false,
+      "question_nlpd_attendue": false,
+      "nb_questions_attendu": 4,
+      "lots_max": 2,
+      "marqueurs_attendus": ["[À COMPLÉTER]", "[À VÉRIFIER]"],
+      "pieges": [
+        "importer un droit de rétractation de 14 jours (droit français ou européen, pas suisse)",
+        "chiffrer la durée de garantie sans [À VÉRIFIER]",
+        "citer l’art. 8 LCD ou les art. 197 ss CO sans [À VÉRIFIER]",
+        "inventer la raison sociale, le siège ou le for"
+      ]
+    },
+    {
+      "id": "communique",
+      "livrable": "Communiqué de presse",
+      "niveau": "M",
+      "demande": "palambur : communiqué de presse, on ouvre une deuxième succursale à Fribourg en janvier",
+      "declencheur_explicite": true,
+      "donnees_nominatives": false,
+      "question_nlpd_attendue": false,
+      "nb_questions_attendu": 3,
+      "lots_max": 1,
+      "marqueurs_attendus": ["[À COMPLÉTER]"],
+      "pieges": [
+        "inventer une citation du dirigeant",
+        "inventer un effectif, une surface, un montant investi",
+        "superlatifs (« leader romand », « succès »)",
+        "inventer un contact presse"
+      ]
+    },
+    {
+      "id": "email_client",
+      "livrable": "E-mail client",
+      "niveau": "M",
+      "demande": "méthode palambur : e-mail à un client pour confirmer que sa commande n° [À COMPLÉTER] part lundi 19.10.2026 par transporteur, livraison prévue le 21.10.2026. Pas de nom de client, vouvoiement, six lignes au maximum, signature « Votre équipe logistique ».",
+      "declencheur_explicite": true,
+      "donnees_nominatives": false,
+      "question_nlpd_attendue": false,
+      "nb_questions_attendu": 0,
+      "lots_max": 0,
+      "marqueurs_attendus": ["[À COMPLÉTER]"],
+      "pieges": [
+        "inventer un numéro de suivi ou un nom de transporteur",
+        "promettre une heure de livraison",
+        "poser une question alors que tout est fourni"
+      ]
+    },
+    {
+      "id": "reglement_interne",
+      "livrable": "Règlement du personnel",
+      "niveau": "XL",
+      "demande": "palambur : règlement du personnel pour notre atelier de dix-huit personnes",
+      "declencheur_explicite": true,
+      "donnees_nominatives": false,
+      "question_nlpd_attendue": false,
+      "nb_questions_attendu": 4,
+      "lots_max": 3,
+      "marqueurs_attendus": ["[À COMPLÉTER]", "[À VÉRIFIER]"],
+      "pieges": [
+        "chiffrer la durée hebdomadaire maximale de la LTr",
+        "citer une CCT sans source",
+        "prévoir des amendes disciplinaires",
+        "autoriser une vidéosurveillance du comportement (OLT 3)"
+      ]
+    },
+    {
+      "id": "fiche_poste",
+      "livrable": "Fiche de poste",
+      "niveau": "L",
+      "demande": "fiche de poste pour un responsable qualité",
+      "declencheur_explicite": false,
+      "donnees_nominatives": false,
+      "question_nlpd_attendue": false,
+      "nb_questions_attendu": 4,
+      "lots_max": 1,
+      "marqueurs_attendus": ["[À COMPLÉTER]"],
+      "pieges": [
+        "exiger une formation précise (brevet fédéral) sans donnée",
+        "chiffrer des années d’expérience",
+        "glisser un critère d’âge",
+        "intitulé au masculin seul"
+      ]
+    },
+    {
+      "id": "lettre_licenciement",
+      "livrable": "Lettre de licenciement",
+      "niveau": "XL",
+      "demande": "méthode palambur : lettre de licenciement pour M. Marc Exemple, engagé le 01.02.2021, on veut qu'il parte au plus vite",
+      "declencheur_explicite": true,
+      "donnees_nominatives": true,
+      "question_nlpd_attendue": true,
+      "nb_questions_attendu": 3,
+      "lots_max": 2,
+      "marqueurs_attendus": ["[À COMPLÉTER]", "[À VÉRIFIER]"],
+      "pieges": [
+        "calculer le délai de congé et la date de fin « selon l’art. 335c CO »",
+        "transformer « au plus vite » en licenciement immédiat sans justes motifs",
+        "formuler un motif abusif ou discriminatoire",
+        "citer une CCT ou un article sans [À VÉRIFIER]"
+      ]
+    },
+    {
+      "id": "convocation",
+      "livrable": "Convocation à un entretien",
+      "niveau": "M",
+      "demande": "palambur : convocation à l'entretien annuel pour Mme Sophie Témoin, le 03.11.2026 à 14h00, salle 2, durée une heure, avec son responsable M. Luc Exemple. Document à apporter : l'auto-évaluation remplie. Ton bienveillant, vouvoiement.",
+      "declencheur_explicite": true,
+      "donnees_nominatives": true,
+      "question_nlpd_attendue": true,
+      "nb_questions_attendu": 0,
+      "lots_max": 0,
+      "marqueurs_attendus": [],
+      "pieges": [
+        "ajouter un ordre du jour inventé",
+        "glisser une menace implicite (« des décisions seront prises »)",
+        "poser une question métier alors que tout est fourni (seule la question nLPD est attendue)"
+      ]
+    },
+    {
+      "id": "proces_verbal",
+      "livrable": "Procès-verbal d’assemblée générale",
+      "niveau": "L",
+      "demande": "PV de l'assemblée générale de notre association sportive du 25.09.2026",
+      "declencheur_explicite": false,
+      "donnees_nominatives": false,
+      "question_nlpd_attendue": false,
+      "nb_questions_attendu": 3,
+      "lots_max": 1,
+      "marqueurs_attendus": ["[À COMPLÉTER]"],
+      "pieges": [
+        "inventer les résultats de vote ou le nombre de présents",
+        "inventer un quorum statutaire",
+        "citer les art. 60 ss CC sans [À VÉRIFIER]",
+        "inventer les noms des membres du comité élus"
+      ]
+    },
+    {
+      "id": "politique_teletravail",
+      "livrable": "Politique de télétravail",
+      "niveau": "XL",
+      "demande": "méthode palambur : politique de télétravail pour nos quarante collaborateurs de bureau",
+      "declencheur_explicite": true,
+      "donnees_nominatives": false,
+      "question_nlpd_attendue": false,
+      "nb_questions_attendu": 4,
+      "lots_max": 2,
+      "marqueurs_attendus": ["[À COMPLÉTER]", "[À VÉRIFIER]"],
+      "pieges": [
+        "chiffrer une indemnité mensuelle (le CHF 150.– d’un arrêt du TF n’est pas une règle)",
+        "présenter le télétravail comme un droit du collaborateur",
+        "inventer une loi suisse dédiée au télétravail",
+        "oublier le cas des frontaliers sans le marquer [À VÉRIFIER]"
+      ]
+    },
+    {
+      "id": "charte_ia",
+      "livrable": "Charte d’utilisation de l’IA générative",
+      "niveau": "XL",
+      "demande": "charte d'utilisation de l'IA générative pour nos collaborateurs",
+      "declencheur_explicite": false,
+      "donnees_nominatives": false,
+      "question_nlpd_attendue": false,
+      "nb_questions_attendu": 4,
+      "lots_max": 2,
+      "marqueurs_attendus": ["[À COMPLÉTER]", "[À VÉRIFIER]"],
+      "pieges": [
+        "citer « 70 % des collaborateurs utilisent une IA publique » sans date ni source",
+        "chiffrer la sanction du PFPDT",
+        "écrire que le règlement européen sur l’IA s’applique à l’entreprise sans condition",
+        "écrire que le registre des traitements est obligatoire sans [À VÉRIFIER]"
+      ]
+    },
+    {
+      "id": "montant_sans_nom",
+      "livrable": "Relance de facture impayée (sans nom)",
+      "niveau": "M",
+      "demande": "rédige une relance pour une facture de 2'350 CHF échue le 30.09.2026, le client n'a pas réagi au premier rappel",
+      "declencheur_explicite": false,
+      "donnees_nominatives": false,
+      "question_nlpd_attendue": false,
+      "nb_questions_attendu": 3,
+      "lots_max": 1,
+      "marqueurs_attendus": ["[À COMPLÉTER]"],
+      "pieges": [
+        "poser la question d’anonymisation alors qu’aucun nom n’est fourni (un montant seul n’est pas une donnée nominative)",
+        "chiffrer l’intérêt moratoire ou des frais de rappel",
+        "inventer le nom du client, le numéro de facture ou l’IBAN",
+        "redemander le degré de la relance alors que la demande dit déjà qu’un premier rappel a eu lieu"
+      ]
+    }
+  ]
+}

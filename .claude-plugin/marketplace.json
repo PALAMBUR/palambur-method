@@ -1,18 +1,27 @@
 {
   "name": "palambur",
-  "description": "Marketplace des skills Palambur",
+  "description": "Marketplace des skills Palambur · méthodes d’IA appliquée pour les entreprises de Suisse romande",
   "owner": {
-    "name": "Palambur"
+    "name": "Palambur · Victor Semblanet",
+    "url": "https://palambur.ch"
   },
   "plugins": [
     {
       "name": "palambur",
-      "description": "Méthode Palambur — clarification ciblée avant production d'un livrable métier (entreprises de Suisse romande).",
-      "version": "0.1.0",
+      "description": "Méthode Palambur · clarification ciblée avant production d’un livrable métier, Gabarit Palambur rempli puis livrable final, garde-fous suisses et protection des données par défaut (entreprises de Suisse romande).",
+      "version": "1.0.0",
       "source": "./",
       "author": {
-        "name": "Palambur"
-      }
+        "name": "Palambur · Victor Semblanet"
+      },
+      "keywords": [
+        "palambur",
+        "methode-palambur",
+        "claude-skill",
+        "nlpd",
+        "suisse",
+        "entreprises"
+      ]
     }
   ]
 }

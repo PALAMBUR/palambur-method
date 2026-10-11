@@ -1,9 +1,10 @@
 {
   "name": "palambur",
-  "description": "Méthode Palambur — transforme une requête métier sous-spécifiée en livrable de haute qualité via un questionnement ciblé (contexte entreprises de Suisse romande).",
-  "version": "0.1.0",
+  "description": "Méthode Palambur · pose les questions déterminantes avant de produire un livrable métier (offre d’emploi, devis, relance, contrat, note interne), puis rend le Gabarit Palambur rempli et le livrable final. Garde-fous suisses (LEg, nLPD, CO/LTr), protection des données par défaut, aucune donnée inventée. Pensé pour les entreprises de Suisse romande.",
+  "version": "1.0.0",
   "author": {
-    "name": "Palambur"
+    "name": "Palambur · Victor Semblanet",
+    "url": "https://palambur.ch"
   },
   "homepage": "https://github.com/PALAMBUR/palambur-method",
   "repository": "https://github.com/PALAMBUR/palambur-method",
@@ -11,14 +12,21 @@
   "keywords": [
     "palambur",
     "methode-palambur",
+    "gabarit-palambur",
     "claude-skill",
+    "agent-skill",
+    "skill-md",
     "prompt-engineering",
+    "clarification",
     "nlpd",
     "rgpd",
+    "leg",
     "conformite",
+    "protection-des-donnees",
     "rh",
     "adv",
     "suisse",
-    "entreprise"
+    "suisse-romande",
+    "entreprises"
   ]
 }

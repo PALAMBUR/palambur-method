@@ -9,5 +9,12 @@
 *.swp
 *~
 
+# Python · les outils de `outils/` et `epreuves/` compilent leurs modules à l’import
+__pycache__/
+*.py[cod]
+
 # Divers
 Thumbs.db
+
+# Résultats des épreuves jouées avec « claude plugin eval » · dépense modèle, jamais versionnée
+evals/results/
