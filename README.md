@@ -156,8 +156,8 @@ palambur-method/
 │       └── metiers/             # un fichier par métier (tâches, lois, vocabulaire, pièges)
 ├── adaptations/                 # les prompts à coller (Projet Claude.ai, Euria, GPT) · générés
 ├── portabilite/                 # installer le skill hôte par hôte · veille des plateformes
-├── epreuves/                    # vingt cas, la grille de notation, mesurer.py
-├── evals/                       # les mêmes vingt cas au format « claude plugin eval »
+├── epreuves/                    # 149 cas, la grille de notation, mesurer.py, les passes Apertus
+├── evals/                       # les mêmes 149 cas au format « claude plugin eval »
 ├── diffusion/                   # ce qui sert à faire connaître le skill (hors du skill)
 ├── outils/                      # générateur d’adaptations, chaîne de contrôle, règle typographique, installation locale
 ├── CHANGELOG.md                 # le journal des versions
@@ -186,7 +186,7 @@ python3 outils/controle.py --epreuve
 
 `controle.py` tourne **sur n’importe quel clone** : la règle typographique qu’il applique est embarquée dans `outils/regle_typo.py`, copie datée d’une règle qui fait foi dans l’atelier Palambur, hors de ce dépôt. Quand l’atelier est à côté, le contrôle `regle` compare les deux et refuse une copie en retard ; ailleurs, il le dit en une ligne et ne rougit pas. Le reste de la chaîne de l’atelier (registre des invites, corpus Chaptal) suppose l’atelier et n’est pas dans ce dépôt.
 
-Les **épreuves du skill** lui-même (est-il fluide, est-il sûr ?) sont dans [`epreuves/`](epreuves/) : vingt demandes, une grille de notation, `mesurer.py`. Le dossier [`evals/`](evals/) porte les mêmes vingt cas au format `claude plugin eval`. Au 11.10.2026, **les 20 cas n’ont pas encore été joués** : les jouer dépense des appels au modèle, et cette dépense n’a pas été autorisée.
+Les **épreuves du skill** lui-même (est-il fluide, est-il sûr ?) sont dans [`epreuves/`](epreuves/) : 149 demandes en trois familles, une grille de notation, `mesurer.py`. Le dossier [`evals/`](evals/) porte les mêmes cas au format `claude plugin eval`. Au 12.10.2026, les 149 cas ont été **joués sur Apertus** (Infomaniak) avec le prompt d’adaptation complet, dix d’entre eux aussi sans prompt et avec le prompt court · 1 vert sur 149, résultats et dépense exacte dans [`epreuves/RESULTATS_APERTUS_2026-10-11.md`](epreuves/RESULTATS_APERTUS_2026-10-11.md). Le skill natif sur Claude n’a pas encore été joué : cette dépense n’a pas été autorisée.
 
 ---
 

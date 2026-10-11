@@ -346,6 +346,21 @@ def extraire(textes):
             raise Refus('structure', 'niveau %s · cadence tronquée « %s »' % (cases[0], cases[3]))
         r['niveaux'].append(cases)
 
+    #: la ligne « Contexte retenu · … » (Étape 3) et le zéro jargon (Ton) ·
+    #: le 11.10.2026 au soir, dix cas sur dix joués sur Apertus avec le prompt
+    #: complet rougissaient G17 (contexte absent) et G16 (« prompt »,
+    #: « hallucination » face à l’utilisateur) · le prompt collé ne portait ni
+    #: l’une ni l’autre, alors que le skill natif les exige depuis le matin
+    m = re.search(r'`(Contexte retenu · [^`]+)`', skill)
+    if not m:
+        raise Refus('structure', 'forme fixe `Contexte retenu · …` absente de SKILL.md')
+    r['contexte'] = m.group(1)
+    jargon = phrase_contenant(skill, 'Zéro jargon face à l’utilisateur', 'SKILL.md')
+    m = re.search(r'\*\*Zéro jargon.*?\. ', jargon + ' ')
+    if not m:
+        raise Refus('structure', 'règle « Zéro jargon » mal formée dans SKILL.md')
+    r['jargon'] = m.group(0).strip()
+
     r['hotes'] = table_hotes(textes[SOURCE_HOTES])
 
     r['champs'] = [nom_et_corps(c) for c in
@@ -422,10 +437,13 @@ def rediger_complet(r):
     niveaux = '\n'.join('- **%s** · %s → %s ; %s.' % (n[0], n[1].lower(), n[2].lower(),
                                                       n[3].lower().rstrip('.'))
                         for n in r['niveaux'])
-    extensions = ', '.join('**%s** (%s)' % (nom, premieres_phrases(corps, 1).rstrip('.').lower())
-                           for nom, corps in r['extensions'])
+    #: les noms seuls · la glose d’une phrase par bloc (≈ 200 caractères) a
+    #: cédé la place à la ligne de contexte et au zéro jargon le 11.10 au soir
+    extensions = ', '.join('**%s**' % nom for nom, _ in r['extensions'])
     garde_fous = '\n'.join('- **%s** · %s' % (nom, condenser(corps)) for nom, corps in r['garde_fous'])
-    champs = '\n'.join('- **%s** · %s' % (nom, corps) for nom, corps in r['champs'])
+    #: une phrase par livrable · la ligne de contexte et le zéro jargon (11.10
+    #: au soir) ont pris 400 caractères sous le plafond ChatGPT de 8'000
+    champs = '\n'.join('- **%s** · %s' % (nom, premieres_phrases(corps, 1)) for nom, corps in r['champs'])
     promesses = ' et '.join('**%s** (%s)' % (nom.lower(), premieres_phrases(corps, 1).rstrip('.'))
                             for nom, corps in r['promesses'])
     critere = re.sub(r'^\*\*Quand passer en 9 blocs\*\*\s*:\s*', '', r['critere_extension'])
@@ -438,9 +456,7 @@ def rediger_complet(r):
                      'non sourcés, LEg, nLPD, ton), puis la version corrigée. La relecture corrige la '
                      'forme, le droit et les données ; elle ne réécrit pas le fond.\n')
 
-    return '''Tu es l’assistant **Méthode Palambur**. Tu transformes une demande métier souvent sous-spécifiée en **livrable de haute qualité** (offre d’emploi, contrat, devis, offre commerciale, relance client, note interne, compte rendu, courrier, charte…), pensé pour les **entreprises de Suisse romande**.
-
-Deux noms · **la Méthode Palambur** est l’ensemble (clarification, garde-fous, anti-hallucination) ; **le Gabarit Palambur** en est l’outil, les 5 blocs ci-dessous.
+    return '''Tu es l’assistant **Méthode Palambur**. Tu transformes une demande métier souvent sous-spécifiée en **livrable de haute qualité** (offre d’emploi, contrat, devis, offre commerciale, relance client, note interne, compte rendu, courrier, charte…), pensé pour les **entreprises de Suisse romande**. **La Méthode** est l’ensemble ; **le Gabarit Palambur** en est l’outil, les 5 blocs ci-dessous.
 
 Deux promesses · %(promesses)s. L’utilisateur repart avec un livrable qu’il peut envoyer **en confiance**.
 
@@ -450,7 +466,7 @@ Avant d’écrire le moindre mot du livrable, vérifie dans l’ordre :
 
 1. **Données nominatives ?** Si la demande contient des noms de clients ou de personnes, des montants, des contrats, ta toute première réponse est UNE question binaire, seule :
    %(question_binaire)s
-   Puis applique la décision **partout** (prompt réutilisable ET livrable). Jamais d’hybride : on ne mélange pas vrais noms et pseudonymes.
+   Puis applique la décision **partout** (Gabarit ET livrable). Jamais d’hybride : on ne mélange pas vrais noms et pseudonymes.
 2. **Devrais-tu faire %(seuil)s hypothèses conséquentes ou plus ?** Si oui, clarifie avant de produire, selon la cadence ci-dessous.
 
 Jamais un livrable rempli d’hypothèses prudentes suivi d’une liste de « points à valider » : on questionne **avant**, pas après. Si tout est déjà fourni, produis directement.
@@ -479,10 +495,14 @@ Règle de contrôle : **un bloc manquant, un résultat approximatif.**
 
 ## Sortie en DEUX temps, toujours, dans cet ordre
 
-1. **Le Gabarit Palambur rempli** · un prompt autonome, prêt à copier-coller, assemblé depuis les réponses, dans l’ordre des 5 blocs. Dans CONTRAINTES, écris : « si une information manque, écrivez %(marqueur_completer)s et ne la remplacez jamais par une valeur plausible ».
-2. **Le livrable final** · le texte prêt à l’emploi, produit à partir de ce prompt.
+D’abord **une ligne de contexte**, forme fixe : `%(contexte)s`.
 
-La partie 1 n’est jamais omise : l’utilisateur repart avec l’outil réutilisable, pas seulement le résultat.
+Puis deux parties, chacune sous un titre fixe :
+
+1. **Gabarit Palambur** (titre du bloc) · le Gabarit rempli, autonome, prêt à copier-coller, assemblé depuis les réponses, dans l’ordre des 5 blocs. Dans CONTRAINTES, écris : « si une information manque, écrivez %(marqueur_completer)s et ne la remplacez jamais par une valeur plausible ».
+2. **Livrable** (titre du bloc) · le texte prêt à l’emploi, produit à partir du Gabarit.
+
+La partie 1 n’est jamais omise. Ne produis la sortie qu’une fois les questions posées et répondues : jamais de Gabarit dans le même message qu’une question.
 %(relecture)s
 ## Garde-fous suisses (tout livrable sensible · RH, contrat, communication externe)
 
@@ -497,8 +517,12 @@ Marqueurs d’information manquante, jamais une invention : %(marqueurs)s. Sur t
 ## Ton
 
 %(ton)s
+
+%(jargon)s
 ''' % dict(
         promesses=promesses,
+        contexte=r['contexte'],
+        jargon=r['jargon'],
         question_binaire=r['question_binaire'],
         seuil=r['seuil_hypotheses'],
         taille_lot=r['taille_lot'],
@@ -513,7 +537,8 @@ Marqueurs d’information manquante, jamais une invention : %(marqueurs)s. Sur t
         marqueurs=', '.join(r['marqueurs']),
         marqueur_completer=r['marqueurs'][0],
         convention=re.sub(r"^\*\*Convention d['’]anonymisation\*\*\s*:\s*", '', r['convention']),
-        ton=r['ton'],
+        #: sans la phrase sur les métaphores · elle décore, les deux autres règlent
+        ton=re.sub(r'\s*Métaphores[^.]*\.', '', r['ton']),
     )
 
 
@@ -536,16 +561,16 @@ def rediger_court(r):
     if r['relecture']:
         relecture = ('\n**Relecture :** texte joint → aucune question ; tableau '
                      '« Constat · Risque · Correction », puis version corrigée.\n')
-    return '''Tu es l’assistant **Méthode Palambur** : tu transformes une demande métier sous-spécifiée en livrable prêt à l’emploi (offre d’emploi, devis, relance, contrat…) pour les **entreprises de Suisse romande**.
+    return '''Tu es l’assistant **Méthode Palambur** : tu transformes une demande métier sous-spécifiée en livrable prêt à l’emploi pour les **entreprises de Suisse romande**.
 
 **Questionne AVANT de produire :**
 1. Données nominatives (noms, montants, contrats) → pose d’abord UNE question binaire : anonymiser (défaut, « Client X », mention nLPD) ou conserver ? Applique le choix partout, sans hybride.
-2. Si tu devrais faire %(seuil)s hypothèses conséquentes ou plus → clarifie. **Anticipe un lot de %(taille_lot)s questions au plus, mais n’en pose qu’une par message**, avec le compteur (« %(compteur)s »), choix lettrés A, B, C, D (deux à quatre), défaut prudent et « Autre / je ne sais pas ».
+2. Si tu devrais faire %(seuil)s hypothèses conséquentes ou plus → clarifie. **Anticipe un lot de %(taille_lot)s questions au plus, mais n’en pose qu’une par message**, avec le compteur (« %(compteur)s »), choix lettrés A, B, C, D, défaut prudent et « Autre / je ne sais pas ».
 Si tout est fourni → produis directement.
 
-**Sortie en deux temps :** (1) le **Gabarit Palambur** rempli (%(blocs)s), réutilisable ; puis (2) le livrable final.
+**Sortie, après les réponses :** ligne « Contexte retenu · … », puis bloc **Gabarit Palambur** rempli (%(blocs)s), puis bloc **Livrable**. Zéro jargon (« prompt », « hallucination ») face à l’utilisateur.
 %(relecture)s
-**Garde-fous suisses :** %(gf)s. Données sensibles sur un outil souverain, jamais dans un LLM public.
+**Garde-fous suisses :** %(gf)s. Données sensibles → outil souverain seulement.
 
 **Anti-hallucination :** n’invente jamais une loi, une CCT, un chiffre. Donnée manquante → marqueur visible %(marqueurs)s. Validation humaine obligatoire sur livrable sensible.
 
@@ -812,6 +837,15 @@ def epreuve():
         d = temoin('niveau_tronque', ('methode-palambur.md', lambda t: re.sub(
             r'^(\| \*\*S\*\* \|[^|]*\|[^|]*\|)[^|]*\|', r'\1 aucune. |', t, count=1, flags=re.M)))
         attendu('une cadence de niveau tronquée (« aucune. ») est refusée',
+                lambda: fabriquer(lire_sources(d)), 'structure')
+        #: la ligne de contexte et le zéro jargon (11.10 au soir) · chacun a sa
+        #: raison de refus, cassée ici exprès
+        d = temoin('contexte', ('SKILL.md', lambda t: t.replace('`Contexte retenu · ', '`Contexte · ')))
+        attendu('un SKILL.md sans la forme fixe « Contexte retenu · » est refusé',
+                lambda: fabriquer(lire_sources(d)), 'structure')
+        d = temoin('jargon', ('SKILL.md', lambda t: t.replace('**Zéro jargon face à l’utilisateur**',
+                                                              '**Zéro mot technique**')))
+        attendu('un SKILL.md sans la règle « Zéro jargon » est refusé',
                 lambda: fabriquer(lire_sources(d)), 'structure')
         #: l’apostrophe courbe dans un titre n’est pas un changement de forme
         d = temoin('apostrophe', ('methode-palambur.md', lambda t: t.replace('’', "'")))

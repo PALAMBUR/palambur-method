@@ -275,7 +275,11 @@ def mesurer(cas, texte):
     # le 11.10.2026 (relecteur) · un livrable à accroche interrogative rougissait
     # G1, G4 et G5 à tort.
     gabarit_idx = {i for i, t in enumerate(tours) if a_gabarit(t)}
-    nlpd_idx = [i for i, t in enumerate(tours) if est_nlpd(t) and i not in gabarit_idx]
+    # Un tour qui pose la question nLPD ET déroule le Gabarit compte comme
+    # question posée, puis G6_NLPD_GROUPEE le dit · la première passe Apertus
+    # du 11.10.2026 (relance_facture, bras complet) rendait « absente » sur une
+    # question bel et bien écrite, et le rapport mentait sur la raison.
+    nlpd_idx = [i for i, t in enumerate(tours) if est_nlpd(t)]
     clarif = [(i, t) for i, t in enumerate(tours)
               if lignes_question(t) and i not in nlpd_idx and i not in gabarit_idx]
     q_total = sum(len(lignes_question(t)) for _, t in clarif)
@@ -337,6 +341,13 @@ def mesurer(cas, texte):
     attendu = int(cas.get("nb_questions_attendu", 0))
     if attendu == 0 and q_total > 0:
         rouges["G7_QUESTION_SUR_DEMANDE_COMPLETE"] = "%d question(s) posée(s) sur une demande complète" % q_total
+    # G20 · l’inverse de G7 · une demande qui attend deux clarifications ou plus
+    # n’en reçoit aucune. Trou vu le 12.10.2026 · Apertus (bras complet) livrait
+    # l’offre d’emploi sans une question (0 sur 4 attendues), salaire inventé,
+    # et aucune garde ne parlait · la colonne « Q » le montrait, rien ne rougissait.
+    # Une seule attendue est tolérée · le modèle peut la remplacer par un défaut dit.
+    if attendu >= 2 and q_total == 0:
+        rouges["G20_AUCUNE_CLARIFICATION"] = "aucune question posée, %d attendue(s)" % attendu
 
     # G12 · une forme sensible de la demande recopiée telle quelle par
     # l’assistant, alors que l’utilisateur n’a pas demandé de conserver (sa
@@ -592,10 +603,14 @@ def epreuve():
          {"G10_ARTICLE_NON_VERIFIE"}, "COMPLET"),
         ("T05 question nLPD groupée avec un compteur", nominatif,
          _reponse(_nlpd(groupe=True), _clar(2, 2), _livrable()), {"G6_NLPD_GROUPEE"}, "COMPLET"),
+        ("T05b question nLPD dans le même tour que le Gabarit", dict(nominatif, nb_questions_attendu=1),
+         _reponse(_nlpd() + "\n\n" + _livrable()), {"G6_NLPD_GROUPEE"}, "COMPLET"),
         ("T06 question nLPD posée sans donnée nominative", anonyme,
          _reponse(_nlpd(), _clar(1, 1), _livrable()), {"G6_NLPD_SANS_DONNEES"}, "COMPLET"),
         ("T07 le mot interdit", anonyme,
          _reponse(_clar(1, 1), _livrable(pme=True)), {"G11_PME"}, "COMPLET"),
+        ("T07b aucune clarification sur une demande qui en attend deux", anonyme,
+         _reponse(_livrable()), {"G20_AUCUNE_CLARIFICATION"}, "COMPLET"),
         ("T08 livrable sans Gabarit", anonyme,
          _reponse(_clar(1, 1), _livrable(gabarit=False)), {"G8_GABARIT_ABSENT"}, "COMPLET"),
         ("T09 choix sans lettres", anonyme,

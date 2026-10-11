@@ -10,9 +10,12 @@ Le README promet « fluide » (une question à la fois, un compteur, quatre ques
 | `grille.md` | la **grille de notation** · chaque garde, son code, ce qui la rend verte ou rouge |
 | `mesurer.py` | l’instrument · lit `cas.json` et `reponses/<id>.md`, rend un tableau et un code de retour · `--epreuve` casse chaque garde sur témoin fabriqué · `--compter` compte les cas par famille · `--reponses <dossier>` lit un autre dossier de réponses |
 | `generer_evals.py` | fabrique `../evals/` (le format de `claude plugin eval`) depuis `cas.json` · relançable, idempotent |
-| `reponses/` | **à déposer** · une réponse par cas, au format décrit dans `mesurer.py` · absent du dépôt tant que personne n’a joué les cas |
+| `reponses/` | une réponse par cas, au format décrit dans `mesurer.py` · un sous-dossier par hôte et par prompt (`apertus-sans`, `apertus-complet`, `apertus-court`, déposés les 11 et 12.10.2026 par `jouer_apertus.py`) · `DEPENSE.csv` y tient le compte exact de chaque appel payant · une passe remplacée s’archive dans un sous-dossier `_passe…`, jamais ne s’efface |
 | `PROTOCOLE_LECTURE_HUMAINE.md` | vingt cas, avec et sans skill, jugés à l’aveugle par trois lecteurs romands · prêt, **non joué** |
-| `PROTOCOLE_TROIS_MODELES.md` | dix cas rejoués sur Claude, GPT et Mistral avec les adaptations, mesurés par `mesurer.py` · prêt, **non joué** |
+| `PROTOCOLE_TROIS_MODELES.md` | dix cas rejoués sur Claude, GPT et Mistral avec les adaptations, mesurés par `mesurer.py` · Claude, GPT et Mistral **non joués** · un quatrième hôte, Apertus, joué sur les trois bras (voir ci-dessous) |
+| `jouer_apertus.py` | joue les cas contre Apertus (Infomaniak AI Services), clé lue dans le trousseau macOS, utilisateur simulé pressé, compteur de dépense avec plafond (`--plafond`, 4.00 CHF par défaut) · dépose dans `reponses/apertus-<bras>/` |
+| `EXPERIENCE_APERTUS_2026-10-11.md` | le plan de l’expérience Apertus (trois bras, trois phases, limites dites d’avance) |
+| `RESULTATS_APERTUS_2026-10-11.md` | ce qu’elle a donné · statuts, gardes rouges par famille, trouvailles, dépense exacte |
 | `BETA_LECTEURS.md` | la grille de retour et le message d’invitation pour cinq bêta-lecteurs romands · personnes non choisies |
 
 ## Un cas, champ par champ

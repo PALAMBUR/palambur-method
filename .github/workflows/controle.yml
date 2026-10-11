@@ -42,8 +42,11 @@ jobs:
         # Le motif est écrit P[M]E pour que ce fichier ne porte pas le mot lui-même.
         # Les .py sont exclus (ce sont les instruments, controle.py les juge) ;
         # la citation de la règle (« … » ou entre accents graves) est tue.
+        # epreuves/reponses/ est exclu depuis le 12.10.2026 · ce sont les transcriptions
+        # des modèles joués (Apertus y écrit le mot, et c’est la garde G11 de mesurer.py
+        # qui le compte, pas ce contrôle) · on ne corrige pas une pièce à conviction.
         run: |
-          if grep -rnwE --exclude-dir=.git --exclude='*.py' 'P[M]E' . | grep -vE '« P[M]E »|`P[M]E`' ; then
+          if grep -rnwE --exclude-dir=.git --exclude-dir=reponses --exclude='*.py' 'P[M]E' . | grep -vE '« P[M]E »|`P[M]E`' ; then
             echo 'Le mot interdit est écrit à nu · on dit « entreprises »'
             exit 1
           fi

@@ -89,6 +89,20 @@ SOURCE_REGLE = os.path.join('..', '0501_Prompts_Metiers', 'audit_typo.py')
 EMPREINTE_DECLAREE = re.compile(r"^SOURCE_SHA256 = '([0-9a-f]{64})'", re.M)
 
 DOSSIERS_IGNORES = {'.git', 'node_modules', '__pycache__', '.DS_Store'}
+#: les transcriptions déposées sous `epreuves/reponses/` sont CE QU’UN MODÈLE A
+#: ÉCRIT, jugé par `mesurer.py` (G11 pour le mot interdit) · ce ne sont pas des
+#: textes Palambur. Le 11.10.2026 au soir, trente transcriptions Apertus ont
+#: fait rougir la typographie 208 fois et le mot interdit 18 fois · le dépôt
+#: ne pouvait plus partir à cause de phrases que personne chez nous n’avait
+#: écrites. Seuls les transcriptions sont tues · `RELEVE.md` et `LISEZ-MOI.md`,
+#: écrits par nous, restent contrôlés. Le compte des fichiers tus est rendu.
+DOSSIER_TRANSCRIPTIONS = os.path.join('epreuves', 'reponses')
+NOTRE_PROSE = {'RELEVE.md', 'LISEZ-MOI.md', 'README.md'}
+
+
+def est_transcription(racine, chemin):
+    rel = relatif(racine, chemin)
+    return rel.startswith(DOSSIER_TRANSCRIPTIONS + os.sep) and os.path.basename(rel) not in NOTRE_PROSE
 EXT_TEXTE = ('.md', '.json', '.py', '.sh', '.yml', '.yaml', '.txt', '.html')
 
 #: le mot interdit, assemblé pour que ce fichier ne le porte pas en clair
@@ -173,8 +187,11 @@ def ctrl_regle(racine):
 
 def ctrl_typographie(racine):
     """Zéro tiret de ponctuation · `.md` par `regle_typo.releve`, `.json` sur leurs chaînes."""
-    constats, droites, lus = [], 0, 0
+    constats, droites, lus, transcriptions = [], 0, 0, 0
     for chemin in fichiers(racine, ('.md',)):
+        if est_transcription(racine, chemin):
+            transcriptions += 1
+            continue
         mesure = []
         for ligne, quoi, extrait in regle_typo.releve(chemin, True, mesure):
             constats.append('typographie · %s ligne %d · %s · …%s…'
@@ -196,7 +213,11 @@ def ctrl_typographie(racine):
                 constats.append('typographie · %s · trait d’union séparateur · …%s…'
                                 % (relatif(racine, chemin), texte[:60]))
         lus += 1
-    return constats, droites, '%d fichier(s) lus · %d apostrophe(s) droite(s) comptée(s), non fautives' % (lus, droites)
+    note = '%d fichier(s) lus · %d apostrophe(s) droite(s) comptée(s), non fautives' % (lus, droites)
+    if transcriptions:
+        note += ' · %d transcription(s) de modèle tue(s) (%s, jugées par mesurer.py)' % (
+            transcriptions, DOSSIER_TRANSCRIPTIONS)
+    return constats, droites + transcriptions, note
 
 
 def _chaines(valeur):
@@ -224,8 +245,11 @@ MOTIF_TRAQUEUR = re.compile(r'\\bP' + r'ME\\b')
 def ctrl_pme(racine):
     """Le mot interdit absent · la citation de la règle et les instruments qui le
     traquent sont tus, et comptés à part."""
-    constats, tus, instruments = [], 0, []
+    constats, tus, instruments, transcriptions = [], 0, [], 0
     for chemin in fichiers(racine, EXT_TEXTE):
+        if est_transcription(racine, chemin):
+            transcriptions += 1
+            continue
         texte = io.open(chemin, encoding='utf-8', errors='replace').read()
         cites = {m.start() + 2 for m in CITATION.finditer(texte)}
         cites |= {m.start() + 1 for m in CITATION.finditer(texte)}
@@ -248,7 +272,10 @@ def ctrl_pme(racine):
         note += ' · %d témoin(s) tu(s) dans %d instrument(s) qui traquent le mot (%s)' % (
             sum(n for _, n in instruments), len(instruments),
             ', '.join('%s×%d' % (f, n) for f, n in instruments))
-    return constats, tus + sum(n for _, n in instruments), note
+    if transcriptions:
+        note += ' · %d transcription(s) de modèle tue(s) (%s, G11 de mesurer.py)' % (
+            transcriptions, DOSSIER_TRANSCRIPTIONS)
+    return constats, tus + sum(n for _, n in instruments) + transcriptions, note
 
 
 def ctrl_json(racine):

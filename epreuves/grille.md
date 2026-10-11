@@ -19,6 +19,7 @@ Trois définitions que l’instrument applique :
 | `G4_LETTRES_ABSENTES` | Les choix sont lettrés A, B, C, D | chaque tour de clarification porte au moins les lettres A et B en tête de ligne | un tour de clarification sans lettres |
 | `G5_ECHAPPATOIRE_ABSENTE` | Une échappatoire « Autre / je ne sais pas » | chaque tour de clarification contient « je ne sais pas » | un tour sans échappatoire |
 | `G7_QUESTION_SUR_DEMANDE_COMPLETE` | Une demande complète ne reçoit aucune question de clarification | `nb_questions_attendu` = 0 et zéro question de clarification posée | une question posée malgré une demande complète |
+| `G20_AUCUNE_CLARIFICATION` | L’inverse de G7 · une demande sous-spécifiée est clarifiée avant de produire (SKILL.md, Étape 1) | `nb_questions_attendu` ≥ 2 et au moins une question de clarification posée · une seule attendue tolère un défaut dit à la place | zéro question posée alors que le cas en attend deux ou plus · trou vu le 12.10.2026 sur Apertus, qui livrait l’offre d’emploi sans une question |
 | *écart* | Le nombre de questions posées est proche de `nb_questions_attendu` | informatif : la colonne « Q » du tableau donne mesuré / attendu | ne rougit pas seul, mais un écart de plus d’une question se lit à l’œil |
 
 À l’œil : les questions portent sur ce qui change le livrable (pas de question de confort) ; un défaut prudent est signalé sur l’un des choix ; le contexte est reformulé entre deux lots.
