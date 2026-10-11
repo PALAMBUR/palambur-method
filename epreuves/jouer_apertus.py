@@ -61,6 +61,13 @@ BRAS = {
     "sans": None,
     "complet": ADAPTATIONS / "methode-palambur-prompt.md",
     "court": ADAPTATIONS / "methode-palambur-prompt-court.md",
+    # Même fichier que « complet », autre dossier de réponses · le prompt a été
+    # réécrit le 12.10.2026 d’après les résultats de la première passe (quatre
+    # règles · déclencheur nLPD en négatif, Gabarit interdit sans clarification,
+    # marqueur mot pour mot, cinq titres sur cinq lignes). Les réponses de la
+    # première version restent dans apertus-complet/, pièces à conviction ;
+    # l’empreinte du RELEVE.md dit quelle version a joué.
+    "complet-v2": ADAPTATIONS / "methode-palambur-prompt.md",
 }
 BLOCS = ["INSTRUCTION", "RÔLE ET AUDIENCE", "DONNÉES", "CONTRAINTES", "FORMAT"]
 RE_LIVRABLE = re.compile(r"^#+\s*(?:\d+\s*[.·]\s*)?(?:Le\s+)?Livrable\b", re.M | re.I)

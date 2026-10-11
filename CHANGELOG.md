@@ -6,6 +6,22 @@ Une version = une étiquette Git `vX.Y.Z`, une release GitHub et le même numér
 
 Chaque version porte une **Note de qualité** à forme fixe, cinq champs dans cet ordre · Cas joués · Verts · Rouges · Date · Instrument. « Non joué » est une valeur honnête ; un nombre sans date n’en est pas une. Les cas sont ceux d’`epreuves/cas.json`, l’instrument est `epreuves/mesurer.py` (ou `claude plugin eval`, nommé alors). La note ne recopie jamais un chiffre d’une version précédente.
 
+## [Non publié]
+
+### Ajouté
+
+- `epreuves/reponses/codex-natif/` · première **épreuve réelle du skill natif sur Codex** (CLI embarqué dans l’application ChatGPT, modèle du poste, 12.10.2026) · le skill est lu depuis `.agents/skills/` par lien symbolique et le premier tour est conforme (« Question 1 sur 4 », lettres, échappatoire, défaut marqué, aucune question nLPD puisque aucune donnée) · un seul tour, `codex exec` n’est pas interactif · relevé dans `RELEVE.md`.
+
+### Modifié
+
+- `outils/generer_adaptations.py` et `adaptations/methode-palambur-prompt.md` · quatre règles tirées de l’expérience Apertus (déclencheur nLPD en négatif, Gabarit interdit sans clarification, marqueur écrit mot pour mot et formules « à préciser » interdites, cinq titres de bloc sur cinq lignes) ; gloses coupées pour tenir sous 8'000 caractères (promesses, critère d’extension, règle de contrôle, mode relecture, niveaux sur une ligne). Rejoué sur Apertus (dix cas, 0.0780 CHF) · **10 rouges sur 10, aucun gain**, détail dans `epreuves/RESULTATS_APERTUS_2026-10-11.md` § 9.
+- `outils/generer_adaptations.py` · l’empreinte des adaptations couvre désormais le générateur lui-même · le 12.10 le prompt avait changé sans que l’empreinte bouge.
+- `epreuves/jouer_apertus.py` · bras `complet-v2` (même prompt, autre dossier de réponses) ; `epreuves/reponses/apertus-complet-v2/`.
+
+### Note de qualité
+
+Cas joués : 10 (bras `complet-v2`, prompt réécrit, Apertus) · Verts : 0 · Rouges : 10 · Date : 2026-10-12 · Instrument : `epreuves/mesurer.py`. Les 149 cas de 1.0.0 n’ont pas été rejoués avec ce prompt.
+
 ## [1.0.0] · 2026-10-12
 
 Première version numérotée, étiquetée et publiée le 12.10.2026 sur le go du fondateur. Le skill existait depuis le 12 juillet 2026 sans numéro, sans licence affichée et en trois copies qui dérivaient (dépôt, skill installé localement, adaptations pour les autres IA). Cette version pose les **fondations** décrites dans le plan en 30 points du 11 octobre 2026, puis les paquets F à M du plan en 100 points (le même jour au soir) et l’expérience Apertus (nuit du 11 au 12).

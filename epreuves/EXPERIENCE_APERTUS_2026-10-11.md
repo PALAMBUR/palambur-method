@@ -45,3 +45,5 @@ Joués du 11.10.2026 23 h 21 au 12.10.2026 1 h 37, dépense **2.8991 CHF** sur l
 | `complet` | 149 | 1 | 148 |
 
 Le détail (gardes par famille, transcriptions lues, ce que l’expérience a réparé dans le dépôt, versions de l’instrument, suite proposée) est dans **`RESULTATS_APERTUS_2026-10-11.md`**. En une phrase · le prompt collé fait poser la question nLPD et rendre le Gabarit, il ne fait ni clarifier avant de produire, ni poser les marqueurs à la place des inventions.
+
+**Deuxième passe (12.10, 1 h 48)** · prompt complet réécrit avec quatre règles tirées de la première passe, dix cas rejoués (bras `complet-v2`, 0.0780 CHF) · **10 rouges sur 10**, aucun gain, une règle de plus a produit un défaut de plus (§ 9 des résultats). Dépense totale de l’expérience · **2.9772 CHF**.

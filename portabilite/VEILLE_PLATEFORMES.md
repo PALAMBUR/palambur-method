@@ -49,7 +49,7 @@ Relevé le **11 de chaque mois** (ou le premier jour ouvré qui suit). La ligne 
 | Forfaits Codex, Antigravity, Mistral Vibe, Copilot | pages lues sans énumération de forfaits |
 | Disponibilité des skills Gemini (app) pour le compte Palambur | « gradually rolling out », pas essayé |
 | Présence du skill sur SkillsMP | page de recherche rendue côté client, illisible à nos outils ; sujet GitHub requis absent |
-| Chargement réel par Codex, Cursor, Gemini, Copilot, Vibe | aucun de ces hôtes n’est installé sur la machine (binaire Codex embarqué dans ChatGPT.app, non essayé) |
+| Chargement réel par Cursor, Gemini, Copilot, Vibe | aucun de ces hôtes n’est installé sur la machine · **Codex éprouvé le 12.10.2026** avec le binaire embarqué dans ChatGPT.app (`INSTALLATION.md` § 2, `../epreuves/reponses/codex-natif/`) |
 
 ## La procédure mensuelle · ce qu’on relit, dans l’ordre
 

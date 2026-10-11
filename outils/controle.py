@@ -428,8 +428,15 @@ EXTERNE = ('http://', 'https://', 'mailto:', '#')
 
 def ctrl_liens(racine):
     """Aucun lien relatif cassé dans les .md · les liens externes sont tus et comptés."""
-    constats, tus = [], 0
+    constats, tus, transcriptions = [], 0, 0
     for chemin in fichiers(racine, ('.md',)):
+        #: une transcription cite les chemins que LE MODÈLE a lus chez lui · le
+        #: 12.10.2026, Codex écrivait « .agents/skills/palambur-method/SKILL.md »,
+        #: vrai dans son dossier de travail, faux depuis `epreuves/reponses/`, et
+        #: le dépôt rougissait sur une phrase qu’on ne corrige pas (pièce à conviction)
+        if est_transcription(racine, chemin):
+            transcriptions += 1
+            continue
         texte = io.open(chemin, encoding='utf-8').read()
         texte = re.sub(r'```.*?```', '', texte, flags=re.S)
         #: le code EN LIGNE aussi · le 11.10.2026, `portabilite/ANNUAIRES.md`
@@ -446,7 +453,7 @@ def ctrl_liens(racine):
             if not os.path.exists(chemin_cible):
                 constats.append('liens · %s · « %s » ne mène nulle part'
                                 % (relatif(racine, chemin), cible))
-    return constats, tus, '%d lien(s) externe(s) tu(s)' % tus
+    return constats, tus, '%d lien(s) externe(s) tu(s) · %d transcription(s) de modèle tue(s)' % (tus, transcriptions)
 
 
 CONTROLES = [
@@ -724,6 +731,11 @@ def epreuve():
         d = depot('lien_code_en_ligne')
         ecrire(d, 'temoin.md', 'Format attendu : `[skill-name](url)`, puis [vrai](CHANGELOG.md).\n')
         se_tait('un lien dans du code en ligne n’est pas un lien', 'liens', d)
+        d = depot('lien_transcription')
+        ecrire(d, 'epreuves/reponses/hote-x/cas.md', 'Lu [le skill](.agents/skills/x/SKILL.md).\n')
+        ecrire(d, 'epreuves/reponses/hote-x/RELEVE.md', 'Voir [le cas](cas.md) et [rien](INEXISTANT.md).\n')
+        rougit('un lien cassé dans une transcription est tu, le même dans RELEVE.md parle',
+               'liens', d, 'INEXISTANT', tus_en_plus=0)
     finally:
         shutil.rmtree(racine_tmp)
 

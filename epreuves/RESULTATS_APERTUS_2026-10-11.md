@@ -104,3 +104,32 @@ Trouvé en jouant, corrigé le même jour, chaque correction passée par `contro
 - **Une passe par cas**, température 0,2 · la variance n’est pas mesurée.
 - **Ce que les chiffres commandent** pour le prompt d’adaptation, à décider par le fondateur · (1) écrire le déclencheur nLPD en négatif (« si la demande ne nomme ni personne, ni entreprise, ni montant, ne pose pas cette question ») ; (2) interdire explicitement le Gabarit dans le message qui suit la réponse nLPD tant qu’une question de clarification n’a pas été posée ; (3) exiger le marqueur `[À COMPLÉTER]` mot pour mot et proscrire « à préciser » ; (4) imposer les cinq titres de bloc sur cinq lignes. Chaque changement se rejoue sur les dix cas de la phase 1 (0.07 CHF par passe en bras `complet`) avant d’être généralisé.
 - GPT et Mistral (`PROTOCOLE_TROIS_MODELES.md`) restent non joués.
+
+## 9 · Deuxième passe · le prompt réécrit, les dix cas rejoués
+
+Décision du fondateur le 12.10.2026 (« oui, réécris le prompt et rejoue les dix cas »). Les quatre règles du § 8 ont été écrites dans le texte fixe de `outils/generer_adaptations.py` (prompt complet régénéré, 7'999 caractères sous le plafond de 8'000 après coupe des gloses · promesses, critère d’extension, règle de contrôle, mode relecture, niveaux sur une ligne). Rejeu des dix cas de la phase 1 sur le bras `complet-v2` (même fichier, autre dossier de réponses) · **0.0780 CHF**, 18 appels, 1 h 48 à 1 h 52.
+
+**Résultat · 10 rouges sur 10, aucun gain.** Les gardes sur les mêmes dix cas, première version du prompt puis version réécrite ·
+
+| Garde | Prompt du 11.10 | Prompt réécrit du 12.10 |
+|---|---|---|
+| `G9_MARQUEUR_ABSENT` | 6 | 7 |
+| `G20_AUCUNE_CLARIFICATION` | 4 | 5 |
+| `G17_CONTEXTE_ABSENT` | 3 | 5 |
+| `G2_PLUSIEURS_QUESTIONS` | 0 | 4 |
+| `G6_NLPD_GROUPEE` | 1 | 4 |
+| `G6_NLPD_SANS_DONNEES` | 1 | 1 |
+| `G13_REPONSE_INVENTEE` | 2 | 2 |
+| `G10_ARTICLE_NON_VERIFIE` | 1 | 2 |
+| `G11_PME`, `G8_GABARIT_ABSENT` | 1, 1 | 0, 0 |
+
+Ce que les transcriptions (`reponses/apertus-complet-v2/`) montrent ·
+
+- **La règle en négatif n’est pas lue.** `offre_emploi` (« un peintre à 80 % », aucune donnée) · le modèle « détecte des données nominatives » (nom de l’entreprise, ville) et pose la question nLPD. La phrase « un métier, un canton, un type de livrable ne sont pas des données nominatives » est dans le prompt, deux lignes plus haut.
+- **Une règle de plus a produit un défaut de plus.** « La réponse à la question nLPD n’est pas une clarification · le message qui la suit est Question 1 sur N » a été lu comme « ajoute Question 1 sur 1 à la question nLPD » · le tour 1 porte désormais deux questions (`G2` ×4, `G6_NLPD_GROUPEE` ×4), là où la première version les séparait.
+- **L’interdit lexical ne tient pas.** « à préciser », « à indiquer », « selon contexte » sont nommés interdits ; ils reviennent 22 fois dans les dix transcriptions, `[À COMPLÉTER]` apparaît dans cinq sur dix (`m06_annonce_immobiliere` · 15 « à préciser », 1 marqueur).
+- **La ligne « Contexte retenu · »** disparaît plus souvent qu’avant (5 contre 3) · le prompt plus dense a fait reculer une consigne qu’il tenait.
+
+**Lecture.** Sur ce modèle, ajouter des règles au prompt ne corrige pas le comportement, il le déplace. Les deux disciplines qui manquent (clarifier avant de produire, marquer au lieu d’inventer) ne s’obtiennent pas par consigne sur Apertus 70B à température 0,2 · elles demandent soit un modèle qui suit les consignes négatives, soit une mécanique hors du prompt (un premier appel qui ne rend que la question, un second qui ne rend que le Gabarit). Le prompt réécrit est conservé · ses quatre règles sont justes et ne coûtent rien à un hôte qui les lit ; ce qu’elles valent sur Claude, GPT ou Mistral reste à mesurer.
+
+**Trouvé en rejouant, corrigé le même jour** · l’empreinte des adaptations ne couvrait que les sources du skill, pas le générateur · le relevé de la passe rejouée portait la même empreinte que la passe d’avant alors que le prompt avait changé. `generer_adaptations.empreinte()` lit désormais aussi son propre fichier.

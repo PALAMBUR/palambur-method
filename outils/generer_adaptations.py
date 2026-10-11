@@ -172,11 +172,19 @@ def lire_sources(dossier=SKILL, dossier_adaptations=None):
 
 
 def empreinte(textes):
-    """Les douze premiers hexadécimaux du sha256 des sources, dans l’ordre fixe."""
+    """Les douze premiers hexadécimaux du sha256 des sources, dans l’ordre fixe, PUIS de ce fichier.
+
+    Le générateur est une source comme les autres · le 12.10.2026, le texte
+    fixe du prompt complet a été réécrit (quatre règles tirées de l’expérience
+    Apertus) et l’empreinte n’a pas bougé, puisqu’elle ne lisait que le skill.
+    Le relevé de la passe rejouée portait donc la même empreinte que la passe
+    d’avant, et rien ne disait quelle version du prompt avait joué.
+    """
     h = hashlib.sha256()
     for nom in SOURCES:
         h.update(textes[nom].encode('utf-8'))
         h.update(b'\0')
+    h.update(io.open(__file__, encoding='utf-8').read().encode('utf-8'))
     return h.hexdigest()[:12]
 
 
@@ -434,9 +442,12 @@ def _blocs_numerotes(blocs):
 
 def rediger_complet(r):
     """Le bloc à coller de la version complète · l’ordre est une décision."""
-    niveaux = '\n'.join('- **%s** · %s → %s ; %s.' % (n[0], n[1].lower(), n[2].lower(),
-                                                      n[3].lower().rstrip('.'))
-                        for n in r['niveaux'])
+    #: une ligne pour les quatre niveaux · la glose d’une ligne par niveau a
+    #: cédé 370 caractères aux quatre règles tirées de l’expérience Apertus du
+    #: 12.10.2026 (déclencheur nLPD en négatif, Gabarit interdit sans
+    #: clarification, marqueur mot pour mot, cinq titres sur cinq lignes)
+    niveaux = ' · '.join('**%s** (%s) %s' % (n[0], n[1].lower(), n[2].lower().rstrip('.'))
+                         for n in r['niveaux'])
     #: les noms seuls · la glose d’une phrase par bloc (≈ 200 caractères) a
     #: cédé la place à la ligne de contexte et au zéro jargon le 11.10 au soir
     extensions = ', '.join('**%s**' % nom for nom, _ in r['extensions'])
@@ -444,17 +455,16 @@ def rediger_complet(r):
     #: une phrase par livrable · la ligne de contexte et le zéro jargon (11.10
     #: au soir) ont pris 400 caractères sous le plafond ChatGPT de 8'000
     champs = '\n'.join('- **%s** · %s' % (nom, premieres_phrases(corps, 1)) for nom, corps in r['champs'])
-    promesses = ' et '.join('**%s** (%s)' % (nom.lower(), premieres_phrases(corps, 1).rstrip('.'))
-                            for nom, corps in r['promesses'])
+    #: les noms seuls · la glose entre parenthèses (≈ 230 caractères) a cédé
+    #: la place aux quatre règles du 12.10.2026, voir `niveaux`
+    promesses = ' et '.join('**%s**' % nom.lower() for nom, _ in r['promesses'])
     critere = re.sub(r'^\*\*Quand passer en 9 blocs\*\*\s*:\s*', '', r['critere_extension'])
     critere = premieres_phrases(critere[:1].upper() + critere[1:], 1)
     relecture = ''
     if r['relecture']:
-        relecture = ('\n## Mode relecture\n\nSi l’utilisateur joint un texte déjà écrit et demande de le '
-                     'relire, le vérifier ou le passer au crible : aucune question. Rends un tableau '
-                     '« Constat · Risque · Correction proposée » (données inventées, articles de loi '
-                     'non sourcés, LEg, nLPD, ton), puis la version corrigée. La relecture corrige la '
-                     'forme, le droit et les données ; elle ne réécrit pas le fond.\n')
+        relecture = ('\n## Mode relecture\n\nTexte déjà écrit joint pour relecture : aucune question. '
+                     'Tableau « Constat · Risque · Correction proposée » (données inventées, articles '
+                     'non sourcés, LEg, nLPD, ton), puis la version corrigée ; le fond n’est pas réécrit.\n')
 
     return '''Tu es l’assistant **Méthode Palambur**. Tu transformes une demande métier souvent sous-spécifiée en **livrable de haute qualité** (offre d’emploi, contrat, devis, offre commerciale, relance client, note interne, compte rendu, courrier, charte…), pensé pour les **entreprises de Suisse romande**. **La Méthode** est l’ensemble ; **le Gabarit Palambur** en est l’outil, les 5 blocs ci-dessous.
 
@@ -466,8 +476,8 @@ Avant d’écrire le moindre mot du livrable, vérifie dans l’ordre :
 
 1. **Données nominatives ?** Si la demande contient des noms de clients ou de personnes, des montants, des contrats, ta toute première réponse est UNE question binaire, seule :
    %(question_binaire)s
-   Puis applique la décision **partout** (Gabarit ET livrable). Jamais d’hybride : on ne mélange pas vrais noms et pseudonymes.
-2. **Devrais-tu faire %(seuil)s hypothèses conséquentes ou plus ?** Si oui, clarifie avant de produire, selon la cadence ci-dessous.
+   Puis applique la décision **partout** (Gabarit ET livrable). Jamais d’hybride : on ne mélange pas vrais noms et pseudonymes. **Si la demande ne nomme ni personne, ni entreprise, ni montant, ni dossier précis, ne pose pas cette question** : un métier, un canton, un type de livrable ne sont pas des données nominatives.
+2. **Devrais-tu faire %(seuil)s hypothèses conséquentes ou plus ?** Si oui, clarifie avant de produire, selon la cadence ci-dessous. **La réponse à la question nLPD n’est pas une clarification** : le message qui la suit est « Question 1 sur N », jamais le Gabarit.
 
 Jamais un livrable rempli d’hypothèses prudentes suivi d’une liste de « points à valider » : on questionne **avant**, pas après. Si tout est déjà fourni, produis directement.
 
@@ -479,11 +489,9 @@ Jamais un livrable rempli d’hypothèses prudentes suivi d’une liste de « po
 
 ## Le Gabarit Palambur · les 5 blocs
 
-Règle de contrôle : **un bloc manquant, un résultat approximatif.**
-
 %(blocs)s
 
-**Quatre blocs d’extension** pour un livrable long ou juridiquement sensible : %(extensions)s. %(critere)s
+**Quatre blocs d’extension** pour un livrable long ou juridiquement sensible : %(extensions)s.
 
 ## Les 4 niveaux
 
@@ -499,7 +507,7 @@ D’abord **une ligne de contexte**, forme fixe : `%(contexte)s`.
 
 Puis deux parties, chacune sous un titre fixe :
 
-1. **Gabarit Palambur** (titre du bloc) · le Gabarit rempli, autonome, prêt à copier-coller, assemblé depuis les réponses, dans l’ordre des 5 blocs. Dans CONTRAINTES, écris : « si une information manque, écrivez %(marqueur_completer)s et ne la remplacez jamais par une valeur plausible ».
+1. **Gabarit Palambur** (titre du bloc) · le Gabarit rempli, autonome, prêt à copier-coller, assemblé depuis les réponses, **les 5 blocs numérotés, chaque titre en majuscules sur sa propre ligne**, jamais le Gabarit sur une seule ligne. Dans CONTRAINTES, écris : « si une information manque, écrivez %(marqueur_completer)s et ne la remplacez jamais par une valeur plausible ».
 2. **Livrable** (titre du bloc) · le texte prêt à l’emploi, produit à partir du Gabarit.
 
 La partie 1 n’est jamais omise. Ne produis la sortie qu’une fois les questions posées et répondues : jamais de Gabarit dans le même message qu’une question.
@@ -508,7 +516,7 @@ La partie 1 n’est jamais omise. Ne produis la sortie qu’une fois les questio
 
 %(garde_fous)s
 
-Marqueurs d’information manquante, jamais une invention : %(marqueurs)s. Sur tout livrable sensible, rappelle que **la validation humaine reste obligatoire**.
+Marqueurs d’information manquante, jamais une invention : %(marqueurs)s, **écrits mot pour mot, entre crochets**. Interdits : « à préciser », « à définir », « à indiquer », « selon contexte ». Une affirmation de la demande que tu ne peux pas vérifier (loi, article, pourcentage, délai) se reprend suivie de %(marqueur_verifier)s, jamais confirmée. Sur tout livrable sensible, rappelle que **la validation humaine reste obligatoire**.
 
 ## Anonymisation (si décision « anonymiser »)
 
@@ -536,6 +544,7 @@ Marqueurs d’information manquante, jamais une invention : %(marqueurs)s. Sur t
         garde_fous=garde_fous,
         marqueurs=', '.join(r['marqueurs']),
         marqueur_completer=r['marqueurs'][0],
+        marqueur_verifier=next(m for m in r['marqueurs'] if 'VÉRIFIER' in m),
         convention=re.sub(r"^\*\*Convention d['’]anonymisation\*\*\s*:\s*", '', r['convention']),
         #: sans la phrase sur les métaphores · elle décore, les deux autres règlent
         ton=re.sub(r'\s*Métaphores[^.]*\.', '', r['ton']),

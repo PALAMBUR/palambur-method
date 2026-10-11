@@ -34,7 +34,7 @@ cp -R skills/palambur-method/. .agents/skills/palambur-method/
 
 ## Pourquoi ce dossier ne contient qu’un README
 
-Au 11.10.2026, **Codex n’est pas installé sur cette machine** (`which codex` vide ; un binaire est embarqué dans l’application ChatGPT, non essayé). **Le chargement par Codex n’a donc pas été éprouvé.** Le lien n’est pas commité tant que Victor n’a pas tranché : un lien symbolique dans Git fonctionne sous macOS et Linux mais pas toujours sous Windows, et la liste de contrôle d’Anthropic refuse les liens symboliques commités pour les entrées chargées par un plugin (source : `https://claude.com/docs/plugins/pre-submission-checklist`, 11.10.2026 ; ce dossier n’est pas chargé par le plugin Claude, mais la règle mérite d’être lue avant de commiter).
+Au 11.10.2026, `which codex` était vide sur la machine de relevé. **Le 12.10.2026, le chargement par Codex a été éprouvé** avec le binaire embarqué dans l’application ChatGPT : le skill, lié par ce même type de lien dans `.agents/skills/` d’un dossier de travail, a été lu et le premier tour était conforme (`../../../epreuves/reponses/codex-natif/`). Le lien n’est pas commité tant que Victor n’a pas tranché : un lien symbolique dans Git fonctionne sous macOS et Linux mais pas toujours sous Windows, et la liste de contrôle d’Anthropic refuse les liens symboliques commités pour les entrées chargées par un plugin (source : `https://claude.com/docs/plugins/pre-submission-checklist`, 11.10.2026 ; ce dossier n’est pas chargé par le plugin Claude, mais la règle mérite d’être lue avant de commiter).
 
 ## Métadonnées propres à Codex · `agents/openai.yaml`
 
