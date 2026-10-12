@@ -8,7 +8,7 @@
 
 1. `extraire_arbre.mjs` · lit `const ARBRE` dans `outil_chaptal.html` et l’écrit dans `_cache/arbre.json`. **Lancé tout seul par `generer.py`** quand le cache manque ou est plus vieux que la page.
 2. `generer.py` · écrit les 26 fiches. `--sortie DOSSIER` pour écrire ailleurs et comparer sans toucher aux fiches du dépôt.
-3. `verifier.py` · structure en 7 sections, comptes ARBRE contre fiche, lois attestées, mot interdit, `art. N`, typographie. Code de retour 1 au premier écart.
+3. `verifier.py` · structure en 7 sections, comptes ARBRE contre fiche, lois attestées, mot interdit, `art. N`, typographie, et depuis le 12.10.2026 **aucun chemin ni nom de fichier de l’atelier** dans les fiches publiées (contrôle 9 · le skill est lu par l’IA de l’utilisateur, qui ne possède pas l’atelier). Code de retour 1 au premier écart.
 
 `lois_census.py` porte la table des motifs (`PAT`) et, lancé seul, imprime le recensement par métier. `chemins.py` résout tous les chemins depuis `__file__`.
 

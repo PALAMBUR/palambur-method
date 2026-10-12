@@ -9,7 +9,7 @@
     {
       "name": "palambur",
       "description": "Méthode Palambur · clarification ciblée avant production d’un livrable métier, Gabarit Palambur rempli puis livrable final, garde-fous suisses et protection des données par défaut (entreprises de Suisse romande).",
-      "version": "1.0.0",
+      "version": "1.6.0",
       "source": "./",
       "author": {
         "name": "Palambur · Victor Semblanet"

@@ -8,19 +8,55 @@ Chaque version porte une **Note de qualité** à forme fixe, cinq champs dans ce
 
 ## [Non publié]
 
+Rien pour l’instant.
+
+## [1.6.0] · 2026-10-12
+
+**Le dépôt s’adresse désormais à ses utilisateurs**, plus à l’atelier qui le fabrique. Un audit du 12.10.2026, mené contre les conventions des dépôts à plusieurs dizaines de milliers d’étoiles, a trouvé un cœur solide (exemples, journal, chaîne de contrôle, résultats négatifs publiés) enveloppé dans des fichiers écrits pour l’auteur : voix d’atelier dans 37 fichiers, chemins d’un disque privé dans les 26 fiches métier lues par l’IA, démarrage rapide après 110 lignes, dossiers de diffusion et de gouvernance interne. Cette version refait l’enveloppe sans toucher au fond de la Méthode.
+
+**Pourquoi 1.6.0 et pas 1.0.1.** Le deuxième chiffre compte les **itérations de travail** depuis la naissance du skill le 12.07.2026 : 04.08.2026 (socle canonique), 24.09.2026 (« entreprises »), 11.10.2026 (fondations, plans en 30 et 100 points), 12.10.2026 (1.0.0 et l’expérience Apertus), 12.10.2026 (prompt réécrit et Codex), 12.10.2026 (cette refonte). Six itérations, dont cinq avaient été poussées sous le même numéro ; ce journal les date, le numéro les compte désormais. La règle complète est dans `CONTRIBUTING.md`, section Gouvernance.
+
 ### Ajouté
 
-- `epreuves/reponses/codex-natif/` · première **épreuve réelle du skill natif sur Codex** (CLI embarqué dans l’application ChatGPT, modèle du poste, 12.10.2026) · le skill est lu depuis `.agents/skills/` par lien symbolique et le premier tour est conforme (« Question 1 sur 4 », lettres, échappatoire, défaut marqué, aucune question nLPD puisque aucune donnée) · un seul tour, `codex exec` n’est pas interactif · relevé dans `RELEVE.md`.
+- `README.en.md` · le README en anglais, même structure que le français. Les quatre langues portent une **barre de langues** en tête, quatre badges (CI, licence, version, Skills Directory), une section **« Essayer en deux minutes »** (Claude Code en deux commandes, boîte d’instructions par copier-coller, hôtes `.agents/skills` par lien symbolique), « Vérifier que le skill est chargé », un sommaire, les prérequis, et la section « Citer ».
+- `docs/demo-quatre-questions.svg` · une illustration schématique de l’échange (demande, quatre questions, Gabarit, Livrable, Journal de confiance), 1200 × 630, aucune donnée réelle · c’est un dessin, pas une capture.
+- `SECURITY.md` (FR puis EN) · ce que le skill fait et ne fait pas chez l’utilisateur, comment signaler, versions prises en charge. Le signalement privé GitHub (« Report a vulnerability ») est activé sur le dépôt depuis le 12.10.2026.
+- `CITATION.cff` · métadonnées de citation (Citation File Format 1.2.0), auteur « Palambur » comme entité.
+- `.github/PULL_REQUEST_TEMPLATE.md` (FR puis EN) · huit cases qui reprennent les règles de `CONTRIBUTING.md`. `.github/ISSUE_TEMPLATE/config.yml` · tickets vides fermés, renvoi vers les Discussions du dépôt et le site de la Méthode.
+- `CONTRIBUTING.md` · prérequis (Claude Code à jour ; Python 3.9 ou plus pour `outils/` seulement), **règle de régénération** (`python3 outils/generer_adaptations.py --ecrire` puis `python3 outils/controle.py` après toute retouche du skill), et deux paragraphes **Gouvernance** qui remplacent l’ancien `GOUVERNANCE.md` : ce que le mainteneur décide seul, comment une version sort, la règle du numéro.
+- `docs/pedagogie/FAQ.md` · deux entrées : « Qu’est-ce que `profil-entreprise.md` ? » et « Que veulent dire skill, plugin, marketplace, `CLAUDE.md` ? ». `docs/pedagogie/GLOSSAIRE.md` · section « Les mots de l’outil ».
+- `skills/palambur-method/protection-donnees.md` · **Jomini défini en une ligne** à sa première section (outil gratuit d’anonymisation de Palambur, sans compte, dans le navigateur) ; le README dit que c’est la seule mention d’un outil Palambur dans le skill, et pourquoi.
+- `outils/metiers/verifier.py` · **contrôle 9** : aucune trace de chemin d’atelier dans les fiches métier (il rougit à 111 traces sur les anciennes fiches, 0 après régénération).
+- `epreuves/reponses/codex-natif/` · première **épreuve réelle du skill natif sur Codex** (CLI, 12.10.2026) · le skill est lu depuis `.agents/skills/` par lien symbolique et le premier tour est conforme (« Question 1 sur 4 », lettres, échappatoire, défaut marqué, aucune question nLPD puisque aucune donnée) · un seul tour, `codex exec` n’est pas interactif · relevé dans `RELEVE.md`.
+- Dépôt GitHub (réglages, pas des fichiers) · page d’accueil `https://palambur.ch/methode/`, Discussions ouvertes, sujets `claude-code`, `claude-code-skill`, `codex`, `prompt-engineering`, `nlpd`, `rgpd`, `suisse` ajoutés.
 
 ### Modifié
 
-- `outils/generer_adaptations.py` et `adaptations/methode-palambur-prompt.md` · quatre règles tirées de l’expérience Apertus (déclencheur nLPD en négatif, Gabarit interdit sans clarification, marqueur écrit mot pour mot et formules « à préciser » interdites, cinq titres de bloc sur cinq lignes) ; gloses coupées pour tenir sous 8'000 caractères (promesses, critère d’extension, règle de contrôle, mode relecture, niveaux sur une ligne). Rejoué sur Apertus (dix cas, 0.0780 CHF) · **10 rouges sur 10, aucun gain**, détail dans `epreuves/RESULTATS_APERTUS_2026-10-11.md` § 9.
-- `outils/generer_adaptations.py` · l’empreinte des adaptations couvre désormais le générateur lui-même · le 12.10 le prompt avait changé sans que l’empreinte bouge.
+- `README.md` · réécrit pour l’utilisateur, en français seul (l’anglais vit dans `README.en.md`). La **démo** suit la sortie réelle du skill : trois lignes d’ouverture, niveau de sensibilité, « Question 1 sur 4 · le lieu et le cadre », ligne « Contexte retenu · … », blocs « Gabarit Palambur » et « Livrable », « Journal de confiance ». La mesure publiée est **recadrée** : 1 vert sur 149, mesuré sur Apertus avec le prompt d’adaptation complet, pas le skill natif ; le skill natif sur Claude n’a pas encore été mesuré. `profil-entreprise.md` est documenté. Le « GPT personnalisé » n’est plus une cible recommandée. La promesse de gratuité ne renvoie plus à un fichier de cadrage.
+- `README.de.md`, `README.it.md` · alignés sur le nouveau français (« vingt cas » devient 149 ; chemins `docs/`) · relecture native toujours attendue.
+- `docs/exemples/*.md` · les dix déroulés montrent les pièces que le skill rend vraiment (ouverture, niveau de sensibilité, « Contexte retenu », titres de blocs, Journal de confiance), avec un compte honnête de réponses, défauts et marqueurs ; liens corrigés après le déplacement.
+- Les **26 fiches métier**, `metiers/README.md`, `metiers/MARCHES.md`, `gabarits/README.md`, `references-juridiques.md` · plus aucun chemin ni nom de fichier de l’atelier (`outil_chaptal.html`, `0600_…`, `prompts.jsonl`, fichiers mémoire) ; les fiches sont régénérées par `outils/metiers/generer.py`, le contenu métier est intact à l’octet. Formule autoportante : « corpus Palambur, relevé du 09.10.2026 », « nomenclature suisse des professions, Office fédéral de la statistique ».
+- `docs/portabilite/INSTALLATION.md`, `docs/portabilite/CONFORMITE_STANDARD.md`, `docs/VEILLE_JURIDIQUE.md`, `outils/installer_local.sh`, `.agents/skills/palambur-method/README.md`, `adaptations/README.md`, `skills/palambur-method/agents/openai.yaml` · **voix d’atelier retirée** (relevés de poste, « go », « point N du plan », sessions, chemins de machine, renvois vers des fichiers hors dépôt) ; les relevés datés utiles restent.
+- `CODE_OF_CONDUCT.md` · le contact est le formulaire de palambur.ch ; la section « reste à décider » disparaît.
+- `.github/workflows/controle.yml` · les cas `evals/` sont **générés puis comptés** contre `epreuves/cas.json` (un dossier par cas, chacun avec son `prompt.md`) au lieu d’être comparés à un dossier commité ; le `grep` du mot interdit exclut `evals/`. `epreuves/generer_evals.py` ne réécrit plus `evals/.gitignore` s’il existe.
+- `outils/controle.py` · les témoins de l’épreuve suivent les fichiers dans `docs/`.
+- `outils/generer_adaptations.py` et `adaptations/methode-palambur-prompt.md` · quatre règles tirées de l’expérience Apertus (déclencheur nLPD en négatif, Gabarit interdit sans clarification, marqueur écrit mot pour mot et formules « à préciser » interdites, cinq titres de bloc sur cinq lignes) ; gloses coupées pour tenir sous 8'000 caractères. Rejoué sur Apertus (dix cas, 0.0780 CHF) · **10 rouges sur 10, aucun gain**, détail dans `epreuves/RESULTATS_APERTUS_2026-10-11.md` § 9. L’empreinte des adaptations couvre désormais le générateur lui-même.
 - `epreuves/jouer_apertus.py` · bras `complet-v2` (même prompt, autre dossier de réponses) ; `epreuves/reponses/apertus-complet-v2/`.
+
+### Déplacé
+
+- `exemples/`, `pedagogie/`, `portabilite/`, `VEILLE_JURIDIQUE.md`, `DIX_COMMANDEMENTS.md` descendent dans **`docs/`**. La racine ne porte plus que les README, le journal, les règles de contribution, de conduite et de sécurité, la citation et la licence.
+
+### Retiré
+
+Ces fichiers servaient l’atelier Palambur (diffusion, gouvernance interne, protocoles de mesure non engagés) et non les utilisateurs ; ils vivent désormais hors du dépôt. Rien n’est perdu, rien n’est publié à leur place.
+
+- `diffusion/` (22 fichiers · kits partenaires, cadrages produit, calendrier éditorial), `GOUVERNANCE.md` (remplacé par la section Gouvernance de `CONTRIBUTING.md`), `mesures/` (3 fichiers) et `outils/mesure.py`, `portabilite/ANNUAIRES.md`, `portabilite/VEILLE_PLATEFORMES.md`, `portabilite/METADONNEES_HOTES.md`, `pedagogie/LETTRE_TRIMESTRIELLE_N1.md`, `pedagogie/ATELIER_45_MIN.md`, `pedagogie/COURS_20_MIN.md`, `pedagogie/FICHE_IMPRIMABLE.md`, `epreuves/BETA_LECTEURS.md`, `epreuves/PROTOCOLE_LECTURE_HUMAINE.md`.
+- `evals/` · les **1'097 fichiers générés** quittent le suivi Git ; `evals/README.md` dit comment les régénérer et les jouer.
 
 ### Note de qualité
 
-Cas joués : 10 (bras `complet-v2`, prompt réécrit, Apertus) · Verts : 0 · Rouges : 10 · Date : 2026-10-12 · Instrument : `epreuves/mesurer.py`. Les 149 cas de 1.0.0 n’ont pas été rejoués avec ce prompt.
+Cas joués : 10 (bras `complet-v2`, prompt d’adaptation réécrit, sur Apertus) · Verts : 0 · Rouges : 10 · Date : 2026-10-12 · Instrument : `epreuves/mesurer.py`. En plus, un cas joué sur Codex avec le skill natif (premier tour conforme, un seul tour, relevé dans `epreuves/reponses/codex-natif/RELEVE.md`), hors instrument. Les 149 cas de 1.0.0 n’ont pas été rejoués ; le skill natif sur Claude n’a pas été joué. Cette version change l’enveloppe du dépôt et la forme des exemples, pas les consignes de `SKILL.md` ni de `methode-palambur.md` ; le prompt d’adaptation est celui mesuré ci-dessus.
 
 ## [1.0.0] · 2026-10-12
 
@@ -37,7 +73,7 @@ Première version numérotée, étiquetée et publiée le 12.10.2026 sur le go d
 - `outils/installer_local.sh` · pose le skill du dépôt dans `~/.claude/skills/` (à blanc par défaut, `--ecrire` pour écrire). Le dépôt devient la **seule source** ; la copie locale n’est plus éditée à la main. Refuse si la cible est un lien symbolique (c’est le cas sur la machine de Palambur au 11.10.2026 : le lien vise un clone périmé) et nomme les deux voies de sortie.
 - `epreuves/` · vingt cas (`cas.json`), la grille de notation (`grille.md`) et `mesurer.py` qui note une réponse contre la grille. Vingt cas au matin du 11.10, 149 au soir (entrée suivante) ; joués sur Apertus la nuit du 11 au 12.10.2026, voir la Note de qualité.
 - `evals/` · les mêmes vingt cas au format `claude plugin eval` (un dossier par cas, graders générés par `epreuves/generer_evals.py`). **Pas encore joués avec `claude plugin eval`** (la dépense sur Claude n’a pas été autorisée ; Apertus l’a été, voir `epreuves/`) ; `evals/results/` est ignoré par git.
-- Les commandes `gh` et `git` prêtes à copier pour retirer le sujet `pme`, corriger la description du profil, commiter, pousser et créer la release sont dans une feuille de l’atelier Palambur, **hors du dépôt** (`COMMANDES_GITHUB_SKILL_A_VALIDER_2026-10-11.md`) : elle porte des chemins de machine et des décisions qui ne regardent pas un clone public. Exécutées le 12.10.2026 sur son go.
+- Réglages du dépôt GitHub le 12.10.2026 : le sujet `pme` retiré, description réécrite, étiquette `v1.0.0` et release créées.
 - Livrés par les autres sessions du 11.10.2026, même version : `CONTRIBUTING.md`, `portabilite/` (installation sur Codex, ChatGPT, Gemini, Mistral, Infomaniak), `diffusion/`, `skills/palambur-method/gabarits/` (un fichier par livrable fréquent), `skills/palambur-method/metiers/` (un fichier par métier).
 
 - `epreuves/cas.json` · passe de vingt-et-un à **149 cas en trois familles** (relevé du 11.10.2026, `python3 epreuves/mesurer.py --compter` fait foi) · `livrable` (25, dont `express_offre_emploi` et `refus_donnees_sensibles`), `metier` (104 · quatre tâches réelles par fiche de `skills/palambur-method/metiers/`, chacune vérifiée présente dans la fiche), `piege` (20 demandes qui poussent à inventer · loi inexistante, CCT fictive, montant à deviner, article précis).

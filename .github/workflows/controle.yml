@@ -1,6 +1,6 @@
-# Contrôle du dépôt à chaque poussée et à chaque pull request (plan du 11.10.2026, point 83).
+# Contrôle du dépôt à chaque poussée et à chaque pull request.
 # Sans secret, sans appel de modèle · tout ce qui tourne ici est du Python local.
-# Rouge = pas de fusion. Les trois gestes du plan · controle.py, mesurer.py --epreuve, le mot interdit.
+# Rouge = pas de fusion. Quatre gestes · controle.py, les deux instruments éprouvés, les evals régénérées, le mot interdit.
 name: Contrôle
 
 on:
@@ -13,7 +13,7 @@ permissions:
 
 jobs:
   controle:
-    name: Chaîne de contrôle, épreuves, mot interdit
+    name: Chaîne de contrôle, épreuves, evals, mot interdit
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -21,7 +21,7 @@ jobs:
 
       - uses: actions/setup-python@v5
         with:
-          # la version de la machine de l’atelier · les scripts ne demandent rien de plus récent
+          # la version minimale que les scripts respectent · ils ne demandent rien de plus récent
           python-version: "3.9"
 
       - name: Chaîne de contrôle du dépôt
@@ -33,20 +33,37 @@ jobs:
       - name: La grille des épreuves sait dire oui et non
         run: python3 epreuves/mesurer.py --epreuve
 
-      - name: Les evals sont celles que cas.json fabrique aujourd’hui
+      - name: Les evals se régénèrent depuis cas.json, un dossier par cas
+        # Les cas ne sont plus versionnés depuis le 12.10.2026 (evals/.gitignore ignore les sous-dossiers) ·
+        # on vérifie que le générateur tourne et rend exactement autant de dossiers que cas.json compte de cas.
         run: |
           python3 epreuves/generer_evals.py
-          git diff --exit-code --stat -- evals
+          python3 - <<'EOF'
+          import json, sys
+          from pathlib import Path
+          attendu = len(json.load(open("epreuves/cas.json", encoding="utf-8"))["cas"])
+          dossiers = sorted(p.name for p in Path("evals").iterdir() if p.is_dir() and p.name != "results")
+          if len(dossiers) != attendu:
+              print("evals/ porte %d dossier(s) de cas, cas.json en compte %d" % (len(dossiers), attendu))
+              sys.exit(1)
+          sans_prompt = [d for d in dossiers if not Path("evals", d, "prompt.md").is_file()]
+          if sans_prompt:
+              print("dossier(s) sans prompt.md · " + ", ".join(sans_prompt))
+              sys.exit(1)
+          print("%d cas dans cas.json · %d dossiers générés sous evals/, chacun avec son prompt.md" % (attendu, len(dossiers)))
+          EOF
 
       - name: Le mot interdit, écrit à nu, hors des instruments qui le traquent
         # Le motif est écrit P[M]E pour que ce fichier ne porte pas le mot lui-même.
         # Les .py sont exclus (ce sont les instruments, controle.py les juge) ;
         # la citation de la règle (« … » ou entre accents graves) est tue.
         # epreuves/reponses/ est exclu depuis le 12.10.2026 · ce sont les transcriptions
-        # des modèles joués (Apertus y écrit le mot, et c’est la garde G11 de mesurer.py
+        # des modèles joués (certains y écrivent le mot, et c’est la garde G11 de mesurer.py
         # qui le compte, pas ce contrôle) · on ne corrige pas une pièce à conviction.
+        # evals/ est exclu depuis le 12.10.2026 · ses dossiers viennent d’être générés
+        # depuis epreuves/cas.json, qui est lui-même contrôlé ici.
         run: |
-          if grep -rnwE --exclude-dir=.git --exclude-dir=reponses --exclude='*.py' 'P[M]E' . | grep -vE '« P[M]E »|`P[M]E`' ; then
+          if grep -rnwE --exclude-dir=.git --exclude-dir=reponses --exclude-dir=evals --exclude='*.py' 'P[M]E' . | grep -vE '« P[M]E »|`P[M]E`' ; then
             echo 'Le mot interdit est écrit à nu · on dit « entreprises »'
             exit 1
           fi

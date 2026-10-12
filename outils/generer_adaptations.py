@@ -61,7 +61,7 @@ remarque « sur ces plateformes, l’assistant EST la méthode, il n’y a pas d
 déclencheur ». Ce qui a été retiré · tout chiffre que la source ne porte plus.
 
 TYPOGRAPHIE · les sources écrivent encore l’apostrophe droite (`l'outil`) ·
-la maison publie la courbe (`l’outil`), arbitré par Victor le 17.08.2026. La
+la maison publie la courbe (`l’outil`), arbitré par le mainteneur le 17.08.2026. La
 règle fait foi dans `0501_Prompts_Metiers/audit_typo.py` ; ce script lit sa
 copie EMBARQUÉE et DATÉE, `outils/regle_typo.py`, qui porte l’empreinte de la
 source et que `controle.py` compare à l’original dès que l’atelier est à côté.
@@ -196,7 +196,7 @@ def motif_souple(aiguille):
     """Le motif d’une aiguille dont les apostrophes acceptent la droite ET la courbe.
 
     Le 11.10.2026 les sources sont passées à l’apostrophe courbe (règle maison,
-    Victor 17.08.2026) et le générateur, qui cherchait « blocs d'extension »
+    arbitrage du 17.08.2026) et le générateur, qui cherchait « blocs d'extension »
     avec la droite, a refusé un skill intact. La forme de l’apostrophe n’est
     pas un changement de structure · on ne refuse pas pour elle.
     """

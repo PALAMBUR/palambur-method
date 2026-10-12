@@ -1,8 +1,8 @@
 # Communication de campagne · fiche métier allégée
 
-**Secteur** · Communication, écrit & campagne · code 17 · 30 pistes (état de l’ARBRE au 09.10.2026, `outil_chaptal.html`, `const ARBRE`).
+**Secteur** · Communication, écrit & campagne · code 17 · 30 pistes · corpus Palambur, relevé du 09.10.2026.
 
-**Intitulé officiel (CH-ISCO-19)** · 1114 Dirigeants et cadres supérieurs d’organisations spécialisées ; 2431 Spécialistes du marketing et de la publicité ; 2642 Journalistes · libellés lus dans `0600_RESSOURCES/06.12_Referentiels_Officiels/CH-ISCO-19_groupes_de_base.csv`, codes attribués à la fiche dans `0500_AGENTS_IA/0501_Prompts_Metiers/classement.json`.
+**Intitulé officiel (CH-ISCO-19)** · 1114 Dirigeants et cadres supérieurs d’organisations spécialisées ; 2431 Spécialistes du marketing et de la publicité ; 2642 Journalistes · nomenclature suisse des professions, Office fédéral de la statistique.
 
 Version allégée. Le skill charge cette fiche à l’Étape 1 quand la demande ou le profil de l’utilisateur désigne ce métier, pour choisir ses questions (Étape 2) et son vocabulaire (Étape 3).
 
@@ -12,7 +12,7 @@ La communication de campagne porte un programme et tient sous le feu. Elle produ
 
 ## 2 · Les tâches types
 
-Les 30 pistes du métier dans l’ARBRE (`outil_chaptal.html`), par famille, sous leur titre court.
+Les 30 pistes du métier dans le corpus Palambur, par famille, sous leur titre court.
 
 ### Programme et argumentaire · 5
 
@@ -70,7 +70,7 @@ profession de foi · programme · argumentaire · éléments de langage · objec
 
 ## 4 · Cadre légal et normatif cité par le corpus pour ce métier
 
-Textes nommés, jamais un numéro d’article. Un article éventuel s’écrit `[À VÉRIFIER]` (règle du 10.08.2026, `reference_regle_articles_loi.md`). État du corpus au 09.10.2026, `1300_PRODUITS_IA/03_JACQUARD/corpus/prompts.jsonl`, invites `PAL-17-*` (30 invites), comptées sur leur texte intégral.
+Textes nommés, jamais un numéro d’article. Un article éventuel s’écrit `[À VÉRIFIER]` (règle du 10.08.2026). État du corpus Palambur au 09.10.2026, invites `PAL-17-*` (30 invites), comptées sur leur texte intégral.
 
 | Texte | Ce qu’il règle pour ce métier | Invites qui le citent |
 |---|---|---|

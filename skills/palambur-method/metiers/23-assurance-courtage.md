@@ -1,8 +1,8 @@
 # Assurance & courtage · fiche métier allégée
 
-**Secteur** · Conseil, chiffres & numérique · code 23 · 30 pistes (état de l’ARBRE au 09.10.2026, `outil_chaptal.html`, `const ARBRE`).
+**Secteur** · Conseil, chiffres & numérique · code 23 · 30 pistes · corpus Palambur, relevé du 09.10.2026.
 
-**Intitulé officiel (CH-ISCO-19)** · 3321 Agents d’assurances · libellés lus dans `0600_RESSOURCES/06.12_Referentiels_Officiels/CH-ISCO-19_groupes_de_base.csv`, codes attribués à la fiche dans `0500_AGENTS_IA/0501_Prompts_Metiers/classement.json`.
+**Intitulé officiel (CH-ISCO-19)** · 3321 Agents d’assurances · nomenclature suisse des professions, Office fédéral de la statistique.
 
 Version allégée. Le skill charge cette fiche à l’Étape 1 quand la demande ou le profil de l’utilisateur désigne ce métier, pour choisir ses questions (Étape 2) et son vocabulaire (Étape 3).
 
@@ -12,7 +12,7 @@ L’intermédiaire d’assurance analyse le besoin, couvre et accompagne l’ind
 
 ## 2 · Les tâches types
 
-Les 30 pistes du métier dans l’ARBRE (`outil_chaptal.html`), par famille, sous leur titre court.
+Les 30 pistes du métier dans le corpus Palambur, par famille, sous leur titre court.
 
 ### Découverte et conseil · 6
 
@@ -70,7 +70,7 @@ intermédiaire lié · intermédiaire non lié · registre FINMA · devoir d’i
 
 ## 4 · Cadre légal et normatif cité par le corpus pour ce métier
 
-Textes nommés, jamais un numéro d’article. Un article éventuel s’écrit `[À VÉRIFIER]` (règle du 10.08.2026, `reference_regle_articles_loi.md`). État du corpus au 09.10.2026, `1300_PRODUITS_IA/03_JACQUARD/corpus/prompts.jsonl`, invites `PAL-23-*` (30 invites), comptées sur leur texte intégral.
+Textes nommés, jamais un numéro d’article. Un article éventuel s’écrit `[À VÉRIFIER]` (règle du 10.08.2026). État du corpus Palambur au 09.10.2026, invites `PAL-23-*` (30 invites), comptées sur leur texte intégral.
 
 | Texte | Ce qu’il règle pour ce métier | Invites qui le citent |
 |---|---|---|

@@ -1,1 +1,4 @@
 results/
+# Les cas sont GÉNÉRÉS depuis epreuves/cas.json par epreuves/generer_evals.py ·
+# la CI les régénère, le dépôt ne les porte plus (12.10.2026, 1'097 fichiers retirés du suivi).
+*/

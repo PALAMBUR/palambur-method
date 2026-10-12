@@ -1,0 +1,21 @@
+# Citation File Format 1.2.0 · https://citation-file-format.github.io/
+# Pour citer la Méthode Palambur dans un travail, un cours ou une publication.
+cff-version: 1.2.0
+message: "Si vous utilisez ce skill, merci de le citer avec les métadonnées ci-dessous · If you use this skill, please cite it using the metadata below."
+type: software
+title: "Méthode Palambur · skill palambur-method"
+abstract: "Skill pour Claude Code, Codex et d’autres hôtes · clarifie une demande métier sous-spécifiée avant de produire, protège les données nominatives par défaut (nLPD), n’invente ni chiffre ni article de loi. Pensé pour les entreprises de Suisse romande."
+authors:
+  - name: "Palambur"
+    website: "https://palambur.ch/"
+license: MIT
+repository-code: "https://github.com/PALAMBUR/palambur-method"
+url: "https://palambur.ch/methode/"
+version: "1.6.0"
+date-released: "2026-10-12"
+keywords:
+  - skill
+  - claude-code
+  - nlpd
+  - suisse
+  - entreprises

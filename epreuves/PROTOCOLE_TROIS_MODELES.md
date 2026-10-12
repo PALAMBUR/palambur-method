@@ -76,8 +76,8 @@ Le résultat va dans la **note de qualité** du `CHANGELOG.md` de la version jou
 
 Trente conversations de dix messages au plus. Le coût dépend des tarifs des trois hôtes à la date de la passe et de la longueur des échanges · **il n’est pas chiffré ici** (aucun chiffre sans date ni source). Avant de jouer ·
 
-- `[À DÉCIDER]` · le plafond en francs pour la passe, posé par Victor Semblanet ;
-- `[À DÉCIDER]` · les comptes utilisés (un compte d’essai par hôte, jamais un compte client) ;
-- `[À COMPLÉTER]` · le relevé de la dépense réelle, après la passe, dans `RELEVE.md`.
+- le **plafond en francs** de la passe, fixé par le mainteneur avant le premier appel et écrit dans le relevé ;
+- les **comptes** utilisés · un compte d’essai par hôte, jamais un compte client ;
+- le **relevé de la dépense réelle**, après la passe, dans le `RELEVE.md` du dossier de réponses.
 
-Sans go, ce protocole reste ce qu’il est · un protocole.
+Tant que la passe n’a pas été décidée, ce protocole reste ce qu’il est · un protocole.

@@ -23,7 +23,7 @@ Ce dépôt est un lieu de travail. On y propose des gabarits, on y signale des d
 
 **Signaler**
 
-Un manquement se signale par un ticket du dépôt marqué « conduite », ou, si le ticket public ne convient pas, à `[À DÉCIDER : adresse de contact]`. Le signalement est lu par la personne qui tient le dépôt ; elle répond dans les dix jours ouvrables, dit ce qu’elle a compris et ce qu’elle fait. Les suites vont de la demande de reformulation à l’exclusion du dépôt, selon la gravité et la répétition. Un signalement de bonne foi n’est jamais retenu contre la personne qui le fait.
+Un manquement se signale par un ticket du dépôt marqué « conduite », ou, si le ticket public ne convient pas, par le formulaire de contact de palambur.ch. Le signalement est lu par la personne qui tient le dépôt ; elle répond dans les dix jours ouvrables, dit ce qu’elle a compris et ce qu’elle fait. Les suites vont de la demande de reformulation à l’exclusion du dépôt, selon la gravité et la répétition. Un signalement de bonne foi n’est jamais retenu contre la personne qui le fait.
 
 ---
 
@@ -46,10 +46,4 @@ This repository is a workplace. People propose templates, report defects and cor
 
 **Reporting**
 
-A breach is reported through a repository issue labelled “conduct” or, if a public issue is not suitable, to `[À DÉCIDER : adresse de contact]` (contact address to be decided). The report is read by the person who maintains the repository; they reply within ten working days, state what they understood and what they are doing. Consequences range from a request to rephrase to exclusion from the repository, depending on severity and repetition. A good faith report is never held against the person who makes it.
-
----
-
-## Ce qui reste à décider · To be decided
-
-- `[À DÉCIDER : adresse de contact]` · une adresse de contact pour les signalements qui ne peuvent pas être publics ; aucune adresse personnelle, aucun nom. · A contact address for reports that cannot be public; no personal address, no name.
+A breach is reported through a repository issue labelled “conduct” or, if a public issue is not suitable, through the contact form on palambur.ch. The report is read by the person who maintains the repository; they reply within ten working days, state what they understood and what they are doing. Consequences range from a request to rephrase to exclusion from the repository, depending on severity and repetition. A good faith report is never held against the person who makes it.

@@ -2,11 +2,11 @@
 
 Les fiches de ce dossier sont écrites pour le marché racine **fr-CH** (Suisse romande). Ce fichier dit ce qui change quand l’utilisateur travaille pour un autre marché, d’abord **fr-FR** (France), puis les autres marchés déjà ouverts.
 
-Nomenclature des marchés reprise de l’arborescence des tâches par marché (`project_arborescence_taches_par_marche.md`) · fr-CH racine, puis fr-FR, de-CH, de-DE, it-CH, it-IT, en-US, es. Socle commun, puis branches par marché.
+Nomenclature des marchés reprise de l’arborescence des tâches par marché du corpus Palambur · fr-CH racine, puis fr-FR, de-CH, de-DE, it-CH, it-IT, en-US, es. Socle commun, puis branches par marché.
 
 ## 1 · Le socle fr-CH contre fr-FR · ce qui change pour tous les métiers
 
-Sources · `0500_AGENTS_IA/0501_Prompts_Metiers/_Traductions_multilingue/ANNEXES_CORRESPONDANCE_JURIDIQUE.md` (section France) · `NOTE_CADRAGE_PILOTE_ARBORESCENCE_2026-09-13.md` · `NOTE_COUVERTURE_LOI_MOP_2026-09-13.md` · `feedback_montants_adaptes_pas_convertis.md`.
+Sources · les annexes de correspondance juridique du corpus Palambur (section France, relevé du 02.09.2026) · la note de cadrage de l’arborescence par marché et la note de couverture de la loi MOP (13.09.2026) · la règle maison « montants adaptés au niveau de prix du pays, jamais convertis ».
 
 | Sujet | fr-CH | fr-FR | Ce que le skill fait |
 |---|---|---|---|

@@ -1,0 +1,10 @@
+# Les tickets passent par l’un des quatre modèles de ce dossier · pas de ticket vierge.
+# Les questions et les idées vont dans les Discussions, où personne n’a besoin d’un défaut à déclarer.
+blank_issues_enabled: false
+contact_links:
+  - name: "Questions et idées · Questions and ideas"
+    url: https://github.com/PALAMBUR/palambur-method/discussions
+    about: "Une question sur la Méthode, une idée de gabarit, un retour d’usage · A question about the Method, a template idea, feedback from use"
+  - name: "Le site de la Méthode · The Method’s website"
+    url: https://palambur.ch/methode/
+    about: "La Méthode expliquée pour les entreprises, sans installer quoi que ce soit · The Method explained for businesses, nothing to install"

@@ -83,7 +83,7 @@ def cases_vides(texte):
 
 
 # ---------------------------------------------------------------------------
-# Recopié de audit_typo.py · l’apostrophe (arbitrage de Victor du 2026-08-17)
+# Recopié de audit_typo.py · l’apostrophe (arbitrage du mainteneur, 17.08.2026)
 # ---------------------------------------------------------------------------
 
 #: l’apostrophe de la langue, celle qu’emploie la Suisse romande · U+2019

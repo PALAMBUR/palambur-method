@@ -1,6 +1,6 @@
 # Les 26 métiers · fiches allégées pour le skill
 
-Ce dossier branche la Méthode Palambur sur les 26 métiers de l’ARBRE (`outil_chaptal.html`, `const ARBRE`, 6 secteurs, 782 pistes, état au 09.10.2026). Une fiche par métier, même structure en sept sections · version allégée, dont la version complète, avec les invites de chaque piste, est Chaptal sur palambur.ch.
+Ce dossier branche la Méthode Palambur sur les 26 métiers du corpus Palambur (6 secteurs, 782 pistes, relevé du 09.10.2026). Une fiche par métier, même structure en sept sections · version allégée, dont la version complète, avec les invites de chaque piste, est Chaptal sur palambur.ch.
 
 ## Règle d’usage
 
@@ -19,18 +19,18 @@ Les différences par marché (fr-CH, fr-FR, puis les autres) sont dans `MARCHES.
 ## Structure fixe des 26 fiches
 
 1. Le métier en deux lignes
-2. Les tâches types (toutes les pistes du métier, par famille, titres courts de l’ARBRE)
+2. Les tâches types (toutes les pistes du métier, par famille, titres courts du corpus)
 3. Vocabulaire du métier
 4. Cadre légal et normatif cité par le corpus pour ce métier
 5. Questions que le skill pose en priorité pour ce métier
 6. Pièges
 7. Données sensibles typiques du métier
 
-Chaque fiche porte en tête son intitulé officiel CH-ISCO-19 (`0600_RESSOURCES/06.12_Referentiels_Officiels/CH-ISCO-19_groupes_de_base.csv`, codes dans `0500_AGENTS_IA/0501_Prompts_Metiers/classement.json`).
+Chaque fiche porte en tête son intitulé officiel CH-ISCO-19 (nomenclature suisse des professions, Office fédéral de la statistique).
 
 ## Index par secteur
 
-Les secteurs et leur ordre sont ceux de l’ARBRE.
+Les secteurs et leur ordre sont ceux du corpus Palambur.
 
 ### Fonctions transverses · 5 métiers
 
@@ -92,8 +92,8 @@ Total · 26 fiches, 782 pistes.
 
 ## Sources des fiches
 
-- Tâches, familles et index · `const ARBRE` de `outil_chaptal.html` (champs `nomCourt`, `nom`, `ref`).
-- Cadre légal · uniquement les textes qu’une invite du métier cite, par le sigle ou en toutes lettres, dans `1300_PRODUITS_IA/03_JACQUARD/corpus/prompts.jsonl` (782 invites, versions 2026-08-31 à 2026-09-14). Une fiche ne cite aucun texte absent de ses invites ; quand l’invite ne dit pas le sigle, la fiche le marque ¹.
-- Vocabulaire et pièges · `0600_RESSOURCES/06.12_Referentiels_Officiels/Metiers/<NN>_<Nom>/REFERENCES_<NN>_<Nom>.md`.
-- Règle des articles de loi · `reference_regle_articles_loi.md` (arbitrage du 10.08.2026).
+- Tâches, familles et index · l’arborescence des tâches du corpus Palambur (titre court, titre, référence de chaque piste), relevé du 09.10.2026.
+- Cadre légal · uniquement les textes qu’une invite du métier cite, par le sigle ou en toutes lettres, dans le corpus Palambur (782 invites, versions 2026-08-31 à 2026-09-14). Une fiche ne cite aucun texte absent de ses invites ; quand l’invite ne dit pas le sigle, la fiche le marque ¹.
+- Vocabulaire et pièges · rédigés d’après les fiches de référence de chaque métier du corpus Palambur ; le texte est porté par `outils/metiers/contenu_a.py` et `contenu_b.py`.
+- Règle des articles de loi · le texte se nomme, jamais un numéro d’article nu (arbitrage du 10.08.2026).
 - Générateurs · `outils/metiers/` du dépôt (`generer.py`, `verifier.py`).

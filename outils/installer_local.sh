@@ -4,11 +4,11 @@
 #     bash outils/installer_local.sh            # à blanc · montre le diff et ce que rsync ferait
 #     bash outils/installer_local.sh --ecrire   # pose réellement
 #
-# POURQUOI · le 11.10.2026, la copie installée dans ~/.claude/skills datait du
-# 04.08 et portait encore trois « PME » corrigés sur GitHub le 24.09. Trois
-# copies du skill dérivaient (dépôt, skill local, adaptations). Le plan en 30
-# points (point 4) fait du dépôt la SEULE source de vérité · la copie locale
-# n’est plus éditée à la main, elle est posée par ce script depuis le dépôt.
+# POURQUOI · une copie du skill posée à la main dans ~/.claude/skills finit par
+# dériver du dépôt (relevé du 11.10.2026 · une copie locale portait encore des
+# corrections faites sur GitHub deux semaines plus tôt). Le dépôt est la SEULE
+# source de vérité · la copie locale n’est plus éditée à la main, elle est
+# posée par ce script depuis le dépôt.
 #
 # CE QU’IL FAIT · un `diff -ru` lisible, puis `rsync -a --delete` de
 # `skills/palambur-method/` vers `~/.claude/skills/palambur-method/`.
@@ -16,20 +16,17 @@
 # remplacée n’est pas perdue, l’historique git du dépôt l’archive.
 #
 # À BLANC PAR DÉFAUT · sans `--ecrire`, rsync tourne avec `-n` et n’écrit rien.
-# Victor valide ce qu’il voit avant de poser.
+# Vous validez ce que vous voyez avant de poser.
 #
-# SI LA CIBLE EST UN LIEN SYMBOLIQUE · refus, dans les deux modes. Relevé du
-# 11.10.2026 · `~/.claude/skills/palambur-method` est un lien vers
-# `~/palambur/skills/palambur-method`, le clone périmé du 04.08.
-# Un rsync à travers ce lien écrirait DANS L’AUTRE CLONE, pas dans le dossier
-# qu’on croit poser, et son `--delete` y ferait le ménage. Deux voies, au choix
-# de Victor, aucune exécutée par ce script ·
-#   (a) garder le lien et mettre l’autre clone à jour · `git -C ~/palambur pull`
-#   (b) refaire le lien vers le clone de l’atelier ·
+# SI LA CIBLE EST UN LIEN SYMBOLIQUE · refus, dans les deux modes. Un rsync à
+# travers un lien écrirait DANS LE DOSSIER VISÉ PAR LE LIEN (souvent un autre
+# clone), pas dans le dossier qu’on croit poser, et son `--delete` y ferait le
+# ménage. Deux voies, aucune exécutée par ce script ·
+#   (a) garder le lien et mettre à jour le clone qu’il vise · `git pull` là-bas
+#   (b) refaire le lien vers ce dépôt ·
 #       `ln -sfn <dépôt>/skills/palambur-method ~/.claude/skills/palambur-method`
 #       (le dépôt est alors servi en direct, ce script devient inutile)
-# Les commandes sont écrites dans la feuille de l’atelier, hors du dépôt
-# (`0500_AGENTS_IA/COMMANDES_GITHUB_SKILL_A_VALIDER_2026-10-11.md`, § 5).
+# Le script imprime les deux commandes, prêtes à copier, au moment du refus.
 set -euo pipefail
 
 ICI="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -63,7 +60,7 @@ if [[ -L "${CIBLE_NUE}" ]]; then
   echo "REFUS · ${CIBLE_NUE} est un LIEN SYMBOLIQUE vers :"
   echo "        ${VISE}"
   echo "  un rsync à travers ce lien écrirait là-bas, pas ici · rien n’a été fait."
-  echo "  Deux voies, au choix de Victor (feuille de l’atelier COMMANDES_GITHUB_SKILL_A_VALIDER_2026-10-11.md § 5) :"
+  echo "  Deux voies, à votre choix (voir docs/portabilite/INSTALLATION.md § 1b) :"
   echo "   (a) garder le lien et mettre à jour ce qu’il vise :  git -C \"$(dirname "$(dirname "${VISE}")")\" pull"
   echo "   (b) refaire le lien vers ce dépôt :  ln -sfn \"${SOURCE%/}\" \"${CIBLE_NUE}\""
   exit 2

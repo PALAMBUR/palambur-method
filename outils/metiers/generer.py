@@ -13,6 +13,14 @@ motif ne connaissait que le sigle · la garde avait raison de parler, le motif a
 un secteur qui n’existe pas dans l’ARBRE · l’index est généré depuis l’ARBRE depuis.
 
 Code de sortie 2 si une source de l’atelier manque (dépôt cloné hors de l’atelier).
+
+Ce que les fiches ne portent plus · aucun chemin ni nom de fichier de l’atelier. Le 12.10.2026,
+l’audit du dépôt public a relevé dans les 26 fiches et le README des mentions comme
+`outil_chaptal.html`, `const ARBRE`, `0600_RESSOURCES/…`, `prompts.jsonl` · des chemins
+qu’aucun utilisateur du skill ne possède et que son IA relisait à chaque chargement. Le
+générateur a le droit de les connaître (il tourne ici) ; ce qu’il écrit dit « corpus Palambur,
+relevé du jj.mm.aaaa » et « Office fédéral de la statistique », formules datées et autoportantes.
+`verifier.py` (contrôle 9) refuse toute fiche qui en porterait un à nouveau.
 """
 import argparse
 import collections
@@ -73,7 +81,7 @@ def charger_arbre():
 
 def charger_isco():
     """Code CH-ISCO-19 → libellé · le libellé officiel 2166 porte un demi-cadratin, 2161 une
-    apostrophe droite · règle maison (séparateur ·, apostrophe courbe), décision laissée à Victor."""
+    apostrophe droite · règle maison (séparateur ·, apostrophe courbe), décision laissée au mainteneur."""
     chemins.exiger(chemins.ISCO_CSV, 'CH-ISCO-19_groupes_de_base.csv')
     isco = {}
     with open(chemins.ISCO_CSV, encoding='utf-8') as f:
@@ -109,20 +117,19 @@ def fiche(secteur, m, nn, refs, invites, isco):
     L = []
     L.append('# %s · fiche métier allégée' % q(m['nom']))
     L.append('')
-    L.append('**Secteur** · %s · code %s · %d pistes (état de l’ARBRE au %s, `outil_chaptal.html`, `const ARBRE`).'
+    L.append('**Secteur** · %s · code %s · %d pistes · corpus Palambur, relevé du %s.'
              % (q(secteur), nn, n, date_source(chemins.CHAPTAL_HTML)))
     L.append('')
     intit = ' ; '.join('%s %s' % (code, isco.get(code, '[À VÉRIFIER]')) for code in c['isco'])
-    L.append('**Intitulé officiel (CH-ISCO-19)** · %s · libellés lus dans '
-             '`0600_RESSOURCES/06.12_Referentiels_Officiels/CH-ISCO-19_groupes_de_base.csv`, codes attribués '
-             'à la fiche dans `0500_AGENTS_IA/0501_Prompts_Metiers/classement.json`.' % intit)
+    L.append('**Intitulé officiel (CH-ISCO-19)** · %s · nomenclature suisse des professions, '
+             'Office fédéral de la statistique.' % intit)
     L.append('')
     L.append('Version allégée. Le skill charge cette fiche à l’Étape 1 quand la demande ou le profil de '
              'l’utilisateur désigne ce métier, pour choisir ses questions (Étape 2) et son vocabulaire (Étape 3).')
     L.append('')
     L += ['## 1 · Le métier en deux lignes', '', q(c['deux_lignes']), '']
     L += ['## 2 · Les tâches types', '',
-          'Les %d pistes du métier dans l’ARBRE (`outil_chaptal.html`), par famille, sous leur titre court.' % n, '']
+          'Les %d pistes du métier dans le corpus Palambur, par famille, sous leur titre court.' % n, '']
     compte = 0
     for fam in m['enfants']:
         L.append('### %s · %d' % (q(fam['nom']), len(fam['enfants'])))
@@ -138,8 +145,7 @@ def fiche(secteur, m, nn, refs, invites, isco):
           ' · '.join(q(v) for v in c['vocab']), '']
     L += ['## 4 · Cadre légal et normatif cité par le corpus pour ce métier', '',
           'Textes nommés, jamais un numéro d’article. Un article éventuel s’écrit `[À VÉRIFIER]` (règle du '
-          '10.08.2026, `reference_regle_articles_loi.md`). État du corpus au %s, '
-          '`1300_PRODUITS_IA/03_JACQUARD/corpus/prompts.jsonl`, invites `PAL-%s-*` (%d invites), comptées '
+          '10.08.2026). État du corpus Palambur au %s, invites `PAL-%s-*` (%d invites), comptées '
           'sur leur texte intégral.' % (date_source(chemins.PROMPTS_JSONL), nn, len(invites)), '',
           '| Texte | Ce qu’il règle pour ce métier | Invites qui le citent |', '|---|---|---|']
     retirees, note = [], False
@@ -178,8 +184,8 @@ def readme(arbre, rows):
     L = []
     L.append('# Les 26 métiers · fiches allégées pour le skill')
     L.append('')
-    L.append('Ce dossier branche la Méthode Palambur sur les %d métiers de l’ARBRE (`outil_chaptal.html`, '
-             '`const ARBRE`, %d secteurs, %d pistes, état au %s). Une fiche par métier, même structure en sept '
+    L.append('Ce dossier branche la Méthode Palambur sur les %d métiers du corpus Palambur (%d secteurs, '
+             '%d pistes, relevé du %s). Une fiche par métier, même structure en sept '
              'sections · version allégée, dont la version complète, avec les invites de chaque piste, est '
              'Chaptal sur palambur.ch.'
              % (len(metiers), len(arbre['enfants']), total, date_source(chemins.CHAPTAL_HTML)))
@@ -200,17 +206,16 @@ def readme(arbre, rows):
           'Les différences par marché (fr-CH, fr-FR, puis les autres) sont dans `MARCHES.md`.', '']
     L += ['## Structure fixe des 26 fiches', '',
           '1. Le métier en deux lignes',
-          '2. Les tâches types (toutes les pistes du métier, par famille, titres courts de l’ARBRE)',
+          '2. Les tâches types (toutes les pistes du métier, par famille, titres courts du corpus)',
           '3. Vocabulaire du métier',
           '4. Cadre légal et normatif cité par le corpus pour ce métier',
           '5. Questions que le skill pose en priorité pour ce métier',
           '6. Pièges',
           '7. Données sensibles typiques du métier', '',
-          'Chaque fiche porte en tête son intitulé officiel CH-ISCO-19 '
-          '(`0600_RESSOURCES/06.12_Referentiels_Officiels/CH-ISCO-19_groupes_de_base.csv`, codes dans '
-          '`0500_AGENTS_IA/0501_Prompts_Metiers/classement.json`).', '']
+          'Chaque fiche porte en tête son intitulé officiel CH-ISCO-19 (nomenclature suisse des professions, '
+          'Office fédéral de la statistique).', '']
     L += ['## Index par secteur', '',
-          'Les secteurs et leur ordre sont ceux de l’ARBRE.', '']
+          'Les secteurs et leur ordre sont ceux du corpus Palambur.', '']
     for s in arbre['enfants']:
         ms = [(sec, m, nn, refs) for sec, m, nn, refs in metiers if sec == s['nom']]
         L.append('### %s · %d métiers' % (q(s['nom']), len(ms)))
@@ -223,13 +228,15 @@ def readme(arbre, rows):
     L.append('Total · %d fiches, %d pistes.' % (len(metiers), total))
     L.append('')
     L += ['## Sources des fiches', '',
-          '- Tâches, familles et index · `const ARBRE` de `outil_chaptal.html` (champs `nomCourt`, `nom`, `ref`).',
+          '- Tâches, familles et index · l’arborescence des tâches du corpus Palambur (titre court, titre, '
+          'référence de chaque piste), relevé du %s.' % date_source(chemins.CHAPTAL_HTML),
           '- Cadre légal · uniquement les textes qu’une invite du métier cite, par le sigle ou en toutes lettres, '
-          'dans `1300_PRODUITS_IA/03_JACQUARD/corpus/prompts.jsonl` (%d invites, versions %s). Une fiche ne cite '
+          'dans le corpus Palambur (%d invites, versions %s). Une fiche ne cite '
           'aucun texte absent de ses invites ; quand l’invite ne dit pas le sigle, la fiche le marque %s.'
           % (len(rows), ' à '.join([versions[0], versions[-1]]) if len(versions) > 1 else versions[0], NOTE),
-          '- Vocabulaire et pièges · `0600_RESSOURCES/06.12_Referentiels_Officiels/Metiers/<NN>_<Nom>/REFERENCES_<NN>_<Nom>.md`.',
-          '- Règle des articles de loi · `reference_regle_articles_loi.md` (arbitrage du 10.08.2026).',
+          '- Vocabulaire et pièges · rédigés d’après les fiches de référence de chaque métier du corpus Palambur ; '
+          'le texte est porté par `outils/metiers/contenu_a.py` et `contenu_b.py`.',
+          '- Règle des articles de loi · le texte se nomme, jamais un numéro d’article nu (arbitrage du 10.08.2026).',
           '- Générateurs · `outils/metiers/` du dépôt (`generer.py`, `verifier.py`).', '']
     return nbsp('\n'.join(L))
 

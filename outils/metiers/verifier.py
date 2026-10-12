@@ -11,6 +11,11 @@ Le second comptage (contrôle 3) relit `prompts.jsonl` ligne à ligne, sans pass
 `lois_census.par_metier`, et compare aux nombres ÉCRITS dans les fiches · il partage les
 motifs de `PAT` (une seule table), pas l’assemblage du texte ni le groupement.
 Code de sortie 1 au premier écart, 2 si une source de l’atelier manque.
+
+Contrôle 9 (12.10.2026) · aucun chemin ni nom de fichier de l’atelier dans les fiches. L’audit du
+dépôt public a trouvé ce jour-là, dans les 26 fiches et le README, `outil_chaptal.html`,
+`const ARBRE`, `0600_RESSOURCES/…`, `prompts.jsonl` · des chemins qu’aucun utilisateur ne possède,
+relus par son IA à chaque chargement. Le générateur a été corrigé ; ce contrôle empêche le retour.
 """
 import argparse
 import glob
@@ -31,6 +36,9 @@ SECTIONS = ['## 1 · Le métier en deux lignes', '## 2 · Les tâches types', '#
 #: assemblé pour que ce fichier ne porte pas le mot en clair
 MOT_INTERDIT = 'P' + 'ME'
 CELLULE = re.compile(r'^(\d+) sur (\d+)(?:, (?:dont (\d+) )?en toutes lettres ¹)?$')
+#: traces de l’atelier qu’une fiche publiée ne doit pas porter (contrôle 9, relevé du 12.10.2026)
+ATELIER = re.compile(r'outil_chaptal|const ARBRE|0600_RESSOURCES|prompts\.jsonl|0500_AGENTS|0501_Prompts|'
+                     r'1300_PRODUITS|classement\.json|reference_regle_articles_loi')
 
 
 def arbre_charge():
@@ -184,6 +192,18 @@ def main(argv=None):
     else:
         print('  README.md absent du dossier')
         ecarts_total += 1
+
+    print('\n== 9 · Chemins et fichiers de l’atelier · aucun dans les fiches publiées ==')
+    traces = []
+    for f in tous:
+        for i, ligne in enumerate(open(f, encoding='utf-8'), 1):
+            m = ATELIER.search(ligne)
+            if m:
+                traces.append((os.path.basename(f), i, m.group(0)))
+    print('  %s' % ('aucune trace dans %d fichiers' % len(tous) if not traces else '%d trace(s)' % len(traces)))
+    for x in traces:
+        print('  TRACE', x)
+    ecarts_total += len(traces)
 
     print('\nVERDICT ·', 'CONFORME' if ecarts_total == 0 else 'ÉCARTS · %d' % ecarts_total)
     return 0 if ecarts_total == 0 else 1

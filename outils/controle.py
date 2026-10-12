@@ -500,8 +500,11 @@ SAIN = ('LICENSE', 'CHANGELOG.md', '.claude-plugin/plugin.json',
         'skills/palambur-method/protection-donnees.md',
         'adaptations/README.md', 'outils/regle_typo.py')
 #: ce que les liens relatifs des fichiers SAIN visent · posés vides dans la copie
+#: · `docs/portabilite/…` depuis le 12.10.2026 (la documentation est descendue
+#: dans `docs/`, `VEILLE_PLATEFORMES.md` a quitté le dépôt) · si cette liste
+#: retarde sur `adaptations/README.md`, l’épreuve rougit sur le sain, et c’est voulu
 CIBLES_LIENS_SAIN = ('README.md', 'outils/generer_adaptations.py',
-                     'portabilite/INSTALLATION.md', 'portabilite/VEILLE_PLATEFORMES.md')
+                     'docs/portabilite/INSTALLATION.md')
 
 
 def epreuve():
@@ -658,15 +661,25 @@ def epreuve():
         ecrire(d, 'temoin.json', '{"a": 1,}')
         rougit('un JSON invalide est signalé', 'json', d, 'temoin.json')
 
-        # version
+        # version · le numéro courant se LIT dans la copie saine, il ne
+        # s’écrit pas ici · le 12.10.2026, le passage à 1.6.0 a laissé trois
+        # témoins muets parce qu’ils cherchaient « 1.0.0 » en dur · un témoin
+        # qui ne trouve plus sa cible ne casse rien, et le vert qu’il rend
+        # ne prouve plus rien (CLAUDE.md § 4)
         d = depot('version_market')
-        modifier(d, '.claude-plugin/marketplace.json', lambda t: t.replace('"1.0.0"', '"1.0.1"'))
+        courante = json.load(io.open(os.path.join(d, '.claude-plugin', 'plugin.json'),
+                                     encoding='utf-8'))['version']
+        autre = courante + '1'
+        modifier(d, '.claude-plugin/marketplace.json',
+                 lambda t: t.replace('"%s"' % courante, '"%s"' % autre))
         rougit('une version qui diverge dans marketplace.json', 'version', d, 'divergence')
         d = depot('version_changelog')
-        modifier(d, 'CHANGELOG.md', lambda t: t.replace('## [1.0.0]', '## [1.1.0]', 1))
+        modifier(d, 'CHANGELOG.md',
+                 lambda t: t.replace('## [%s]' % courante, '## [%s]' % autre, 1))
         rougit('une version qui diverge dans le CHANGELOG', 'version', d, 'divergence')
         d = depot('version_forme')
-        modifier(d, '.claude-plugin/plugin.json', lambda t: t.replace('"1.0.0"', '"v1"'))
+        modifier(d, '.claude-plugin/plugin.json',
+                 lambda t: t.replace('"%s"' % courante, '"v1"'))
         rougit('une version qui n’est pas X.Y.Z', 'version', d, 'X.Y.Z')
 
         # adaptations

@@ -11,8 +11,9 @@ texte.
 Format produit (vérifié le 11.10.2026 sur code.claude.com/docs/en/plugin-evals) ·
 
     evals/
-    ├── .gitignore              # results/
-    └── <id>/
+    ├── README.md               # versionné · comment lire et jouer les cas
+    ├── .gitignore              # versionné · results/ et */ (les cas ne sont plus suivis, 12.10.2026)
+    └── <id>/                   # généré, hors suivi Git
         ├── prompt.md           # frontmatter · name, description, tags, max_turns,
         │                       #   allowed_tools, expected_outcome · corps · la demande
         └── graders/<nom>.md    # un grader par fichier · regex ou tool_used seulement
@@ -167,7 +168,11 @@ def main():
     with open(CAS_JSON, encoding="utf-8") as f:
         cas = json.load(f)["cas"]
     EVALS.mkdir(exist_ok=True)
-    (EVALS / ".gitignore").write_text("results/\n", encoding="utf-8")
+    # Le .gitignore est versionné et dit plus que « results/ » depuis le 12.10.2026
+    # (il ignore aussi les dossiers de cas, qui ne sont plus suivis) · on ne le
+    # réécrit pas, on le pose seulement s’il manque, dans un clone neuf.
+    if not (EVALS / ".gitignore").exists():
+        (EVALS / ".gitignore").write_text("results/\n*/\n", encoding="utf-8")
     effaces, fichiers = 0, 0
     for c in cas:
         d = EVALS / c["id"]

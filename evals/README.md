@@ -1,14 +1,18 @@
 # Évaluations `claude plugin eval`
 
-Tout ce qui est sous `evals/<cas>/` est **généré** par `epreuves/generer_evals.py` depuis `epreuves/cas.json`. On n’édite pas ces fichiers à la main · on corrige `cas.json` et on relance.
+Ce dossier ne porte, dans le dépôt, que ce fichier et un `.gitignore`. Les cas eux-mêmes sont **générés** · un dossier `evals/<cas>/` par entrée d’`epreuves/cas.json`, avec son `prompt.md` et ses `graders/`. On n’édite jamais ces fichiers à la main · on corrige `cas.json` et on relance le générateur.
 
 ```bash
 python3 epreuves/generer_evals.py
 ```
 
-## Lancer
+**Les cas ne sont plus versionnés depuis le 12.10.2026** · les 149 dossiers de cas, soit 1'097 fichiers générés (relevé du 12.10.2026 · `git ls-tree -r HEAD --name-only evals`), ont été retirés du suivi Git ce jour-là, parce que deux copies d’une même vérité divergent toujours · la seule source est `epreuves/cas.json`. Le `.gitignore` de ce dossier ignore tout sous-dossier ; la chaîne de contrôle (`.github/workflows/controle.yml`) régénère les cas à chaque poussée et vérifie qu’il y en a autant que `cas.json` en compte.
 
-Depuis la racine du plugin ·
+## Jouer
+
+Les commandes suivent la documentation de Claude Code sur les évaluations de plugins (`claude plugin eval`). **Chaque passe consomme des appels de modèle**, facturés sur le compte qui lance la commande · un cas à une passe, c’est une session ; les 149 cas à plusieurs passes avec témoin sans plugin, c’est plusieurs centaines de sessions.
+
+Depuis la racine du dépôt, après avoir généré les cas ·
 
 ```bash
 claude plugin eval .
@@ -22,13 +26,13 @@ claude plugin eval . --case offre_emploi --runs 1 --ablation none
 
 Par famille · `--tag piege`, `--tag nlpd`, `--tag clarification`, `--tag complet`, `--tag declencheur-naturel`. Par métier · `--tag metier-NN` (le code de la fiche dans `skills/palambur-method/metiers/`). Par niveau · `--tag niveau-s` à `--tag niveau-xl`.
 
-Les résultats s’écrivent dans `evals/results/<horodatage>/` (rapport HTML et JSON) · le dossier est ignoré par `evals/.gitignore`.
+Les résultats s’écrivent dans `evals/results/<horodatage>/` (rapport HTML et JSON) · le dossier est ignoré par `evals/.gitignore` et par celui de la racine.
 
 ## Ce que chaque cas vérifie
 
 Une passe est **une session à un seul message** · elle juge le **premier tour** du modèle, pas l’échange entier.
 
-Les nombres de cas sont ceux du relevé du 11.10.2026 (149 dossiers) ; `grep -l 'tags:.*nlpd' evals/*/prompt.md | wc -l` donne celui du jour.
+Les nombres de cas sont ceux du relevé du 12.10.2026 (149 cas dans `cas.json`) ; après génération, `grep -l 'tags:.*nlpd' evals/*/prompt.md | wc -l` donne celui du jour.
 
 | Famille (`tags`) | Premier tour attendu | Graders |
 |---|---|---|
@@ -42,4 +46,4 @@ La famille se décide dans cet ordre : piège d’abord (le champ `famille` de `
 
 Le tag `declencheur-naturel` marque les cas **sans** le mot « palambur » dans la demande · c’est sur eux que `skill-fired` dit si la `description` du skill suffit à le déclencher.
 
-Aucun grader `llm` · tout est `regex` ou `tool_used`, donc gratuit. L’échange complet (lots, livrable final, marqueurs) se mesure avec `epreuves/mesurer.py` sur des réponses déposées à la main.
+Aucun grader `llm` · tout est `regex` ou `tool_used`, donc aucun appel de juge en plus de la session jouée. L’échange complet (lots, livrable final, marqueurs) se mesure avec `epreuves/mesurer.py` sur des réponses déposées à la main dans `epreuves/reponses/` ; la grille est dans `epreuves/grille.md`, le protocole dans `epreuves/PROTOCOLE_TROIS_MODELES.md`.

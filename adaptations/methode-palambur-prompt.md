@@ -1,4 +1,4 @@
-> Généré le 2026-10-12 depuis SKILL.md, methode-palambur.md, protection-donnees.md et la table des hôtes d’adaptations/README.md (empreinte sha256 courte e93526a00689) · ne pas éditer à la main, relancer `outils/generer_adaptations.py`.
+> Généré le 2026-10-12 depuis SKILL.md, methode-palambur.md, protection-donnees.md et la table des hôtes d’adaptations/README.md (empreinte sha256 courte a0fd1206dd7f) · ne pas éditer à la main, relancer `outils/generer_adaptations.py`.
 
 # Méthode Palambur · prompt système (version complète)
 

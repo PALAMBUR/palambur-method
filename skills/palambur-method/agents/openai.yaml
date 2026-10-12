@@ -2,8 +2,8 @@
 # https://learn.chatgpt.com/docs/build-skills (section « agents/openai.yaml »).
 # Seules les clés confirmées sur la page sont posées · ni icône, ni couleur
 # (la charte vit chez le site et sa Fabrique), ni `dependencies` (le skill
-# n’exige aucun outil, aucun serveur, aucun réseau). Relevé et raisons dans
-# portabilite/METADONNEES_HOTES.md.
+# n’exige aucun outil, aucun serveur, aucun réseau). Le guide hôte par hôte
+# est dans docs/portabilite/INSTALLATION.md.
 interface:
   display_name: "Méthode Palambur"
   short_description: "Pose les bonnes questions avant d’écrire un document de travail."

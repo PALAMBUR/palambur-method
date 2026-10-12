@@ -1,7 +1,7 @@
 {
   "name": "palambur",
   "description": "Méthode Palambur · pose les questions déterminantes avant de produire un livrable métier (offre d’emploi, devis, relance, contrat, note interne), puis rend le Gabarit Palambur rempli et le livrable final. Garde-fous suisses (LEg, nLPD, CO/LTr), protection des données par défaut, aucune donnée inventée. Pensé pour les entreprises de Suisse romande.",
-  "version": "1.0.0",
+  "version": "1.6.0",
   "author": {
     "name": "Palambur · Victor Semblanet",
     "url": "https://palambur.ch"

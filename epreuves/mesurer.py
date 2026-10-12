@@ -28,7 +28,7 @@ Format attendu d’une réponse (`reponses/<id>.md`) ·
     ## Assistant · tour 2
     …
 
-Seuls les tours « Assistant » sont mesurés. Python 3.9 (la machine de Victor).
+Seuls les tours « Assistant » sont mesurés. Python 3.9, version minimale.
 
 Ajouts du paquet 1 (11.10.2026, points 35, 36, 39, 40) · G16 (jargon face à
 l’utilisateur), G17 (ligne « Contexte retenu · » avant le Gabarit), G18 (le mode

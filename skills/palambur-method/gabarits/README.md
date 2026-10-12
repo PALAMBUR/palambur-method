@@ -2,7 +2,7 @@
 
 Dix fiches de référence, une par livrable fréquent. Chacune dit **quelles questions valent la peine d’être posées**, quelles valeurs prennent un défaut prudent sans question, et quels champs DONNÉES remplir. Elles détaillent la table « champs DONNÉES par livrable » de `../methode-palambur.md` · elles ne la contredisent pas.
 
-Chaque gabarit est **appuyé sur le corpus Palambur** des invites métier (`prompts.jsonl`, relevé du 11.10.2026 · 782 invites fr-CH). Les références `PAL-…` citées en bas de chaque fiche existent dans ce corpus ; leurs champs et leurs contraintes ont été repris, pas réinventés.
+Chaque gabarit est **appuyé sur le corpus Palambur** des invites métier (relevé du 11.10.2026 · 782 invites fr-CH). Les références `PAL-…` citées en bas de chaque fiche existent dans ce corpus ; leurs champs et leurs contraintes ont été repris, pas réinventés.
 
 ## Règle d’usage
 
