@@ -8,7 +8,9 @@ Chaque version porte une **Note de qualité** à forme fixe, cinq champs dans ce
 
 ## [Non publié]
 
-Rien pour l’instant.
+### Modifié
+
+- **L’anglais passe en première langue** (décision du mainteneur, 13.10.2026 · la Suisse a trois langues nationales, l’anglais est la langue commune des lecteurs de GitHub). `README.md` est désormais la version anglaise, le français vit dans `README.fr.md` ; la barre de langues des quatre README suit l’ordre English · Français · Deutsch · Italiano. Le contenu des README ne change pas. La description du dépôt GitHub et son image sociale (réglage GitHub, hors dépôt) sont en anglais depuis le même jour.
 
 ## [1.6.0] · 2026-10-12
 

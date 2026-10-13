@@ -1,6 +1,6 @@
 # Méthode Palambur · Skill `palambur-method`
 
-[Français](README.md) · [English](README.en.md) · Deutsch · [Italiano](README.it.md)
+[English](README.md) · [Français](README.fr.md) · Deutsch · [Italiano](README.it.md)
 
 [![Kontrolle](https://github.com/PALAMBUR/palambur-method/actions/workflows/controle.yml/badge.svg)](https://github.com/PALAMBUR/palambur-method/actions/workflows/controle.yml) [![MIT-Lizenz](https://img.shields.io/badge/licence-MIT-blue)](LICENSE) [![Version](https://img.shields.io/github/v/release/PALAMBUR/palambur-method)](https://github.com/PALAMBUR/palambur-method/releases) [![Security: A · Skills Directory](https://www.skillsdirectory.com/api/skills/palambur-palambur-method/badge)](https://www.skillsdirectory.com/skills/palambur-palambur-method)
 
@@ -247,7 +247,7 @@ Für Hosts, die nur ein **Feld für Systemanweisungen** bieten, liefert der Ordn
 
 ```
 palambur-method/
-├── README.md · README.en.md · README.de.md · README.it.md   # diese Datei, in vier Sprachen
+├── README.md · README.fr.md · README.de.md · README.it.md   # diese Datei, in vier Sprachen
 ├── CHANGELOG.md · CONTRIBUTING.md · CODE_OF_CONDUCT.md      # Versionen, Beiträge, Verhalten
 ├── SECURITY.md · CITATION.cff · LICENSE                     # Meldung, Zitation, MIT
 ├── .claude-plugin/          # plugin.json und marketplace.json · das Claude-Code-Plugin
