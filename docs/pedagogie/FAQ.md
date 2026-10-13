@@ -1,6 +1,86 @@
-# Questions fréquentes · Frequently asked questions
+# Frequently asked questions · Questions fréquentes
 
-*Français d’abord, English below.*
+*English first, Français below.*
+
+---
+
+## English
+
+### How does the skill trigger?
+
+Through one of three doors. **The word**: your message contains “palambur”, “méthode palambur” or “palambur method”. **The nature of the request**: a working document asked for in one or two sentences (job advert, quote, payment reminder, contract, internal memo), a Swiss business context, names or amounts to protect, or an attached text to review. **The “always on” option**: write “Méthode Palambur toujours active” in the conversation or in your `CLAUDE.md`, and the skill applies to everything the AI writes until “Méthode Palambur désactivée”.
+
+### Why does it ask me questions instead of answering?
+
+Because a one line request does not contain what is needed to write a document you can send. Without questions, the AI guesses: canton, duties, deadline, amount. The skill identifies the elements whose absence would force it to invent, and asks only for those. Four questions at most per batch, one per message, with a counter. If everything is already in your request, it asks nothing and produces directly.
+
+### Can I skip a question?
+
+Yes. Each question offers a **cautious default**, marked as the default if you do not specify. If you skip, it applies. If you choose “Other / I don’t know”, the field stays `[À COMPLÉTER]` (to be completed) in the document, visible, for you to fill in.
+
+### What happens to what I type? Does my data go anywhere?
+
+The skill sends nothing anywhere. It has no server, no account, no telemetry. It is a set of text files your AI reads. **Your data goes where your AI goes**, and only there: if you use a host whose servers are outside Switzerland, the host processes it, not the skill. That is why the skill first asks, as soon as it sees a name or an amount, whether it should anonymise. By default it does: “Client X”, “Employee A”. You put the names back on your side, in the final document.
+
+### What is the “personal data” question at the start?
+
+That is Step 0. As soon as your request carries a person’s or client’s name, a salary or an amount linked to someone, the skill asks a single binary question: anonymise everywhere (default) or keep as is. It comes before any other question and is not counted. If you keep, it keeps; it does not argue with your choice.
+
+### How much does it cost?
+
+Nothing. The skill is free, under the MIT licence, and will stay free: the method, the templates, the trade sheets, the test cases, and every version to come. What Palambur sells separately (a version pre configured for a company, an accompanied installation) adds service around the skill; nothing in the repository becomes paid. Deliverables carry no Palambur mention.
+
+### How is this different from a good prompt I would write myself?
+
+A good prompt is written once, on a day you have time. The skill writes it on every request, the same way, and hands it back to you: the **completed Palambur Template**, five ordered blocks (Instruction · Role and audience · Data · Constraints · Format), which you keep and reuse. It also carries what a hand written prompt forgets on a Monday morning: the data protection notice, the ban on inventing, legal texts named without article numbers, gender neutral wording for a job advert. The difference is not in one prompt; it is in the hundredth one looking like the first.
+
+### Why two parts in the answer?
+
+First the completed Template, then the deliverable. The deliverable is what you send. The Template is what you keep: it says exactly what was asked of the AI, and it can be replayed the following week with other data. If the deliverable disappoints you, you fix the Template, not the deliverable.
+
+### What do `[À COMPLÉTER]`, `[À VÉRIFIER]` and the other markers mean?
+
+`[À COMPLÉTER]` (to be completed): information only you have (a date, an amount, a name). `[À VÉRIFIER : base légale]` (to be checked: legal basis): the skill named a legal text but never quotes an article number from memory; someone must check before sending. `[À VÉRIFIER : CCT applicable]`, `[À VÉRIFIER : taux applicable]`: same rule for a collective agreement or a rate. `[À ARBITRER]` (to be decided): a choice that is yours (a tone, a deadline). `[À CONFIRMER]` (to be confirmed): a fact the skill inferred without being able to establish it. A marker left in a sent document is a mistake; a marker left in a draft is the skill doing its job.
+
+### Which AI tools does it work with?
+
+The `SKILL.md` format is an open standard. Skill folder placed directly: Claude Code, Codex, Cursor, GitHub Copilot, Gemini CLI, Mistral Vibe CLI. Skill upload: Gemini (app), Mistral Vibe Work. Instructions box only: Claude.ai Project, Infomaniak Euria and AI Tools, using the condensed system prompt from the `adaptations/` folder. The ChatGPT custom GPT is no longer recommended: OpenAI has announced its retirement. The host by host guide is in [`docs/portabilite/INSTALLATION.md`](../portabilite/INSTALLATION.md).
+
+### What if my host only offers an instructions box?
+
+The `adaptations/` folder holds the method condensed into a standalone system prompt, in two sizes, generated from the skill itself. You paste it. The detailed templates do not follow; the flow, the questions, the markers and the safeguards do.
+
+### Does the skill know Swiss law?
+
+It knows the **names** of the texts (CO, LTr, LEg, nLPD, LCD, LP, LTVA, CC, SIA, AIMP, CCT, GDPR) and when to name them. It never quotes an article number, a legal deadline or a rate without `[À VÉRIFIER]`. This is not a weakness: an article number quoted from memory by an AI is wrong often enough that it should never be trusted. The skill replaces neither a lawyer nor an accountant.
+
+### Does it work in German, Italian, English?
+
+The skill files are written in French. The questions and the deliverable follow the language of your request. The `README` exists in French, English, German and Italian; the German and Italian versions await proofreading by a native speaker.
+
+### Can it review a text I have already written?
+
+Yes, that is the review mode (Step 4). You attach the text and ask for a review: no questions, a table “Finding · Risk · Proposed correction”, then the corrected version. The review corrects form, law and data; it does not rewrite the substance.
+
+### What is `profil-entreprise.md`?
+
+An optional file the skill reads at the **root of your working folder**, before asking its first question. You write down what does not change from one deliverable to the next: canton, legal form, industry, applicable collective agreement, house tone. **Every completed field counts as an answer**: the matching question is no longer asked and the counter announces the remaining batch (“Question 1 of 2” instead of “Question 1 of 4”). The template to copy is in the skill, under the same name (`skills/palambur-method/profil-entreprise.md`). The file **never leaves your machine**: the skill reads it, copies only the useful field into a deliverable, and sends it nowhere. It never settles Step 0 (the personal data question is still asked).
+
+### What do skill, plugin, marketplace and `CLAUDE.md` mean?
+
+- **Skill** · a folder holding a `SKILL.md` file (instructions and triggers) and its reference files, which the AI loads on demand; it is an open standard read by several hosts.
+- **Plugin** · a package bundling one or more skills (and sometimes commands) for a one step installation in Claude Code; here the `palambur` plugin carries this skill only.
+- **Marketplace** · a catalogue of plugins declared by a `marketplace.json` file; the repository carries its own, hence the command `/plugin marketplace add PALAMBUR/palambur-method`.
+- **`CLAUDE.md`** · an instructions file Claude Code reads at start up in your working folder; that is where you write “Méthode Palambur toujours active” if you want the skill on everything that is written.
+- **`profil-entreprise.md`** · the permanent context file described in the previous question; it complements `CLAUDE.md`, it does not replace it.
+
+### Where are the full examples?
+
+In [`exemples/`](../exemples/): ten requests, one per template, with the questions asked, the completed Template and the deliverable, on fictional data.
+
+### How do I contribute or report a defect?
+
+Read [`CONTRIBUTING.md`](../../CONTRIBUTING.md). Three ways: report a defect, propose a deliverable template, correct a legal reference. The [code of conduct](../../CODE_OF_CONDUCT.md) applies.
 
 ---
 
@@ -81,83 +161,3 @@ Dans [`exemples/`](../exemples/) : dix demandes, une par gabarit, avec les quest
 ### Comment contribuer ou signaler un défaut ?
 
 Lisez [`CONTRIBUTING.md`](../../CONTRIBUTING.md). Trois façons : signaler un défaut, proposer un gabarit de livrable, corriger une référence juridique. Le [code de conduite](../../CODE_OF_CONDUCT.md) s’applique.
-
----
-
-## English
-
-### How does the skill trigger?
-
-Through one of three doors. **The word**: your message contains “palambur”, “méthode palambur” or “palambur method”. **The nature of the request**: a working document asked for in one or two sentences (job advert, quote, payment reminder, contract, internal memo), a Swiss business context, names or amounts to protect, or an attached text to review. **The “always on” option**: write “Méthode Palambur toujours active” in the conversation or in your `CLAUDE.md`, and the skill applies to everything the AI writes until “Méthode Palambur désactivée”.
-
-### Why does it ask me questions instead of answering?
-
-Because a one line request does not contain what is needed to write a document you can send. Without questions, the AI guesses: canton, duties, deadline, amount. The skill identifies the elements whose absence would force it to invent, and asks only for those. Four questions at most per batch, one per message, with a counter. If everything is already in your request, it asks nothing and produces directly.
-
-### Can I skip a question?
-
-Yes. Each question offers a **cautious default**, marked as the default if you do not specify. If you skip, it applies. If you choose “Other / I don’t know”, the field stays `[À COMPLÉTER]` (to be completed) in the document, visible, for you to fill in.
-
-### What happens to what I type? Does my data go anywhere?
-
-The skill sends nothing anywhere. It has no server, no account, no telemetry. It is a set of text files your AI reads. **Your data goes where your AI goes**, and only there: if you use a host whose servers are outside Switzerland, the host processes it, not the skill. That is why the skill first asks, as soon as it sees a name or an amount, whether it should anonymise. By default it does: “Client X”, “Employee A”. You put the names back on your side, in the final document.
-
-### What is the “personal data” question at the start?
-
-That is Step 0. As soon as your request carries a person’s or client’s name, a salary or an amount linked to someone, the skill asks a single binary question: anonymise everywhere (default) or keep as is. It comes before any other question and is not counted. If you keep, it keeps; it does not argue with your choice.
-
-### How much does it cost?
-
-Nothing. The skill is free, under the MIT licence, and will stay free: the method, the templates, the trade sheets, the test cases, and every version to come. What Palambur sells separately (a version pre configured for a company, an accompanied installation) adds service around the skill; nothing in the repository becomes paid. Deliverables carry no Palambur mention.
-
-### How is this different from a good prompt I would write myself?
-
-A good prompt is written once, on a day you have time. The skill writes it on every request, the same way, and hands it back to you: the **completed Palambur Template**, five ordered blocks (Instruction · Role and audience · Data · Constraints · Format), which you keep and reuse. It also carries what a hand written prompt forgets on a Monday morning: the data protection notice, the ban on inventing, legal texts named without article numbers, gender neutral wording for a job advert. The difference is not in one prompt; it is in the hundredth one looking like the first.
-
-### Why two parts in the answer?
-
-First the completed Template, then the deliverable. The deliverable is what you send. The Template is what you keep: it says exactly what was asked of the AI, and it can be replayed the following week with other data. If the deliverable disappoints you, you fix the Template, not the deliverable.
-
-### What do `[À COMPLÉTER]`, `[À VÉRIFIER]` and the other markers mean?
-
-`[À COMPLÉTER]` (to be completed): information only you have (a date, an amount, a name). `[À VÉRIFIER : base légale]` (to be checked: legal basis): the skill named a legal text but never quotes an article number from memory; someone must check before sending. `[À VÉRIFIER : CCT applicable]`, `[À VÉRIFIER : taux applicable]`: same rule for a collective agreement or a rate. `[À ARBITRER]` (to be decided): a choice that is yours (a tone, a deadline). `[À CONFIRMER]` (to be confirmed): a fact the skill inferred without being able to establish it. A marker left in a sent document is a mistake; a marker left in a draft is the skill doing its job.
-
-### Which AI tools does it work with?
-
-The `SKILL.md` format is an open standard. Skill folder placed directly: Claude Code, Codex, Cursor, GitHub Copilot, Gemini CLI, Mistral Vibe CLI. Skill upload: Gemini (app), Mistral Vibe Work. Instructions box only: Claude.ai Project, Infomaniak Euria and AI Tools, using the condensed system prompt from the `adaptations/` folder. The ChatGPT custom GPT is no longer recommended: OpenAI has announced its retirement. The host by host guide is in [`docs/portabilite/INSTALLATION.md`](../portabilite/INSTALLATION.md) (in French).
-
-### What if my host only offers an instructions box?
-
-The `adaptations/` folder holds the method condensed into a standalone system prompt, in two sizes, generated from the skill itself. You paste it. The detailed templates do not follow; the flow, the questions, the markers and the safeguards do.
-
-### Does the skill know Swiss law?
-
-It knows the **names** of the texts (CO, LTr, LEg, nLPD, LCD, LP, LTVA, CC, SIA, AIMP, CCT, GDPR) and when to name them. It never quotes an article number, a legal deadline or a rate without `[À VÉRIFIER]`. This is not a weakness: an article number quoted from memory by an AI is wrong often enough that it should never be trusted. The skill replaces neither a lawyer nor an accountant.
-
-### Does it work in German, Italian, English?
-
-The skill files are written in French. The questions and the deliverable follow the language of your request. The `README` exists in French, English, German and Italian; the German and Italian versions await proofreading by a native speaker.
-
-### Can it review a text I have already written?
-
-Yes, that is the review mode (Step 4). You attach the text and ask for a review: no questions, a table “Finding · Risk · Proposed correction”, then the corrected version. The review corrects form, law and data; it does not rewrite the substance.
-
-### What is `profil-entreprise.md`?
-
-An optional file the skill reads at the **root of your working folder**, before asking its first question. You write down what does not change from one deliverable to the next: canton, legal form, industry, applicable collective agreement, house tone. **Every completed field counts as an answer**: the matching question is no longer asked and the counter announces the remaining batch (“Question 1 of 2” instead of “Question 1 of 4”). The template to copy is in the skill, under the same name (`skills/palambur-method/profil-entreprise.md`). The file **never leaves your machine**: the skill reads it, copies only the useful field into a deliverable, and sends it nowhere. It never settles Step 0 (the personal data question is still asked).
-
-### What do skill, plugin, marketplace and `CLAUDE.md` mean?
-
-- **Skill** · a folder holding a `SKILL.md` file (instructions and triggers) and its reference files, which the AI loads on demand; it is an open standard read by several hosts.
-- **Plugin** · a package bundling one or more skills (and sometimes commands) for a one step installation in Claude Code; here the `palambur` plugin carries this skill only.
-- **Marketplace** · a catalogue of plugins declared by a `marketplace.json` file; the repository carries its own, hence the command `/plugin marketplace add PALAMBUR/palambur-method`.
-- **`CLAUDE.md`** · an instructions file Claude Code reads at start up in your working folder; that is where you write “Méthode Palambur toujours active” if you want the skill on everything that is written.
-- **`profil-entreprise.md`** · the permanent context file described in the previous question; it complements `CLAUDE.md`, it does not replace it.
-
-### Where are the full examples?
-
-In [`exemples/`](../exemples/): ten requests, one per template, with the questions asked, the completed Template and the deliverable, on fictional data.
-
-### How do I contribute or report a defect?
-
-Read [`CONTRIBUTING.md`](../../CONTRIBUTING.md). Three ways: report a defect, propose a deliverable template, correct a legal reference. The [code of conduct](../../CODE_OF_CONDUCT.md) applies.

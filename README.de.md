@@ -6,6 +6,8 @@
 
 **Ein Skill, der die richtigen Fragen stellt, bevor er schreibt.** Sie bitten eine KI um ein Arbeitsdokument (Stelleninserat, Offerte, Zahlungserinnerung, Vertrag, interne Notiz). Statt zu raten, was fehlt, und den Rest zu erfinden, stellt Ihnen der Skill höchstens vier kurze Fragen, eine nach der anderen, und liefert dann ein Dokument, das Sie verschicken können. Gedacht für Unternehmen der Westschweiz, überall verwendbar. Kostenlos, MIT-Lizenz.
 
+**Der Skill selbst ist auf Französisch geschrieben** · er erzeugt französischsprachige Dokumente für Unternehmen der Romandie, und seine veröffentlichten Messungen wurden an diesem Text gemacht. Was man vor der Installation liest (dieses README, der Leitfaden für Beiträge, die Installationsanleitung), ist auf Englisch.
+
 ---
 
 <a id="essayer"></a>
@@ -25,7 +27,7 @@ Dann tippen Sie: `méthode palambur : fais une offre d’emploi pour un peintre 
 
 **In Ihrem Browser** (Claude.ai, ChatGPT, Euria von Infomaniak, Mistral…) · öffnen Sie [`adaptations/methode-palambur-prompt.md`](adaptations/methode-palambur-prompt.md), kopieren Sie **den Block unter dem Strich** und fügen Sie ihn in die Anweisungen Ihres Projekts oder Ihres Assistenten ein. Nichts zu installieren. Für ein Anweisungsfeld mit knapper Zeichengrenze nehmen Sie den [Kurzprompt](adaptations/methode-palambur-prompt-court.md). Beide Prompts sind auf Französisch; die Fragen und das Dokument folgen der Sprache Ihrer Anfrage.
 
-**Codex, Cursor, Copilot, Gemini CLI, Mistral Vibe** · ein einziger symbolischer Link des Ordners `skills/palambur-method/` nach `~/.agents/skills/` genügt für alle fünf Hosts. Die Befehle, Host für Host, stehen in [`docs/portabilite/INSTALLATION.md`](docs/portabilite/INSTALLATION.md) (auf Französisch).
+**Codex, Cursor, Copilot, Gemini CLI, Mistral Vibe** · ein einziger symbolischer Link des Ordners `skills/palambur-method/` nach `~/.agents/skills/` genügt für alle fünf Hosts. Die Befehle, Host für Host, stehen in [`docs/portabilite/INSTALLATION.md`](docs/portabilite/INSTALLATION.md) (auf Englisch).
 
 **Prüfen, ob der Skill geladen ist** · in Claude Code `/plugin`, dann der Reiter **Installed**; oder, auf jedem Host, fragen Sie „méthode palambur : wie lautet deine erste Frage?“ und erwarten Sie eine Antwort, die mit „Frage 1 von N“ beginnt.
 

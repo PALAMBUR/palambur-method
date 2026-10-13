@@ -1,6 +1,64 @@
-# Contribuer · Contributing
+# Contributing · Contribuer
 
-Français d’abord, English below.
+English first, Français below.
+
+---
+
+## English
+
+Thank you for your interest. This repository holds **the Palambur Method** as a skill: a discipline of clarification before production, a five block template, Swiss legal safeguards and a ban on inventing data. Any contribution that strengthens one of these four points is welcome. Any contribution that weakens them will be discussed before it is declined.
+
+### Three ways to contribute
+
+1. **Report a defect** · the skill asked the wrong question, invented a value, forgot the counter, or cited a law it should not have cited. Open an issue with the "Defect" template.
+2. **Propose a deliverable template** · a file in `skills/palambur-method/gabarits/` for a frequent deliverable (job advert, quote, employment certificate, internal memo…): its DATA fields, its safeguards, one completed example. This is the most useful and the simplest contribution. "New template" issue.
+3. **Correct a legal reference** · a misnamed law, an outdated legal basis, a collective agreement cited without a source. "Legal correction" issue.
+
+Issues labelled **"good first contribution"** are reserved for templates: someone who writes a template knows the subject, and that is all it takes.
+
+### Prerequisites
+
+- **To use the skill**: none. Any host that reads the `SKILL.md` standard is enough (see [`docs/portabilite/INSTALLATION.md`](docs/portabilite/INSTALLATION.md)).
+- **To contribute and run the checks**: an up to date Claude Code (the `/plugin`, `/skills` and `/skill-doctor` commands verify loading) and **Python 3.9 or later** for the scripts in `outils/` and `epreuves/`, with no library to install.
+
+### Before opening a pull request
+
+- **A template touches neither `SKILL.md` nor the adaptations**: it goes in `gabarits/` and the control chain checks it. The adaptations do not follow on their own, see the regeneration rule below.
+- **Regeneration rule** · any change inside `skills/palambur-method/` (`SKILL.md`, `methode-palambur.md`, `protection-donnees.md`, and also the host table in `adaptations/README.md`) requires two commands, in this order: `python3 outils/generer_adaptations.py --ecrire`, which rebuilds the two prompts in `adaptations/`, then `python3 outils/controle.py`. Without the first one, the `adaptations` check refuses: the fingerprint declared at the top of the prompts no longer matches the sources. Never edit the two prompts by hand.
+- **Run the control chain**: `python3 outils/controle.py`. It refuses when typography, version number, links or adaptations are not compliant. A refusal is not a sanction, it is a pointer.
+- **One template = one file**, named after the deliverable, in Swiss French, formal address, no superlatives.
+
+### The house typography rule, in three lines
+
+1. **No punctuation dash** · no em dash, no en dash, no hyphen between two words. The separator is the middle dot "·". Hyphens inside compound words and list bullets stay.
+2. **Apostrophes are curly** (’) in prose: l’outil, n’est. They stay straight only between two digits: 4'820 CHF.
+3. **The French acronym for small and medium sized businesses is banned** · we write "entreprises" in French and "businesses" or "organisations" in English. The control chain refuses it.
+
+### The legal rule, in one line
+
+**Never a numbered article of law without `[À VÉRIFIER]`** (to be checked). Name the text (CO, LTr, LEg, nLPD, LCD), never quote an article number nobody has verified at the date of the contribution. A collective agreement is never cited without its source. If you are sure of an article, write it anyway with the marker: verification belongs to the reviewer, not to the writer.
+
+### The native speaker rule, in one line
+
+**No language enters the skill without a review by a native speaker of that language who works in one of the target professions.** A machine translation is a draft, not a contribution. The pull request names the reviewer’s **role** (never their name), the date of the review and the files reviewed; the "New language" issue template carries this checkbox, and a pull request that leaves it unticked waits. The rule applies to English too, even though the README is already bilingual · the skill’s English is reviewed like any other language.
+
+### What we do not accept
+
+- Templates that invent default values where the Method requires a marker.
+- References to AI tools that send data outside Switzerland presented as "sovereign".
+- Contributions that add advertising for Palambur inside deliverables: the skill is free and stays free, with no commercial message in what it produces.
+
+**Code of conduct and translations** · the [code of conduct](CODE_OF_CONDUCT.md) applies to every exchange in this repository; every translation (`README`, adaptations, templates) is proofread by a native speaker of the target language before it is merged, and carries the note “relecture native à faire” at the top until that is done.
+
+### Governance
+
+**What only the maintainer decides.** The repository is maintained by Palambur. Three things belong to the maintainer and are not decided in a pull request: the **version number**, **what enters the skill** (a template, a trade sheet, a rule in `SKILL.md`) and **the legal texts named** in `references-juridiques.md`. Everything else is discussed in issues, and a pull request that follows the rules above is reviewed within ten working days.
+
+**How a version is released.** A version is an entry in [`CHANGELOG.md`](CHANGELOG.md) with its **quality note** (cases played, green, red, date, instrument; “not played” is an honest value), the same number in `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`, a Git tag `vX.Y.Z`, a GitHub release and a **green CI** (`outils/controle.py`). The numbering rule: the **first digit** changes when the skill format or the Method itself changes incompatibly; the **second digit** counts the working iterations since the skill was born on 12.07.2026 (version 1.6.0 is the sixth iteration); the **third digit** is a correction with no new content (a typo, a link, typography). A new version always increments `version` in `plugin.json`, otherwise users keep the old copy.
+
+### Licence
+
+By contributing, you agree that your contribution is published under the repository’s MIT licence.
 
 ---
 
@@ -59,61 +117,3 @@ Les tickets marqués **« bonne première contribution »** sont réservés aux 
 ### Licence
 
 En contribuant, vous acceptez que votre contribution soit publiée sous la licence MIT du dépôt.
-
----
-
-## English
-
-Thank you for your interest. This repository holds **the Palambur Method** as a skill: a discipline of clarification before production, a five block template, Swiss legal safeguards and a ban on inventing data. Any contribution that strengthens one of these four points is welcome. Any contribution that weakens them will be discussed before it is declined.
-
-### Three ways to contribute
-
-1. **Report a defect** · the skill asked the wrong question, invented a value, forgot the counter, or cited a law it should not have cited. Open an issue with the "Defect" template.
-2. **Propose a deliverable template** · a file in `skills/palambur-method/gabarits/` for a frequent deliverable (job advert, quote, employment certificate, internal memo…): its DATA fields, its safeguards, one completed example. This is the most useful and the simplest contribution. "New template" issue.
-3. **Correct a legal reference** · a misnamed law, an outdated legal basis, a collective agreement cited without a source. "Legal correction" issue.
-
-Issues labelled **"good first contribution"** are reserved for templates: someone who writes a template knows the subject, and that is all it takes.
-
-### Prerequisites
-
-- **To use the skill**: none. Any host that reads the `SKILL.md` standard is enough (see [`docs/portabilite/INSTALLATION.md`](docs/portabilite/INSTALLATION.md), in French).
-- **To contribute and run the checks**: an up to date Claude Code (the `/plugin`, `/skills` and `/skill-doctor` commands verify loading) and **Python 3.9 or later** for the scripts in `outils/` and `epreuves/`, with no library to install.
-
-### Before opening a pull request
-
-- **A template touches neither `SKILL.md` nor the adaptations**: it goes in `gabarits/` and the control chain checks it. The adaptations do not follow on their own, see the regeneration rule below.
-- **Regeneration rule** · any change inside `skills/palambur-method/` (`SKILL.md`, `methode-palambur.md`, `protection-donnees.md`, and also the host table in `adaptations/README.md`) requires two commands, in this order: `python3 outils/generer_adaptations.py --ecrire`, which rebuilds the two prompts in `adaptations/`, then `python3 outils/controle.py`. Without the first one, the `adaptations` check refuses: the fingerprint declared at the top of the prompts no longer matches the sources. Never edit the two prompts by hand.
-- **Run the control chain**: `python3 outils/controle.py`. It refuses when typography, version number, links or adaptations are not compliant. A refusal is not a sanction, it is a pointer.
-- **One template = one file**, named after the deliverable, in Swiss French, formal address, no superlatives.
-
-### The house typography rule, in three lines
-
-1. **No punctuation dash** · no em dash, no en dash, no hyphen between two words. The separator is the middle dot "·". Hyphens inside compound words and list bullets stay.
-2. **Apostrophes are curly** (’) in prose: l’outil, n’est. They stay straight only between two digits: 4'820 CHF.
-3. **The French acronym for small and medium sized businesses is banned** · we write "entreprises" in French and "businesses" or "organisations" in English. The control chain refuses it.
-
-### The legal rule, in one line
-
-**Never a numbered article of law without `[À VÉRIFIER]`** (to be checked). Name the text (CO, LTr, LEg, nLPD, LCD), never quote an article number nobody has verified at the date of the contribution. A collective agreement is never cited without its source. If you are sure of an article, write it anyway with the marker: verification belongs to the reviewer, not to the writer.
-
-### The native speaker rule, in one line
-
-**No language enters the skill without a review by a native speaker of that language who works in one of the target professions.** A machine translation is a draft, not a contribution. The pull request names the reviewer’s **role** (never their name), the date of the review and the files reviewed; the "New language" issue template carries this checkbox, and a pull request that leaves it unticked waits. The rule applies to English too, even though the README is already bilingual · the skill’s English is reviewed like any other language.
-
-### What we do not accept
-
-- Templates that invent default values where the Method requires a marker.
-- References to AI tools that send data outside Switzerland presented as "sovereign".
-- Contributions that add advertising for Palambur inside deliverables: the skill is free and stays free, with no commercial message in what it produces.
-
-**Code of conduct and translations** · the [code of conduct](CODE_OF_CONDUCT.md) applies to every exchange in this repository; every translation (`README`, adaptations, templates) is proofread by a native speaker of the target language before it is merged, and carries the note “relecture native à faire” at the top until that is done.
-
-### Governance
-
-**What only the maintainer decides.** The repository is maintained by Palambur. Three things belong to the maintainer and are not decided in a pull request: the **version number**, **what enters the skill** (a template, a trade sheet, a rule in `SKILL.md`) and **the legal texts named** in `references-juridiques.md`. Everything else is discussed in issues, and a pull request that follows the rules above is reviewed within ten working days.
-
-**How a version is released.** A version is an entry in [`CHANGELOG.md`](CHANGELOG.md) with its **quality note** (cases played, green, red, date, instrument; “not played” is an honest value), the same number in `.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json`, a Git tag `vX.Y.Z`, a GitHub release and a **green CI** (`outils/controle.py`). The numbering rule: the **first digit** changes when the skill format or the Method itself changes incompatibly; the **second digit** counts the working iterations since the skill was born on 12.07.2026 (version 1.6.0 is the sixth iteration); the **third digit** is a correction with no new content (a typo, a link, typography). A new version always increments `version` in `plugin.json`, otherwise users keep the old copy.
-
-### Licence
-
-By contributing, you agree that your contribution is published under the repository’s MIT licence.

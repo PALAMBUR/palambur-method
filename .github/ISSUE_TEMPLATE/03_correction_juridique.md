@@ -5,31 +5,7 @@ title: "[Juridique] "
 labels: ["juridique"]
 ---
 
-<!-- Français d’abord, English below. Une correction = une source datée. -->
-
-## Français
-
-**Où** (fichier et ligne, ou citation exacte du passage)
-
-…
-
-**Ce qui est écrit aujourd’hui**
-
-> …
-
-**Ce qui devrait être écrit**
-
-> …
-
-**La source**, datée (texte de loi officiel sur fedlex.admin.ch, convention collective publiée, décision publiée) · l’adresse et la date de consultation
-
-…
-
-**Juridiction** · Suisse (fr-CH) · France (fr-FR) · autre :
-
-**Rappel de la règle du dépôt** · on nomme le texte (CO, LTr, LEg, nLPD, LCD), et tout numéro d’article porte `[À VÉRIFIER]` tant qu’une personne responsable ne l’a pas confirmé à la date de la relecture. Votre correction peut donc **ajouter** un marqueur, jamais en retirer un sans source.
-
----
+<!-- English first, Français below. Une correction = une source datée. -->
 
 ## English
 
@@ -52,3 +28,27 @@ labels: ["juridique"]
 **Jurisdiction** · Switzerland (fr-CH) · France (fr-FR) · other:
 
 **Reminder of the repository rule** · name the text (CO, LTr, LEg, nLPD, LCD), and every article number carries `[À VÉRIFIER]` until a responsible person has confirmed it at the date of review. Your correction may therefore **add** a marker, never remove one without a source.
+
+---
+
+## Français
+
+**Où** (fichier et ligne, ou citation exacte du passage)
+
+…
+
+**Ce qui est écrit aujourd’hui**
+
+> …
+
+**Ce qui devrait être écrit**
+
+> …
+
+**La source**, datée (texte de loi officiel sur fedlex.admin.ch, convention collective publiée, décision publiée) · l’adresse et la date de consultation
+
+…
+
+**Juridiction** · Suisse (fr-CH) · France (fr-FR) · autre :
+
+**Rappel de la règle du dépôt** · on nomme le texte (CO, LTr, LEg, nLPD, LCD), et tout numéro d’article porte `[À VÉRIFIER]` tant qu’une personne responsable ne l’a pas confirmé à la date de la relecture. Votre correction peut donc **ajouter** un marqueur, jamais en retirer un sans source.

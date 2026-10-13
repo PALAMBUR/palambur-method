@@ -6,6 +6,8 @@
 
 **Uno skill che pone le domande giuste prima di scrivere.** Lei chiede a un’IA un documento di lavoro (annuncio di impiego, preventivo, sollecito, contratto, nota interna). Invece di indovinare ciò che manca e inventare il resto, lo skill Le pone al massimo quattro domande brevi, una alla volta, poi restituisce un documento che può inviare. Pensato per le imprese della Svizzera romanda, utilizzabile ovunque. Gratuito, licenza MIT.
 
+**Lo skill in sé è scritto in francese** · produce documenti in francese per le imprese della Svizzera romanda, e le misure pubblicate sono state fatte su quel testo. Ciò che si legge prima di installare (questo README, la guida ai contributi, la guida d’installazione) è in inglese.
+
 ---
 
 <a id="essayer"></a>
@@ -25,7 +27,7 @@ Poi scriva: `méthode palambur : fais une offre d’emploi pour un peintre à 80
 
 **Nel Suo browser** (Claude.ai, ChatGPT, Euria di Infomaniak, Mistral…) · apra [`adaptations/methode-palambur-prompt.md`](adaptations/methode-palambur-prompt.md), copi **il blocco sotto la riga** e lo incolli nelle istruzioni del Suo progetto o del Suo assistente. Niente da installare. Per una casella di istruzioni con un limite stretto di caratteri, prenda il [prompt breve](adaptations/methode-palambur-prompt-court.md). Entrambi i prompt sono in francese; le domande e il documento seguono la lingua della Sua richiesta.
 
-**Codex, Cursor, Copilot, Gemini CLI, Mistral Vibe** · un solo collegamento simbolico della cartella `skills/palambur-method/` in `~/.agents/skills/` basta per i cinque host. I comandi, host per host, sono in [`docs/portabilite/INSTALLATION.md`](docs/portabilite/INSTALLATION.md) (in francese).
+**Codex, Cursor, Copilot, Gemini CLI, Mistral Vibe** · un solo collegamento simbolico della cartella `skills/palambur-method/` in `~/.agents/skills/` basta per i cinque host. I comandi, host per host, sono in [`docs/portabilite/INSTALLATION.md`](docs/portabilite/INSTALLATION.md) (in inglese).
 
 **Verificare che lo skill sia caricato** · in Claude Code, `/plugin` poi la scheda **Installed**; oppure, su qualsiasi host, chieda «méthode palambur : qual è la tua prima domanda?» e attenda una risposta che inizi con «Domanda 1 di N».
 

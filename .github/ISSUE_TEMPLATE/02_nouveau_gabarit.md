@@ -5,41 +5,7 @@ title: "[Gabarit] "
 labels: ["gabarit", "bonne première contribution"]
 ---
 
-<!-- Français d’abord, English below. Un gabarit = un fichier. -->
-
-## Français
-
-**Le livrable** (offre d’emploi, devis, certificat de travail, note interne, compte rendu…)
-
-…
-
-**Qui le rédige, et pour qui** (le rôle et l’audience du bloc 2 du Gabarit)
-
-…
-
-**Les champs DONNÉES qui changent le livrable** (ce qui devient une question si ça manque · le reste devient un marqueur `[À COMPLÉTER]`)
-
-1. …
-2. …
-3. …
-4. …
-
-**Les garde-fous propres à ce livrable** (LEg, nLPD, CO, LTr… nommés, jamais numérotés sans `[À VÉRIFIER]`)
-
-…
-
-**Un exemple rempli**, anonymisé, avec ses marqueurs visibles
-
-> …
-
-**Vérifications**
-
-- [ ] Aucun tiret de ponctuation, séparateur « · », apostrophes courbes
-- [ ] Le sigle interdit par la règle de marque n’apparaît pas · on écrit « entreprises »
-- [ ] Aucun article de loi sans `[À VÉRIFIER]`, aucune convention collective sans source
-- [ ] `python3 outils/controle.py` passe
-
----
+<!-- English first, Français below. Un gabarit = un fichier. -->
 
 ## English
 
@@ -72,3 +38,37 @@ labels: ["gabarit", "bonne première contribution"]
 - [ ] The banned French acronym for small and medium sized businesses does not appear · write "entreprises"
 - [ ] No article of law without `[À VÉRIFIER]`, no collective agreement without a source
 - [ ] `python3 outils/controle.py` passes
+
+---
+
+## Français
+
+**Le livrable** (offre d’emploi, devis, certificat de travail, note interne, compte rendu…)
+
+…
+
+**Qui le rédige, et pour qui** (le rôle et l’audience du bloc 2 du Gabarit)
+
+…
+
+**Les champs DONNÉES qui changent le livrable** (ce qui devient une question si ça manque · le reste devient un marqueur `[À COMPLÉTER]`)
+
+1. …
+2. …
+3. …
+4. …
+
+**Les garde-fous propres à ce livrable** (LEg, nLPD, CO, LTr… nommés, jamais numérotés sans `[À VÉRIFIER]`)
+
+…
+
+**Un exemple rempli**, anonymisé, avec ses marqueurs visibles
+
+> …
+
+**Vérifications**
+
+- [ ] Aucun tiret de ponctuation, séparateur « · », apostrophes courbes
+- [ ] Le sigle interdit par la règle de marque n’apparaît pas · on écrit « entreprises »
+- [ ] Aucun article de loi sans `[À VÉRIFIER]`, aucune convention collective sans source
+- [ ] `python3 outils/controle.py` passe

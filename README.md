@@ -6,6 +6,8 @@ English · [Français](README.fr.md) · [Deutsch](README.de.md) · [Italiano](RE
 
 **A skill that asks the right questions before it writes.** You ask an AI for a working document (a job advert, a quote, a payment reminder, a contract, an internal memo). Instead of guessing what is missing and making up the rest, the skill asks you at most four short questions, one at a time, then delivers a document you can actually send. Designed for businesses in French-speaking Switzerland, usable anywhere. Free, MIT licence.
 
+**The skill itself is written in French** · it produces French-language documents for businesses in French-speaking Switzerland, and its published measurements were made on that text. What a visitor reads before installing (this README, the contribution guide, the installation guide) is in English.
+
 ---
 
 <a id="try"></a>
@@ -25,7 +27,7 @@ Then type: `palambur method: write a job advert for a painter at 80 %`
 
 **In your browser** (Claude.ai, ChatGPT, Infomaniak’s Euria, Mistral…) · open [`adaptations/methode-palambur-prompt.md`](adaptations/methode-palambur-prompt.md), copy **the block below the rule**, paste it into the instructions of your project or assistant. Nothing to install. For an instructions box with a tight size limit, take the [short prompt](adaptations/methode-palambur-prompt-court.md). Both prompts are in French; the questions and the deliverable follow the language of your request.
 
-**Codex, Cursor, Copilot, Gemini CLI, Mistral Vibe** · a single symbolic link from the `skills/palambur-method/` folder into `~/.agents/skills/` serves all five hosts. The commands, host by host, are in [`docs/portabilite/INSTALLATION.md`](docs/portabilite/INSTALLATION.md) (in French).
+**Codex, Cursor, Copilot, Gemini CLI, Mistral Vibe** · a single symbolic link from the `skills/palambur-method/` folder into `~/.agents/skills/` serves all five hosts. The commands, host by host, are in [`docs/portabilite/INSTALLATION.md`](docs/portabilite/INSTALLATION.md).
 
 **Check that the skill is loaded** · in Claude Code, `/plugin` then the **Installed** tab; or, on any host, ask “palambur method: what is your first question?” and expect a reply that starts with “Question 1 of N”.
 

@@ -40,4 +40,4 @@ cp -R skills/palambur-method/. .agents/skills/palambur-method/
 
 La page officielle `https://learn.chatgpt.com/docs/build-skills` (lue le 11.10.2026) décrit un fichier **facultatif** `agents/openai.yaml` dans le dossier du skill, annoté « Optional: appearance and dependencies. » : nom affiché, description courte, invite par défaut, et la règle `allow_implicit_invocation` (« When `false`, Codex won't implicitly invoke the skill based on user prompt. »). C’est le **seul** fichier de métadonnées à part documenté par l’un des quatre hôtes relevés (Codex, Cursor, Gemini CLI, Copilot) ; les trois autres lisent le frontmatter de `SKILL.md` et des fichiers joints libres. Le fichier est posé dans `skills/palambur-method/agents/openai.yaml` (relevé du 12.10.2026), avec la source, jamais ici : il suit le lien comme le reste du dossier.
 
-Guide complet par hôte : [`docs/portabilite/INSTALLATION.md`](../../../docs/portabilite/INSTALLATION.md).
+Guide complet par hôte : [`docs/portabilite/INSTALLATION.fr.md`](../../../docs/portabilite/INSTALLATION.fr.md).

@@ -1,6 +1,6 @@
 {
   "name": "palambur",
-  "description": "Méthode Palambur · pose les questions déterminantes avant de produire un livrable métier (offre d’emploi, devis, relance, contrat, note interne), puis rend le Gabarit Palambur rempli et le livrable final. Garde-fous suisses (LEg, nLPD, CO/LTr), protection des données par défaut, aucune donnée inventée. Pensé pour les entreprises de Suisse romande.",
+  "description": "Palambur Method · asks the decisive questions before producing a business document (job advert, quote, payment reminder, contract, internal memo), then returns the completed Palambur Template and the final deliverable. Swiss safeguards (Gender Equality Act, Data Protection Act, Code of Obligations, Labour Act), data protection by default, no invented data. Built for businesses in French-speaking Switzerland · the skill itself is written in French.",
   "version": "1.6.0",
   "author": {
     "name": "Palambur · Victor Semblanet",

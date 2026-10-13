@@ -1,127 +1,129 @@
-# Installer la Méthode Palambur, hôte par hôte
+# Installing the Palambur Method, host by host
 
-Relevé du 11.10.2026. Chaque affirmation sur une plateforme porte sa **source officielle** et sa date de consultation. Ce qui n’a pas pu être lu sur une page officielle est écrit **« non confirmé »**. Le dossier du skill est `skills/palambur-method/` ; le dépôt est `https://github.com/PALAMBUR/palambur-method`.
+English · [Français](INSTALLATION.fr.md)
 
-**Une commande par bloc.** Copiez un bloc, collez-le, attendez le résultat, passez au suivant.
+Survey of 11.10.2026. Every statement about a platform carries its **official source** and the date it was consulted. Whatever could not be read on an official page is written **“not confirmed”**. The skill folder is `skills/palambur-method/`; the repository is `https://github.com/PALAMBUR/palambur-method`.
 
-Deux familles d’hôtes :
+**One command per block.** Copy a block, paste it, wait for the result, move on to the next one.
 
-| Famille | Ce qu’on installe | Hôtes |
+Two families of hosts:
+
+| Family | What you install | Hosts |
 |---|---|---|
-| **Skill natif** (standard Agent Skills, fichier `SKILL.md`) | le dossier `skills/palambur-method/` tel quel | Claude Code, Codex CLI, Codex dans ChatGPT, ChatGPT (app de bureau), Cursor, Gemini CLI et Antigravity, GitHub Copilot, Gemini (app), Mistral Vibe, claude.ai (skill personnalisé) |
-| **Prompt collé** (une seule boîte d’instructions) | un des deux prompts de `adaptations/` | Projet Claude.ai, Mistral Vibe Work (champ d’instructions), Infomaniak Euria et AI Tools |
+| **Native skill** (Agent Skills standard, `SKILL.md` file) | the `skills/palambur-method/` folder as is | Claude Code, Codex CLI, Codex in ChatGPT, ChatGPT (desktop app), Cursor, Gemini CLI and Antigravity, GitHub Copilot, Gemini (app), Mistral Vibe, claude.ai (custom skill) |
+| **Pasted prompt** (a single instructions box) | one of the two prompts in `adaptations/` | Claude.ai Project, Mistral Vibe Work (instructions field), Infomaniak Euria and AI Tools |
 
-Le GPT personnalisé de ChatGPT n’est plus une cible recommandée : OpenAI annonce son retrait (§ 3).
+ChatGPT’s custom GPT is no longer a recommended target: OpenAI has announced its retirement (§ 3).
 
 ---
 
 ## 1 · Claude Code
 
-Source : `https://code.claude.com/docs/en/skills` et `https://code.claude.com/docs/en/plugins/publish` (consultées le 11.10.2026).
+Source: `https://code.claude.com/docs/en/skills` and `https://code.claude.com/docs/en/plugins/publish` (consulted on 11.10.2026).
 
-Claude Code lit trois emplacements : le skill **personnel** `~/.claude/skills/<nom>/SKILL.md`, le skill **de projet** `.claude/skills/<nom>/SKILL.md`, et le skill **de plugin** `<plugin>/skills/<nom>/SKILL.md`. La documentation précise qu’une entrée `<nom>` peut être **un lien symbolique** vers un dossier situé ailleurs sur le disque (hors plugins). Les skills se rechargent **sans redémarrer** Claude Code.
+Claude Code reads three locations: the **personal** skill `~/.claude/skills/<name>/SKILL.md`, the **project** skill `.claude/skills/<name>/SKILL.md`, and the **plugin** skill `<plugin>/skills/<name>/SKILL.md`. The documentation states that a `<name>` entry may be **a symbolic link** to a folder located elsewhere on the disk (except for plugins). Skills reload **without restarting** Claude Code.
 
-### 1a · Par le marketplace du dépôt (recommandé)
+### 1a · Through the repository’s marketplace (recommended)
 
-Le dépôt porte son propre marketplace (`.claude-plugin/marketplace.json`, nom `palambur`) et son plugin (`.claude-plugin/plugin.json`, nom `palambur`). L’identifiant d’installation est donc `palambur@palambur`.
+The repository carries its own marketplace (`.claude-plugin/marketplace.json`, name `palambur`) and its plugin (`.claude-plugin/plugin.json`, name `palambur`). The installation identifier is therefore `palambur@palambur`.
 
-Dans Claude Code, ajoutez le marketplace :
+In Claude Code, add the marketplace:
 
 ```bash
 /plugin marketplace add PALAMBUR/palambur-method
 ```
 
-Puis installez le plugin :
+Then install the plugin:
 
 ```bash
 /plugin install palambur@palambur
 ```
 
-Depuis la version 2.1.275, la documentation donne aussi la forme en un geste :
+Since version 2.1.275, the documentation also gives the one-step form:
 
 ```bash
 /plugin install palambur --marketplace PALAMBUR/palambur-method
 ```
 
-En ligne de commande (si `claude` est sur votre `PATH`), l’équivalent est `claude plugin marketplace add PALAMBUR/palambur-method` puis `claude plugin install palambur@palambur`. Si `which claude` ne rend rien, passez par les commandes `/plugin` dans la conversation : elles font la même chose.
+On the command line (if `claude` is on your `PATH`), the equivalent is `claude plugin marketplace add PALAMBUR/palambur-method` then `claude plugin install palambur@palambur`. If `which claude` returns nothing, use the `/plugin` commands in the conversation: they do the same thing.
 
-**Vérifier que le skill est chargé** : ouvrez le menu des plugins,
+**Check that the skill is loaded**: open the plugins menu,
 
 ```bash
 /plugin
 ```
 
-puis l’onglet **Installed**, et Entrée sur `palambur` pour voir son état et ses composants. En ligne de commande (shell), les équivalents documentés sont `claude plugin list` et `claude plugin details palambur` (source `code.claude.com/docs/en/plugins/cli-reference`, sections « plugin list » et « plugin details », 11.10.2026). Puis la liste des skills visibles par Claude :
+then the **Installed** tab, and Enter on `palambur` to see its state and its components. On the command line (shell), the documented equivalents are `claude plugin list` and `claude plugin details palambur` (source `code.claude.com/docs/en/plugins/cli-reference`, sections “plugin list” and “plugin details”, 11.10.2026). Then the list of skills visible to Claude:
 
 ```bash
 /skills
 ```
 
-**Limites connues** (source `code.claude.com/docs/en/skills`, 11.10.2026) : la description et le champ `when_to_use` sont **tronqués ensemble à 1’536 caractères** dans la liste que voit Claude ; `compatibility` est limité à 500 caractères ; la documentation recommande de garder `SKILL.md` **sous 500 lignes**. Une nouvelle version du plugin **doit incrémenter `version`** dans `plugin.json`, sinon les utilisateurs gardent l’ancienne copie (source `code.claude.com/docs/en/plugins/publish`).
+**Known limits** (source `code.claude.com/docs/en/skills`, 11.10.2026): the description and the `when_to_use` field are **truncated together at 1’536 characters** in the list Claude sees; `compatibility` is limited to 500 characters; the documentation recommends keeping `SKILL.md` **under 500 lines**. A new version of the plugin **must increment `version`** in `plugin.json`, otherwise users keep the old copy (source `code.claude.com/docs/en/plugins/publish`).
 
-### 1b · Par copie ou lien manuel dans `~/.claude/skills/`
+### 1b · By manual copy or link into `~/.claude/skills/`
 
-Clonez le dépôt une seule fois, à l’endroit de votre choix :
+Clone the repository once, wherever you like:
 
 ```bash
 git clone https://github.com/PALAMBUR/palambur-method.git ~/palambur-method
 ```
 
-Créez le dossier des skills personnels s’il n’existe pas :
+Create the personal skills folder if it does not exist:
 
 ```bash
 mkdir -p ~/.claude/skills
 ```
 
-Puis **liez** le skill (une seule source, mise à jour par `git pull`) :
+Then **link** the skill (a single source, updated with `git pull`):
 
 ```bash
 ln -s ~/palambur-method/skills/palambur-method ~/.claude/skills/palambur-method
 ```
 
-Si vous préférez une **copie** indépendante (elle ne suivra pas les mises à jour) :
+If you prefer an independent **copy** (it will not follow updates):
 
 ```bash
 cp -R ~/palambur-method/skills/palambur-method ~/.claude/skills/palambur-method
 ```
 
-**Vérifier** que le fichier est bien là :
+**Check** that the file is there:
 
 ```bash
 ls -la ~/.claude/skills/palambur-method
 ```
 
-Vous devez voir `SKILL.md`, ses fichiers de référence (`methode-palambur.md`, `protection-donnees.md`, `references-juridiques.md`, `relecture.md`, `profil-entreprise.md`) et les dossiers `gabarits/` et `metiers/` (contenu de la version 1.0.0, 12.10.2026). Puis, dans Claude Code :
+You should see `SKILL.md`, its reference files (`methode-palambur.md`, `protection-donnees.md`, `references-juridiques.md`, `relecture.md`, `profil-entreprise.md`) and the `gabarits/` and `metiers/` folders (contents of version 1.0.0, 12.10.2026). Then, in Claude Code:
 
 ```bash
 /skills
 ```
 
-et, pour un diagnostic du frontmatter et de la description :
+and, for a diagnosis of the frontmatter and the description:
 
 ```bash
 /skill-doctor
 ```
 
-Si le skill n’apparaît pas :
+If the skill does not appear:
 
 ```bash
 /reload-skills
 ```
 
-**Mettre à jour** un skill lié :
+**Update** a linked skill:
 
 ```bash
 git -C ~/palambur-method pull
 ```
 
-**Une vérité, le dépôt** : la seule source du skill est `skills/palambur-method/` dans le dépôt ; tout emplacement d’hôte est un lien ou une copie datée qui se met à jour depuis lui, jamais un fichier qu’on corrige sur place. Si vous avez cloné le dépôt deux fois, gardez un seul clone et faites pointer le lien vers lui : deux clones finissent toujours par diverger.
+**One truth, the repository**: the only source of the skill is `skills/palambur-method/` in the repository; every host location is a link or a dated copy that updates from it, never a file you fix in place. If you have cloned the repository twice, keep a single clone and point the link at it: two clones always end up diverging.
 
-### 1c · Skill personnalisé sur claude.ai (sans Claude Code)
+### 1c · Custom skill on claude.ai (without Claude Code)
 
-Source : `https://support.claude.com/en/articles/12512180-using-skills-in-claude` (11.10.2026). Dans claude.ai : **Customize › Skills** (`https://claude.ai/customize/skills`, 403 sans connexion) › **+** › **Create skill** › **Upload a skill**, en déposant une archive ZIP du dossier `palambur-method/`. Conditions lues : forfaits Free, Pro, Max, Team, Enterprise ; l’exécution de code doit être activée ; **le nom du dossier doit être égal au `name`** du frontmatter. Hors Claude Code, seuls les champs `name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools` sont acceptés dans le frontmatter (source `code.claude.com/docs/en/skills`).
+Source: `https://support.claude.com/en/articles/12512180-using-skills-in-claude` (11.10.2026). In claude.ai: **Customize › Skills** (`https://claude.ai/customize/skills`, 403 when not signed in) › **+** › **Create skill** › **Upload a skill**, dropping a ZIP archive of the `palambur-method/` folder. Conditions read: Free, Pro, Max, Team, Enterprise plans; code execution must be enabled; **the folder name must equal the `name`** of the frontmatter. Outside Claude Code, only the fields `name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools` are accepted in the frontmatter (source `code.claude.com/docs/en/skills`).
 
-Fabriquer l’archive depuis la racine du dépôt (macOS ; `--keepParent` garde le dossier `palambur-method/` à la racine du ZIP, comme claude.ai l’exige ; `--norsrc` évite les fichiers `._*` que macOS ajoute sinon) :
+Build the archive from the repository root (macOS; `--keepParent` keeps the `palambur-method/` folder at the root of the ZIP, as claude.ai requires; `--norsrc` avoids the `._*` files macOS would otherwise add):
 
 ```bash
 ditto -c -k --keepParent --norsrc skills/palambur-method palambur-method.zip
@@ -129,94 +131,94 @@ ditto -c -k --keepParent --norsrc skills/palambur-method palambur-method.zip
 
 ---
 
-## 2 · Codex CLI et Codex dans l’IDE (OpenAI)
+## 2 · Codex CLI and Codex in the IDE (OpenAI)
 
-Source : `https://developers.openai.com/codex/skills` (redirigée vers `https://learn.chatgpt.com/docs/build-skills`, consultée le 11.10.2026). Codex **« builds on the open agent skills standard »**.
+Source: `https://developers.openai.com/codex/skills` (redirected to `https://learn.chatgpt.com/docs/build-skills`, consulted on 11.10.2026). Codex **“builds on the open agent skills standard”**.
 
-**Emplacements lus par Codex** (liste de la page officielle) : `$CWD/.agents/skills`, les dossiers `.agents/skills` de chaque répertoire parent **jusqu’à la racine du dépôt Git**, `$HOME/.agents/skills` (personnel), `/etc/codex/skills` (machine), et les skills système fournis. **Les chemins `.codex/skills/` et `$CODEX_HOME/skills/` ne figurent pas** sur cette page : ils sont **non confirmés** au 11.10.2026 (des articles de blog les citent, la page officielle ne les nomme pas).
+**Locations read by Codex** (list from the official page): `$CWD/.agents/skills`, the `.agents/skills` folders of each parent directory **up to the root of the Git repository**, `$HOME/.agents/skills` (personal), `/etc/codex/skills` (machine), and the bundled system skills. **The paths `.codex/skills/` and `$CODEX_HOME/skills/` do not appear** on this page: they are **not confirmed** as of 11.10.2026 (blog posts cite them, the official page does not name them).
 
-La page dit explicitement : **« Codex supports symlinked skill folders and follows the symlink target when scanning these locations. »** On peut donc lier au lieu de copier.
+The page says explicitly: **“Codex supports symlinked skill folders and follows the symlink target when scanning these locations.”** You can therefore link instead of copying.
 
-### 2a · Skill personnel (toutes vos sessions Codex)
+### 2a · Personal skill (all your Codex sessions)
 
-Clonez le dépôt si ce n’est pas déjà fait :
+Clone the repository if you have not done so already:
 
 ```bash
 git clone https://github.com/PALAMBUR/palambur-method.git ~/palambur-method
 ```
 
-Créez le dossier personnel :
+Create the personal folder:
 
 ```bash
 mkdir -p ~/.agents/skills
 ```
 
-Liez le skill :
+Link the skill:
 
 ```bash
 ln -s ~/palambur-method/skills/palambur-method ~/.agents/skills/palambur-method
 ```
 
-### 2b · Skill de dépôt (dans un projet)
+### 2b · Repository skill (inside a project)
 
-Dans le dépôt `palambur-method` lui-même, le dossier `.agents/skills/palambur-method/` est prévu : voir son `README.md`. Depuis la racine du dépôt :
+In the `palambur-method` repository itself, the `.agents/skills/palambur-method/` folder is provided for this: see its `README.md`. From the repository root:
 
 ```bash
 ln -s ../../skills/palambur-method .agents/skills/palambur-method
 ```
 
-### 2c · Vérifier
+### 2c · Check
 
-Dans une session Codex, ouvrez le sélecteur de skills (la page `build-skills` écrit : « In Codex CLI or the IDE extension, run `/skills` or type `$` to mention a skill. ») :
+In a Codex session, open the skills picker (the `build-skills` page writes: “In Codex CLI or the IDE extension, run `/skills` or type `$` to mention a skill.”):
 
 ```bash
 /skills
 ```
 
-Les skills activés apparaissent aussi dans la liste des commandes `/` (source `https://learn.chatgpt.com/codex/reference/slash-commands`, 11.10.2026). Si un skill ajouté n’apparaît pas, la page `build-skills` dit : « Codex detects newly installed skills automatically; if one doesn’t appear, restart Codex. »
+Enabled skills also appear in the list of `/` commands (source `https://learn.chatgpt.com/codex/reference/slash-commands`, 11.10.2026). If an added skill does not appear, the `build-skills` page says: “Codex detects newly installed skills automatically; if one doesn’t appear, restart Codex.”
 
-**Limites connues** (page `build-skills`, 11.10.2026) : la liste des skills injectée au modèle est plafonnée à **2 % du contexte ou 8’000 caractères** ; `SKILL.md` **doit** contenir `name` et `description` ; un fichier optionnel `agents/openai.yaml` porte les métadonnées d’interface (invocation implicite autorisée ou non, outils requis). Pour désactiver un skill sans le supprimer : section `[[skills.config]]` avec `path` et `enabled = false` dans `~/.codex/config.toml`.
+**Known limits** (`build-skills` page, 11.10.2026): the list of skills injected into the model is capped at **2 % of the context or 8’000 characters**; `SKILL.md` **must** contain `name` and `description`; an optional `agents/openai.yaml` file carries the interface metadata (implicit invocation allowed or not, required tools). To disable a skill without deleting it: a `[[skills.config]]` section with `path` and `enabled = false` in `~/.codex/config.toml`.
 
-**Chargement éprouvé le 12.10.2026** avec Codex CLI (`codex-cli 0.162.0-alpha.17.2`, binaire embarqué dans l’application ChatGPT de bureau) : skill lié par lien symbolique dans `.agents/skills/palambur-method` d’un dossier de travail, puis `codex exec --skip-git-repo-check -s read-only --ephemeral` (entrée standard fermée, sinon Codex attend sur stdin). Codex a lu `SKILL.md` et ses fichiers de référence depuis `.agents/skills/`, puis a rendu un **premier tour conforme** (« Question 1 sur 4 », choix lettrés, échappatoire, aucune question nLPD puisque aucune donnée). Un seul tour : `codex exec` n’est pas interactif, l’échange entier reste à jouer dans l’IDE ou le CLI interactif. Le protocole des épreuves est décrit dans [`../../epreuves/README.md`](../../epreuves/README.md). Installation officielle du CLI (source `https://learn.chatgpt.com/codex/cli`, 11.10.2026 ; la page donne la forme `curl … | sh`, découpée ici pour lire le script avant de l’exécuter). Téléchargez le script :
+**Loading tested on 12.10.2026** with Codex CLI (`codex-cli 0.162.0-alpha.17.2`, binary bundled in the ChatGPT desktop application): skill linked by symbolic link in `.agents/skills/palambur-method` of a working folder, then `codex exec --skip-git-repo-check -s read-only --ephemeral` (standard input closed, otherwise Codex waits on stdin). Codex read `SKILL.md` and its reference files from `.agents/skills/`, then produced a **compliant first turn** (“Question 1 sur 4”, lettered choices, escape hatch, no Data Protection Act question since there was no data). A single turn: `codex exec` is not interactive, the whole exchange remains to be played in the IDE or the interactive CLI. The test protocol is described in [`../../epreuves/README.md`](../../epreuves/README.md). Official installation of the CLI (source `https://learn.chatgpt.com/codex/cli`, 11.10.2026; the page gives the form `curl … | sh`, split here so you can read the script before running it). Download the script:
 
 ```bash
 curl -fsSL https://chatgpt.com/codex/install.sh -o install.sh
 ```
 
-Lisez-le, puis exécutez-le :
+Read it, then run it:
 
 ```bash
 sh install.sh
 ```
 
-puis connexion par **« Sign in with ChatGPT »** au premier lancement de `codex`. Les forfaits donnant droit à Codex ne sont pas énumérés sur cette page : **non confirmé**.
+then sign in with **“Sign in with ChatGPT”** on the first launch of `codex`. The plans that give access to Codex are not listed on this page: **not confirmed**.
 
 ---
 
-## 3 · ChatGPT natif (sans Codex)
+## 3 · Native ChatGPT (without Codex)
 
-Source officielle lue : `https://learn.chatgpt.com/docs/build-skills` (11.10.2026), section des surfaces. Elle distingue :
+Official source read: `https://learn.chatgpt.com/docs/build-skills` (11.10.2026), surfaces section. It distinguishes:
 
-- **Application ChatGPT de bureau** : « Standalone skills are available in the ChatGPT desktop app, Codex CLI, and IDE extension. » Les skills autonomes (un dossier `SKILL.md`) s’ajoutent depuis la barre latérale **« Skills »** et s’invoquent avec **`@`**.
-- **ChatGPT web et mobile** : « Skills bundled in plugins are also available in Chat and Work across ChatGPT on the web, desktop, and mobile. » Les skills autonomes **ne sont pas listés** pour le web et le mobile (inférence : la page ne les y nomme pas, elle n’écrit pas « only »).
+- **ChatGPT desktop application**: “Standalone skills are available in the ChatGPT desktop app, Codex CLI, and IDE extension.” Standalone skills (a `SKILL.md` folder) are added from the **“Skills”** sidebar and invoked with **`@`**.
+- **ChatGPT web and mobile**: “Skills bundled in plugins are also available in Chat and Work across ChatGPT on the web, desktop, and mobile.” Standalone skills **are not listed** for web and mobile (inference: the page does not name them there, it does not write “only”).
 
-L’article d’aide officiel **« Skills in ChatGPT »** (`https://help.openai.com/en/articles/20001066-skills-in-chatgpt`) **n’était pas accessible à nos outils le 11.10.2026 (HTTP 403)**. Son extrait, lu par un moteur de recherche, indique que les skills personnels sont disponibles pour **ChatGPT Business, Enterprise, Healthcare et Edu**, désactivés par défaut pour Enterprise et Edu jusqu’au 23.07.2026. **Rien n’a pu être lu sur Free, Plus ou Pro : non confirmé.** Les articles de blog qui annoncent une ouverture plus large sont des **sources secondaires**.
+The official help article **“Skills in ChatGPT”** (`https://help.openai.com/en/articles/20001066-skills-in-chatgpt`) **was not accessible to our tools on 11.10.2026 (HTTP 403)**. Its excerpt, read through a search engine, indicates that personal skills are available for **ChatGPT Business, Enterprise, Healthcare and Edu**, disabled by default for Enterprise and Edu until 23.07.2026. **Nothing could be read about Free, Plus or Pro: not confirmed.** Blog posts announcing a wider opening are **secondary sources**.
 
-**Procédure** (application de bureau, d’après la page `build-skills`) : préparez le dossier `skills/palambur-method/` (ou le ZIP du § 1c), ouvrez **Skills** dans la barre latérale, ajoutez le dossier, puis dans une conversation tapez `@palambur-method`. **Non éprouvé** au 12.10.2026.
+**Procedure** (desktop application, according to the `build-skills` page): prepare the `skills/palambur-method/` folder (or the ZIP from § 1c), open **Skills** in the sidebar, add the folder, then in a conversation type `@palambur-method`. **Not tested** as of 12.10.2026.
 
-**Chemin plugin pour le web** : OpenAI déclare que **« ChatGPT and Codex share one universal plugin directory »** (`https://learn.chatgpt.com/codex/skills-and-plugins`, 11.10.2026). La soumission d’un plugin « Skills only » demande une **vérification d’identité** du compte éditeur ; elle relève du mainteneur du dépôt, pas de l’utilisateur.
+**Plugin path for the web**: OpenAI states that **“ChatGPT and Codex share one universal plugin directory”** (`https://learn.chatgpt.com/codex/skills-and-plugins`, 11.10.2026). Submitting a “Skills only” plugin requires an **identity verification** of the publisher account; it is the repository maintainer’s business, not the user’s.
 
-**À ne plus faire** : OpenAI retire les **GPT personnalisés** (`https://learn.chatgpt.com/codex/migrate-custom-gpts`, 11.10.2026 : « At retirement, custom GPTs stop running and leave the GPT directory », sans date publiée) et propose **« My GPTs › Migrate to plugin »**, qui transforme les instructions en skill. C’est pourquoi ce guide ne liste plus le GPT personnalisé parmi les cibles : si vous en avez un, migrez-le.
+**What to stop doing**: OpenAI is retiring **custom GPTs** (`https://learn.chatgpt.com/codex/migrate-custom-gpts`, 11.10.2026: “At retirement, custom GPTs stop running and leave the GPT directory”, no published date) and offers **“My GPTs › Migrate to plugin”**, which turns the instructions into a skill. This is why this guide no longer lists the custom GPT among the targets: if you have one, migrate it.
 
 ---
 
 ## 4 · Cursor
 
-Source : `https://cursor.com/docs/context/skills` (11.10.2026). Cursor suit le standard Agent Skills.
+Source: `https://cursor.com/docs/context/skills` (11.10.2026). Cursor follows the Agent Skills standard.
 
-**Emplacements** : projet `.agents/skills/` ou `.cursor/skills/` ; utilisateur `~/.agents/skills/` ou `~/.cursor/skills/` ; **compatibilité** avec `.claude/skills/`, `.codex/skills/`, `~/.claude/skills/`, `~/.codex/skills/`. Donc le lien posé au § 2a (`~/.agents/skills/palambur-method`) **suffit aussi pour Cursor**, et un skill déjà dans `~/.claude/skills/` est vu.
+**Locations**: project `.agents/skills/` or `.cursor/skills/`; user `~/.agents/skills/` or `~/.cursor/skills/`; **compatibility** with `.claude/skills/`, `.codex/skills/`, `~/.claude/skills/`, `~/.codex/skills/`. So the link set up in § 2a (`~/.agents/skills/palambur-method`) **is also enough for Cursor**, and a skill already in `~/.claude/skills/` is seen.
 
-Si vous n’avez fait ni l’un ni l’autre :
+If you have done neither:
 
 ```bash
 mkdir -p ~/.cursor/skills
@@ -226,41 +228,41 @@ mkdir -p ~/.cursor/skills
 ln -s ~/palambur-method/skills/palambur-method ~/.cursor/skills/palambur-method
 ```
 
-**Vérifier** : barre latérale **Customize › Skills** (le skill apparaît avec le mode « Agent Decides »), ou tapez `/` suivi du nom du skill dans le chat. **Limites** : `name` en minuscules **doit être égal au nom du dossier**, `description` obligatoire ; champs propres à Cursor `disable-model-invocation` et `paths` ; la page ne décrit l’import depuis GitHub que via un plugin `.cursor-plugin/marketplace.json` ; les **Cloud Agents** ne synchronisent que `~/.cursor/skills/`. **Non éprouvé** au 12.10.2026.
+**Check**: **Customize › Skills** sidebar (the skill appears with the “Agent Decides” mode), or type `/` followed by the skill name in the chat. **Limits**: lowercase `name` **must equal the folder name**, `description` required; Cursor-specific fields `disable-model-invocation` and `paths`; the page only describes import from GitHub through a `.cursor-plugin/marketplace.json` plugin; **Cloud Agents** only synchronise `~/.cursor/skills/`. **Not tested** as of 12.10.2026.
 
 ---
 
-## 5 · Gemini CLI et Antigravity (Google)
+## 5 · Gemini CLI and Antigravity (Google)
 
-Source : `https://geminicli.com/docs/cli/skills/` (11.10.2026). La page avertit : **« Unpaid tier and Google One users: Gemini CLI was replaced by Antigravity CLI on June 18th, 2026 »** ; l’annonce officielle (`https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli`, 11.10.2026) précise que les comptes entreprise ne changent pas et qu’Antigravity CLI **conserve les Agent Skills**.
+Source: `https://geminicli.com/docs/cli/skills/` (11.10.2026). The page warns: **“Unpaid tier and Google One users: Gemini CLI was replaced by Antigravity CLI on June 18th, 2026”**; the official announcement (`https://developers.googleblog.com/an-important-update-transitioning-gemini-cli-to-antigravity-cli`, 11.10.2026) states that enterprise accounts do not change and that Antigravity CLI **keeps Agent Skills**.
 
-**Gemini CLI** · emplacements : utilisateur `~/.gemini/skills/` (alias accepté `~/.agents/skills/`), espace de travail `.gemini/skills/` ou `.agents/skills/`. Le lien du § 2a suffit donc. Sinon, **en session**, la commande documentée « `/skills link <path> [--scope user|workspace]`: Links skills from a local directory. » :
+**Gemini CLI** · locations: user `~/.gemini/skills/` (accepted alias `~/.agents/skills/`), workspace `.gemini/skills/` or `.agents/skills/`. The link from § 2a is therefore enough. Otherwise, **in a session**, the documented command “`/skills link <path> [--scope user|workspace]`: Links skills from a local directory.”:
 
 ```bash
 /skills link ~/palambur-method/skills/palambur-method
 ```
 
-ou, dans le shell, installer depuis Git (forme documentée : « gemini skills install https://github.com/user/repo.git --consent ») :
+or, in the shell, install from Git (documented form: “gemini skills install https://github.com/user/repo.git --consent”):
 
 ```bash
 gemini skills install https://github.com/PALAMBUR/palambur-method.git --consent
 ```
 
-**Vérifier**, dans la session (« `/skills list [all] [nodesc]`: Shows discovered skills. ») :
+**Check**, in the session (“`/skills list [all] [nodesc]`: Shows discovered skills.”):
 
 ```bash
 /skills list
 ```
 
-Après un ajout à la main :
+After a manual addition:
 
 ```bash
 /skills reload
 ```
 
-**Limite** : à l’activation d’un skill, la page dit « You will see a confirmation prompt in the UI detailing the skill’s name, purpose » et l’exécution suit « Upon your approval ». **Non éprouvé** au 12.10.2026.
+**Limit**: when a skill is activated, the page says “You will see a confirmation prompt in the UI detailing the skill’s name, purpose” and execution follows “Upon your approval”. **Not tested** as of 12.10.2026.
 
-**Antigravity** (`https://antigravity.google/docs/skills`, 11.10.2026) : espace de travail `<racine>/.agents/skills/`, global `~/.gemini/config/skills/` (Antigravity 2.0 et IDE), CLI `~/.gemini/antigravity-cli/skills/`, ancien `~/.gemini/antigravity/skills/`. `description` obligatoire, `name` facultatif (le dossier fait foi). Chaque skill devient une commande `/`. Pour le global :
+**Antigravity** (`https://antigravity.google/docs/skills`, 11.10.2026): workspace `<root>/.agents/skills/`, global `~/.gemini/config/skills/` (Antigravity 2.0 and IDE), CLI `~/.gemini/antigravity-cli/skills/`, legacy `~/.gemini/antigravity/skills/`. `description` required, `name` optional (the folder is authoritative). Each skill becomes a `/` command. For the global location:
 
 ```bash
 mkdir -p ~/.gemini/config/skills
@@ -274,9 +276,9 @@ ln -s ~/palambur-method/skills/palambur-method ~/.gemini/config/skills/palambur-
 
 ## 6 · GitHub Copilot
 
-**Confirmé par la documentation officielle** : `https://docs.github.com/en/copilot/concepts/agents/about-agent-skills` et `https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills` (11.10.2026). « Skill files must be named SKILL.md » ; `name` et `description` obligatoires, `license` et `allowed-tools` facultatifs.
+**Confirmed by the official documentation**: `https://docs.github.com/en/copilot/concepts/agents/about-agent-skills` and `https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills` (11.10.2026). “Skill files must be named SKILL.md”; `name` and `description` required, `license` and `allowed-tools` optional.
 
-**Emplacements** : projet `.github/skills`, `.claude/skills`, `.agents/skills` ; personnel `~/.copilot/skills`, `~/.agents/skills`. Le lien du § 2a suffit. Sinon :
+**Locations**: project `.github/skills`, `.claude/skills`, `.agents/skills`; personal `~/.copilot/skills`, `~/.agents/skills`. The link from § 2a is enough. Otherwise:
 
 ```bash
 mkdir -p ~/.copilot/skills
@@ -286,7 +288,7 @@ mkdir -p ~/.copilot/skills
 ln -s ~/palambur-method/skills/palambur-method ~/.copilot/skills/palambur-method
 ```
 
-**Vérifier**, dans Copilot CLI :
+**Check**, in Copilot CLI:
 
 ```bash
 /skills reload
@@ -296,48 +298,48 @@ ln -s ~/palambur-method/skills/palambur-method ~/.copilot/skills/palambur-method
 /skills info palambur-method
 ```
 
-La documentation annonce aussi `gh skill` pour chercher, installer, mettre à jour et publier des skills. Surfaces : agent cloud, revue de code, Copilot CLI, application Copilot, mode agent dans VS Code et JetBrains. **Non éprouvé** au 12.10.2026.
+The documentation also announces `gh skill` to search for, install, update and publish skills. Surfaces: cloud agent, code review, Copilot CLI, Copilot application, agent mode in VS Code and JetBrains. **Not tested** as of 12.10.2026.
 
 ---
 
-## 7 · Gemini (application) · remplace le Gem
+## 7 · Gemini (app) · replaces the Gem
 
-Source : `https://support.google.com/gemini/answer/17094296` (création et téléversement) et `https://support.google.com/gemini/answer/18560919` (transition des Gems), lues le 11.10.2026 ; ces deux pages répondent **404 à une requête HEAD** (`curl -I`) et **200 à une requête GET**, elles se lisent au navigateur. Google **retire les Gems** : « November 2026: Personal Google accounts. », « March 2027: Workspace business, enterprise, and non-profit accounts. », « June 2027: Workspace education accounts. » ; les Gems existants sont **recréés automatiquement en skills**.
+Source: `https://support.google.com/gemini/answer/17094296` (creation and upload) and `https://support.google.com/gemini/answer/18560919` (Gems transition), read on 11.10.2026; both pages answer **404 to a HEAD request** (`curl -I`) and **200 to a GET request**, they are read in a browser. Google is **retiring Gems**: “November 2026: Personal Google accounts.”, “March 2027: Workspace business, enterprise, and non-profit accounts.”, “June 2027: Workspace education accounts.”; existing Gems are **automatically recreated as skills**.
 
-**Le geste n’est donc plus « créer un Gem »**, mais **téléverser le skill** : barre latérale **Settings › Skills › Upload**, puis choisir le fichier `SKILL.md`, ou un dossier ou un `.zip` **dont `SKILL.md` est à la racine**, puis **Create**. Conditions lues sur la page 17094296 : `name` en minuscules avec traits d’union, « The total size of all uploaded files must not exceed 100 MB. », fichiers de référence en texte brut (le `.docx` n’est pas accepté), les scripts ne peuvent pas appeler l’extérieur, « Be 18 or over. », « For now, this feature isn’t available if you sign in with a work or school Google Account. », « Have Keep Activity on. ». Invocation : `/` puis le skill (bientôt `@`). Sur la page 18560919 (transition des Gems) : « You can create as many skills as you want, but only 100 can be active at a time. » et le **partage** avec d’autres personnes est annoncé « in the coming weeks », donc **pas disponible au 11.10.2026**. Disponibilité : « We’re gradually making skills available in Gemini chats, starting with personal Google Accounts. » ; **non confirmé** pour un compte donné tant qu’il n’a pas été essayé.
+**The step is therefore no longer “create a Gem”**, but **upload the skill**: **Settings › Skills › Upload** sidebar, then choose the `SKILL.md` file, or a folder or a `.zip` **with `SKILL.md` at its root**, then **Create**. Conditions read on page 17094296: lowercase `name` with hyphens, “The total size of all uploaded files must not exceed 100 MB.”, reference files in plain text (`.docx` is not accepted), scripts cannot call outside, “Be 18 or over.”, “For now, this feature isn’t available if you sign in with a work or school Google Account.”, “Have Keep Activity on.”. Invocation: `/` then the skill (soon `@`). On page 18560919 (Gems transition): “You can create as many skills as you want, but only 100 can be active at a time.” and **sharing** with other people is announced “in the coming weeks”, so **not available as of 11.10.2026**. Availability: “We’re gradually making skills available in Gemini chats, starting with personal Google Accounts.”; **not confirmed** for a given account until it has been tried.
 
-Le ZIP se fabrique comme au § 1c. **Non éprouvé** au 12.10.2026.
-
----
-
-## 8 · Mistral Vibe (ex Le Chat) · remplace « l’Agent »
-
-Sources : `https://help.mistral.ai/en/articles/682992-le-chat-is-now-vibe` (article daté du 12.08.2026), `https://docs.mistral.ai/vibe/overview` et `https://docs.mistral.ai/getting-started/quickstarts/vibe-work/create-first-skill` (11.10.2026). La page `vibe/overview` écrit : **« If you relied on Agents, use Skills instead »** (invocation avec `@`) ; la page `create-first-skill` écrit que les skills **« follow the open Agent Skills standard »**.
-
-**Procédure** (Vibe Work) : `chat.mistral.ai` › onglet **Work** › **Context › Skills** › **New Skill** › Titre, Description, contenu du `SKILL.md` › **Create Skill**. Invocation `/palambur-method` ou `@`. Partage : **privé ou l’espace de travail entier**, pas de lien public. Les forfaits concernés ne sont pas nommés : **non confirmé**.
-
-**Vibe CLI** (`https://github.com/mistralai/mistral-vibe`, 11.10.2026) lit `.agents/skills/`, `.vibe/skills/`, `~/.vibe/skills/`, `~/.agents/skills/` : le lien du § 2a suffit.
-
-Le prompt complet d’`adaptations/` reste utilisable comme contenu du skill ou comme instructions.
+The ZIP is built as in § 1c. **Not tested** as of 12.10.2026.
 
 ---
 
-## 9 · Projet Claude.ai, Infomaniak · le prompt collé
+## 8 · Mistral Vibe (formerly Le Chat) · replaces the “Agent”
 
-Les textes à coller sont **dans `adaptations/`** à la racine du dépôt et ne sont pas recopiés ici (une copie vieillit sans le dire) : `methode-palambur-prompt.md` (complet) et `methode-palambur-prompt-court.md` (court), avec le guide par plateforme dans [`adaptations/README.md`](../../adaptations/README.md).
+Sources: `https://help.mistral.ai/en/articles/682992-le-chat-is-now-vibe` (article dated 12.08.2026), `https://docs.mistral.ai/vibe/overview` and `https://docs.mistral.ai/getting-started/quickstarts/vibe-work/create-first-skill` (11.10.2026). The `vibe/overview` page writes: **“If you relied on Agents, use Skills instead”** (invocation with `@`); the `create-first-skill` page writes that skills **“follow the open Agent Skills standard”**.
 
-| Plateforme | Où coller | Source officielle (11.10.2026) | État |
+**Procedure** (Vibe Work): `chat.mistral.ai` › **Work** tab › **Context › Skills** › **New Skill** › Title, Description, contents of `SKILL.md` › **Create Skill**. Invocation `/palambur-method` or `@`. Sharing: **private or the whole workspace**, no public link. The plans concerned are not named: **not confirmed**.
+
+**Vibe CLI** (`https://github.com/mistralai/mistral-vibe`, 11.10.2026) reads `.agents/skills/`, `.vibe/skills/`, `~/.vibe/skills/`, `~/.agents/skills/`: the link from § 2a is enough.
+
+The full prompt from `adaptations/` remains usable as the skill’s content or as instructions.
+
+---
+
+## 9 · Claude.ai Project, Infomaniak · the pasted prompt
+
+The texts to paste are **in `adaptations/`** at the repository root and are not copied here (a copy ages without saying so): `methode-palambur-prompt.md` (full) and `methode-palambur-prompt-court.md` (short), with the per-platform guide in [`adaptations/README.md`](../../adaptations/README.md).
+
+| Platform | Where to paste | Official source (11.10.2026) | Status |
 |---|---|---|---|
-| **Projet Claude.ai** | Instructions du projet, prompt complet | `https://support.claude.com/en/articles/12512180-using-skills-in-claude` | fonctionne ; le skill natif (§ 1c) est préférable |
-| **Infomaniak Euria** (kSuite) | **Projets › Nouveau projet › Instructions**, documents en glisser-déposer | `https://www.infomaniak.com/fr/support/faq/2907` et `/faq/1369` | hébergement **exclusivement en Suisse** ; gratuit avec kSuite Free (2 projets, 5 conversations par projet) ; **aucune notion de skill ni d’agent** sur la page Euria ; pas de partage de projet lu |
-| **Infomaniak AI Tools / AI Services** (API) | system prompt de l’assistant, Manager › « Modifier l’assistant conversationnel actuel » › « Nouveau » (FAQ 2177) | `https://www.infomaniak.com/fr/support/faq/2177` (réglage) · `https://www.infomaniak.com/fr/hebergement/ai-services` (offre) | la page de l’offre écrit « API compatible OpenAI » et « nos data centers en Suisse » ; prompt complet |
+| **Claude.ai Project** | Project instructions, full prompt | `https://support.claude.com/en/articles/12512180-using-skills-in-claude` | works; the native skill (§ 1c) is preferable |
+| **Infomaniak Euria** (kSuite) | **Projets › Nouveau projet › Instructions** (Projects › New project › Instructions), documents by drag and drop | `https://www.infomaniak.com/fr/support/faq/2907` and `/faq/1369` | hosting **exclusively in Switzerland**; free with kSuite Free (2 projects, 5 conversations per project); **no notion of skill or agent** on the Euria page; no project sharing read |
+| **Infomaniak AI Tools / AI Services** (API) | system prompt of the assistant, Manager › “Modifier l’assistant conversationnel actuel” (Edit the current conversational assistant) › “Nouveau” (New) (FAQ 2177) | `https://www.infomaniak.com/fr/support/faq/2177` (setting) · `https://www.infomaniak.com/fr/hebergement/ai-services` (offer) | the offer page writes “API compatible OpenAI” (OpenAI-compatible API) and “nos data centers en Suisse” (our data centres in Switzerland); full prompt |
 
-Pour ces trois hôtes, la méthode **est** l’assistant : elle s’applique à chaque demande, sans mot déclencheur. Le GPT personnalisé de ChatGPT, qui recevait le même prompt, est classé « à ne plus faire » au § 3.
+For these three hosts, the method **is** the assistant: it applies to every request, with no trigger word. ChatGPT’s custom GPT, which received the same prompt, is classed as “what to stop doing” in § 3.
 
 ---
 
-## 10 · Récapitulatif · un lien suffit pour cinq hôtes
+## 10 · Summary · one link is enough for five hosts
 
-Le dossier `~/.agents/skills/` est lu par **Codex, Cursor, Gemini CLI, GitHub Copilot et Mistral Vibe CLI** (sources respectives ci-dessus). Après le § 2a, ces cinq hôtes voient le skill. Claude Code lit `~/.claude/skills/` (§ 1b). Antigravity lit `~/.gemini/config/skills/` (§ 5).
+The `~/.agents/skills/` folder is read by **Codex, Cursor, Gemini CLI, GitHub Copilot and Mistral Vibe CLI** (respective sources above). After § 2a, these five hosts see the skill. Claude Code reads `~/.claude/skills/` (§ 1b). Antigravity reads `~/.gemini/config/skills/` (§ 5).
 
-**Ce guide a été éprouvé sur Claude Code et, le 12.10.2026, sur Codex** (§ 2 : skill lu depuis `.agents/skills/`, premier tour conforme, un seul tour en mode `codex exec`). Les autres hôtes n’ont pas été éprouvés ; leurs commandes sont celles des pages officielles citées, relues le 11.10.2026. Prochaine relecture des sources prévue au **11.11.2026**.
+**This guide has been tested on Claude Code and, on 12.10.2026, on Codex** (§ 2: skill read from `.agents/skills/`, compliant first turn, a single turn in `codex exec` mode). The other hosts have not been tested; their commands are those of the official pages cited, re-read on 11.10.2026. Next review of the sources is planned for **11.11.2026**.

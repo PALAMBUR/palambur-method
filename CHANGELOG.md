@@ -4,13 +4,16 @@ Ce fichier suit le format [Keep a Changelog](https://keepachangelog.com/fr/1.1.0
 
 Une version = une étiquette Git `vX.Y.Z`, une release GitHub et le même numéro dans `.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json` et ce journal. La chaîne de contrôle `outils/controle.py` **refuse** si les trois numéros divergent.
 
+Depuis le 13.10.2026, les entrées s’écrivent en anglais · les entrées antérieures restent en français. · From 13.10.2026 the entries are written in English; earlier entries stay in French.
+
 Chaque version porte une **Note de qualité** à forme fixe, cinq champs dans cet ordre · Cas joués · Verts · Rouges · Date · Instrument. « Non joué » est une valeur honnête ; un nombre sans date n’en est pas une. Les cas sont ceux d’`epreuves/cas.json`, l’instrument est `epreuves/mesurer.py` (ou `claude plugin eval`, nommé alors). La note ne recopie jamais un chiffre d’une version précédente.
 
-## [Non publié]
+## [Unreleased]
 
-### Modifié
+### Changed
 
-- **L’anglais passe en première langue** (décision du mainteneur, 13.10.2026 · la Suisse a trois langues nationales, l’anglais est la langue commune des lecteurs de GitHub). `README.md` est désormais la version anglaise, le français vit dans `README.fr.md` ; la barre de langues des quatre README suit l’ordre English · Français · Deutsch · Italiano. Le contenu des README ne change pas. La description du dépôt GitHub et son image sociale (réglage GitHub, hors dépôt) sont en anglais depuis le même jour.
+- **English becomes the first language** (maintainer’s decision, 13.10.2026 · Switzerland has three national languages, English is the common language of GitHub readers). `README.md` is now the English version, French lives in `README.fr.md`; the language bar of the four READMEs follows the order English · Français · Deutsch · Italiano. The content of the READMEs does not change. The GitHub repository description and its social preview image (a GitHub setting, outside the repo) are in English since the same day.
+- **The storefront in English, the engine in French.** Everything a visitor reads before installing is now English first · the bilingual files (`CONTRIBUTING.md`, `SECURITY.md`, `CODE_OF_CONDUCT.md`, the pull request template, the four issue templates, `docs/pedagogie/FAQ.md`) put English before French; `docs/portabilite/INSTALLATION.md` is translated, the French guide moves to `INSTALLATION.fr.md`; `CITATION.cff`, the issue menu, the descriptions in `plugin.json` and `marketplace.json` are in English. The skill itself (`skills/palambur-method/`, templates, trade sheets, test cases, grid) stays in French · it produces French-language documents and its published measurements were made on that text; the English README says so. From this entry on, this changelog is written in English; earlier entries stay in French.
 
 ## [1.6.0] · 2026-10-12
 

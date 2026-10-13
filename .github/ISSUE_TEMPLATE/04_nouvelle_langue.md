@@ -5,41 +5,7 @@ title: "[Langue] "
 labels: ["langue"]
 ---
 
-<!-- Français d’abord, English below. Une langue = un marché nommé, un cadre légal nommé, une relecture par un locuteur natif. -->
-
-## Français
-
-**La langue et le marché visés** (code langue et pays, par exemple `de-CH`, `it-CH`, `en-US`, `fr-BE`)
-
-…
-
-**Ce qui est traduit** (le corps du skill, un fichier de référence, un gabarit, un prompt d’adaptation · nommer les fichiers)
-
-…
-
-**Ce qui est adapté, pas seulement traduit** · le cadre légal change avec le pays (en Suisse on nomme le CO, la LTr, la LEg, la nLPD ; ailleurs d’autres textes). Nommer les textes du marché visé, chaque numéro d’article avec `[À VÉRIFIER]`, et les montants au niveau de prix du pays, jamais convertis depuis le franc suisse.
-
-…
-
-**Qui traduit, et quelle est sa langue maternelle** (fonction, pas de nom de personne obligatoire)
-
-…
-
-**Le locuteur natif qui relit** · la règle du dépôt (`CONTRIBUTING.md`) exige qu’une langue ajoutée soit relue par une personne dont c’est la langue maternelle, autre que la personne qui traduit. Indiquer la fonction du relecteur et la date de la relecture.
-
-…
-
-**Vérifications**
-
-- [ ] Relecture faite par un locuteur natif, autre que la personne qui traduit, date indiquée
-- [ ] Les textes de loi du pays sont nommés, chaque numéro d’article porte `[À VÉRIFIER]`
-- [ ] Les exemples chiffrés sont au niveau de prix du pays, avec date et source
-- [ ] Aucun tiret de ponctuation, séparateur « · », apostrophes courbes
-- [ ] Le sigle interdit par la règle de marque n’apparaît pas · on écrit « entreprises »
-- [ ] Les marqueurs `[À COMPLÉTER]` et `[À VÉRIFIER]` restent en français dans toutes les langues
-- [ ] `python3 outils/controle.py` passe
-
----
+<!-- English first, Français below. Une langue = un marché nommé, un cadre légal nommé, une relecture par un locuteur natif. -->
 
 ## English
 
@@ -72,3 +38,37 @@ labels: ["langue"]
 - [ ] The banned French acronym for small and medium sized businesses does not appear · write "entreprises"
 - [ ] The markers `[À COMPLÉTER]` and `[À VÉRIFIER]` stay in French in every language
 - [ ] `python3 outils/controle.py` passes
+
+---
+
+## Français
+
+**La langue et le marché visés** (code langue et pays, par exemple `de-CH`, `it-CH`, `en-US`, `fr-BE`)
+
+…
+
+**Ce qui est traduit** (le corps du skill, un fichier de référence, un gabarit, un prompt d’adaptation · nommer les fichiers)
+
+…
+
+**Ce qui est adapté, pas seulement traduit** · le cadre légal change avec le pays (en Suisse on nomme le CO, la LTr, la LEg, la nLPD ; ailleurs d’autres textes). Nommer les textes du marché visé, chaque numéro d’article avec `[À VÉRIFIER]`, et les montants au niveau de prix du pays, jamais convertis depuis le franc suisse.
+
+…
+
+**Qui traduit, et quelle est sa langue maternelle** (fonction, pas de nom de personne obligatoire)
+
+…
+
+**Le locuteur natif qui relit** · la règle du dépôt (`CONTRIBUTING.md`) exige qu’une langue ajoutée soit relue par une personne dont c’est la langue maternelle, autre que la personne qui traduit. Indiquer la fonction du relecteur et la date de la relecture.
+
+…
+
+**Vérifications**
+
+- [ ] Relecture faite par un locuteur natif, autre que la personne qui traduit, date indiquée
+- [ ] Les textes de loi du pays sont nommés, chaque numéro d’article porte `[À VÉRIFIER]`
+- [ ] Les exemples chiffrés sont au niveau de prix du pays, avec date et source
+- [ ] Aucun tiret de ponctuation, séparateur « · », apostrophes courbes
+- [ ] Le sigle interdit par la règle de marque n’apparaît pas · on écrit « entreprises »
+- [ ] Les marqueurs `[À COMPLÉTER]` et `[À VÉRIFIER]` restent en français dans toutes les langues
+- [ ] `python3 outils/controle.py` passe

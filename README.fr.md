@@ -25,7 +25,7 @@ Puis tapez : `méthode palambur : fais une offre d’emploi pour un peintre à 8
 
 **Dans votre navigateur** (Claude.ai, ChatGPT, Euria d’Infomaniak, Mistral…) · ouvrez [`adaptations/methode-palambur-prompt.md`](adaptations/methode-palambur-prompt.md), copiez **le bloc sous le trait**, collez-le dans les instructions de votre projet ou de votre assistant. Rien à installer. Pour une boîte d’instructions limitée en taille, prenez le [prompt court](adaptations/methode-palambur-prompt-court.md).
 
-**Codex, Cursor, Copilot, Gemini CLI, Mistral Vibe** · un seul lien symbolique du dossier `skills/palambur-method/` dans `~/.agents/skills/` suffit aux cinq hôtes. Les commandes, hôte par hôte, sont dans [`docs/portabilite/INSTALLATION.md`](docs/portabilite/INSTALLATION.md).
+**Codex, Cursor, Copilot, Gemini CLI, Mistral Vibe** · un seul lien symbolique du dossier `skills/palambur-method/` dans `~/.agents/skills/` suffit aux cinq hôtes. Les commandes, hôte par hôte, sont dans [`docs/portabilite/INSTALLATION.fr.md`](docs/portabilite/INSTALLATION.fr.md).
 
 **Vérifier que le skill est chargé** · dans Claude Code, `/plugin` puis l’onglet **Installed** ; ou, sur n’importe quel hôte, demandez « méthode palambur : quelle est ta première question ? » et attendez une réponse qui commence par « Question 1 sur N ».
 
@@ -229,7 +229,7 @@ Le script **refuse** si la cible est déjà un lien symbolique, pour ne pas écr
 
 ### Codex, Cursor, Copilot, Gemini CLI, Mistral Vibe · `.agents/skills`
 
-Le format `SKILL.md` est un **standard ouvert**. Un seul lien symbolique du dossier `skills/palambur-method/` dans `~/.agents/skills/` suffit à cinq hôtes : **Codex** (qui suit les liens symboliques et lit aussi `.agents/skills/` dans un projet), **Cursor**, **GitHub Copilot**, **Gemini CLI** et **Mistral Vibe CLI** (documentation officielle de chaque éditeur, relevée le 11.10.2026). Gemini (application) et Mistral Vibe Work acceptent le skill par téléversement. Le guide pas à pas, hôte par hôte, avec ses sources datées, est dans [`docs/portabilite/INSTALLATION.md`](docs/portabilite/INSTALLATION.md) ; la conformité du skill au standard est relevée dans [`docs/portabilite/CONFORMITE_STANDARD.md`](docs/portabilite/CONFORMITE_STANDARD.md).
+Le format `SKILL.md` est un **standard ouvert**. Un seul lien symbolique du dossier `skills/palambur-method/` dans `~/.agents/skills/` suffit à cinq hôtes : **Codex** (qui suit les liens symboliques et lit aussi `.agents/skills/` dans un projet), **Cursor**, **GitHub Copilot**, **Gemini CLI** et **Mistral Vibe CLI** (documentation officielle de chaque éditeur, relevée le 11.10.2026). Gemini (application) et Mistral Vibe Work acceptent le skill par téléversement. Le guide pas à pas, hôte par hôte, avec ses sources datées, est dans [`docs/portabilite/INSTALLATION.fr.md`](docs/portabilite/INSTALLATION.fr.md) ; la conformité du skill au standard est relevée dans [`docs/portabilite/CONFORMITE_STANDARD.md`](docs/portabilite/CONFORMITE_STANDARD.md).
 
 ### Boîtes d’instructions · Projet Claude.ai, Euria, autres assistants
 

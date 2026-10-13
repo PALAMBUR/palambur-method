@@ -5,31 +5,7 @@ title: "[Défaut] "
 labels: ["défaut"]
 ---
 
-<!-- Français d’abord, English below. Remplissez la langue de votre choix. -->
-
-## Français
-
-**La demande telle que vous l’avez tapée** (anonymisez les noms et les montants : « Client X », « Montant A »)
-
-> …
-
-**Ce que le skill a fait**
-
-- Nombre de questions posées, et le compteur annoncé (« Question 1 sur 4 ») :
-- La question d’anonymisation a-t-elle été posée en premier, seule, s’il y avait des données ?
-- Le Gabarit rempli a-t-il été rendu avant le livrable ?
-
-**Ce que vous attendiez**
-
-…
-
-**Ce qui est inventé ou manquant** (une donnée inventée, un article de loi sans `[À VÉRIFIER]`, une convention collective sans source)
-
-…
-
-**Environnement** · Claude Code, ChatGPT, Codex, Gemini, Mistral, Infomaniak · version du skill (voir `CHANGELOG.md`) :
-
----
+<!-- English first, Français below. Remplissez la langue de votre choix. -->
 
 ## English
 
@@ -52,3 +28,27 @@ labels: ["défaut"]
 …
 
 **Environment** · Claude Code, ChatGPT, Codex, Gemini, Mistral, Infomaniak · skill version (see `CHANGELOG.md`):
+
+---
+
+## Français
+
+**La demande telle que vous l’avez tapée** (anonymisez les noms et les montants : « Client X », « Montant A »)
+
+> …
+
+**Ce que le skill a fait**
+
+- Nombre de questions posées, et le compteur annoncé (« Question 1 sur 4 ») :
+- La question d’anonymisation a-t-elle été posée en premier, seule, s’il y avait des données ?
+- Le Gabarit rempli a-t-il été rendu avant le livrable ?
+
+**Ce que vous attendiez**
+
+…
+
+**Ce qui est inventé ou manquant** (une donnée inventée, un article de loi sans `[À VÉRIFIER]`, une convention collective sans source)
+
+…
+
+**Environnement** · Claude Code, ChatGPT, Codex, Gemini, Mistral, Infomaniak · version du skill (voir `CHANGELOG.md`) :

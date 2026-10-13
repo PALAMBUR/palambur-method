@@ -1,6 +1,6 @@
 {
   "name": "palambur",
-  "description": "Marketplace des skills Palambur · méthodes d’IA appliquée pour les entreprises de Suisse romande",
+  "description": "Palambur skills marketplace · applied AI methods for businesses in French-speaking Switzerland",
   "owner": {
     "name": "Palambur · Victor Semblanet",
     "url": "https://palambur.ch"
@@ -8,7 +8,7 @@
   "plugins": [
     {
       "name": "palambur",
-      "description": "Méthode Palambur · clarification ciblée avant production d’un livrable métier, Gabarit Palambur rempli puis livrable final, garde-fous suisses et protection des données par défaut (entreprises de Suisse romande).",
+      "description": "Palambur Method · targeted clarification before producing a business document, completed Palambur Template then final deliverable, Swiss safeguards and data protection by default (businesses in French-speaking Switzerland). The skill itself is written in French.",
       "version": "1.6.0",
       "source": "./",
       "author": {
