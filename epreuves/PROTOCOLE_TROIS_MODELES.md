@@ -1,6 +1,6 @@
 # Protocole · dix cas rejoués sur trois modèles
 
-Plan du 11.10.2026, point 52. Le skill est écrit pour Claude et porté vers les autres IA par les deux prompts d’`adaptations/`. Rien ne dit aujourd’hui que la promesse (« fluide », « sûr ») tient hors de Claude. Ce protocole le mesure avec **la même grille**, `grille.md`, et **le même instrument**, `mesurer.py`. **Claude, GPT et Mistral n’ont pas été joués** · toute passe est une dépense de modèle, et le budget n’est pas posé pour ces trois hôtes. Un quatrième hôte, **Apertus** (Infomaniak), a été joué les 11 et 12.10.2026 avec un budget de 5 CHF posé par le fondateur · plan dans `EXPERIENCE_APERTUS_2026-10-11.md`, résultats dans `RESULTATS_APERTUS_2026-10-11.md`.
+Plan du 11.10.2026, point 52. Le skill est écrit pour Claude et porté vers les autres IA par les deux prompts d’`adaptations/`. Rien ne dit aujourd’hui que la promesse (« fluide », « sûr ») tient hors de Claude. Ce protocole le mesure avec **la même grille**, `grille.md`, et **le même instrument**, `mesurer.py`. **GPT et Mistral n’ont pas été joués** · toute passe est une dépense de modèle, et le budget n’est pas posé pour ces deux hôtes. **Claude a été joué le 13.10.2026** avec le skill natif et l’instrument `claude plugin eval` (premier tour seulement, une exécution par cas, bras témoin sans plugin) · relevé dans `reponses/claude-natif/RELEVE.md`, résultats dans `RESULTATS_CLAUDE_NATIF_2026-10-13.md` · l’échange complet mesuré par `mesurer.py` reste à jouer. Un quatrième hôte, **Apertus** (Infomaniak), a été joué les 11 et 12.10.2026 avec un budget de 5 CHF posé par le fondateur · plan dans `EXPERIENCE_APERTUS_2026-10-11.md`, résultats dans `RESULTATS_APERTUS_2026-10-11.md`.
 
 ## 1 · Les trois hôtes
 
@@ -60,7 +60,7 @@ Trois tableaux de dix lignes, un par hôte, et une synthèse ·
 
 | Hôte | Cas joués | Verts | Rouges | Incomplets | Gardes rouges les plus fréquentes |
 |---|---|---|---|---|---|
-| Claude | | | | | |
+| Claude (13.10.2026, `claude plugin eval`, premier tour) | 10 | 8 | 2 | 0 | `question-nlpd` ×1, `pas-d-invention-1` ×1 · lus à la main, les deux premiers tours suivent la Méthode (défauts de l’instrument, voir les résultats) · témoin sans skill · 0 vert |
 | GPT | | | | | |
 | Mistral | | | | | |
 
